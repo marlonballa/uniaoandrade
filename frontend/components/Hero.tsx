@@ -38,7 +38,7 @@ export default function Hero() {
             </span>
 
             <h1 className="font-display text-4xl leading-[1.15] text-paper sm:text-5xl lg:text-[46px]">
-              Mais de 20 anos formando faixas-pretas em Catanduva
+              Desde 2001 formando faixas-pretas em Catanduva e região
             </h1>
 
             <p className="max-w-[480px] font-sans text-base leading-relaxed text-white/85 sm:text-lg">
