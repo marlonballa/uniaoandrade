@@ -1,0 +1,171 @@
+"use client";
+
+import Image from "next/image";
+import { useRef } from "react";
+
+const HISTORIAS = [
+  {
+    nome: "Jorge",
+    foto: "/depoimentos/jorge-retomou-taekwondo.jpg",
+    fotoPosicao: "50% 15%",
+    fato: "Retomou o Taekwondo depois de 20 anos afastado.",
+    quote:
+      "Voltei depois de 20 anos longe do tatame. Achei que não ia lembrar de nada — mas o corpo lembra, e a vontade também. Foi como nunca ter saído.",
+  },
+  {
+    nome: "Letícia",
+    foto: "/depoimentos/leticia-faixa-amarela.jpg",
+    fotoPosicao: "50% 15%",
+    fato: "Conquistou a faixa amarela em julho de 2026.",
+    quote:
+      "Cada faixa é a prova de que consegui evoluir no meu ritmo. A faixa amarela não é só uma cor nova — é a certeza de que estou no caminho certo.",
+  },
+  {
+    nome: "Sr. Manuel",
+    foto: "/depoimentos/sr-manuel.jpg",
+    fotoPosicao: "50% 15%",
+    fato: "Começou o Taekwondo aos 70 anos.",
+    quote:
+      "Comecei aos 70. Muita gente achou estranho, mas eu queria provar pra mim mesmo que não existe idade certa pra recomeçar.",
+  },
+  {
+    nome: "Cláudio e Enzo",
+    foto: "/depoimentos/claudio-enzo.jpg",
+    fotoPosicao: "50% 35%",
+    fato: "Pai e filho treinam juntos na União Andrade.",
+    quote:
+      "Treinar com o Enzo virou o nosso momento da semana. Ele aprende disciplina, eu aprendo a ter paciência — os dois saímos melhores.",
+  },
+  {
+    nome: "Geniel e Mylena",
+    foto: "/depoimentos/geniel-mylena.jpg",
+    fotoPosicao: "50% 15%",
+    fato: "Mylena entrou para se soltar e perder a timidez — hoje está quase na faixa-preta.",
+    quote:
+      "Colocamos a Mylena no Taekwondo pra ela se soltar, conversar mais, perder a timidez. Hoje ela está quase na faixa-preta e é uma pessoa completamente diferente.",
+  },
+  {
+    nome: "Aniely e Wendel",
+    foto: null,
+    fotoPosicao: "",
+    fato: "Pai e filha treinaram juntos no treino especial de Dia dos Pais.",
+    quote:
+      "Foi lindo ver a interação, o carinho e a alegria compartilhados entre pais e filhos treinando juntos — um momento que vai ficar marcado para sempre em nossos corações.",
+  },
+];
+
+function QuoteMark() {
+  return (
+    <svg width="24" height="19" viewBox="0 0 30 24" fill="var(--red)" aria-hidden>
+      <path d="M0 24V13.5C0 6 4.5 1 12 0v5.4C7.8 6.6 6 9.3 6 13.5H12V24H0Zm18 0V13.5C18 6 22.5 1 30 0v5.4c-4.2 1.2-6 3.9-6 8.1h6V24H18Z" />
+    </svg>
+  );
+}
+
+function ArrowIcon({ direction }: { direction: "left" | "right" }) {
+  return (
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2">
+      <path d={direction === "left" ? "M15 6l-6 6 6 6" : "M9 6l6 6-6 6"} />
+    </svg>
+  );
+}
+
+export default function Historias() {
+  const trackRef = useRef<HTMLDivElement>(null);
+
+  function scroll(direction: "left" | "right") {
+    const el = trackRef.current;
+    if (!el) return;
+    const amount = el.clientWidth * 0.8 * (direction === "left" ? -1 : 1);
+    el.scrollBy({ left: amount, behavior: "smooth" });
+  }
+
+  return (
+    <section id="historias" className="py-24 sm:py-28">
+      <div className="mx-auto flex max-w-[1440px] flex-col items-center gap-4 px-6 text-center sm:px-10 lg:px-18">
+        <span className="font-sans text-[13px] font-semibold tracking-[0.18em] text-red">
+          HISTÓRIAS DE TRANSFORMAÇÃO
+        </span>
+        <h2 className="max-w-[680px] font-display text-3xl text-ink sm:text-4xl">
+          Quem treina com a gente, conta
+        </h2>
+      </div>
+
+      <div className="relative mt-14">
+        <div
+          ref={trackRef}
+          className="scroll-carousel flex gap-6 overflow-x-auto px-[calc(50%-130px)] pb-4 sm:px-10 lg:px-18"
+          style={{ scrollSnapType: "x mandatory" }}
+        >
+          {HISTORIAS.map((historia) => (
+            <div
+              key={historia.nome}
+              className="relative aspect-[9/16] w-[260px] shrink-0 overflow-hidden rounded-2xl border border-line bg-navy-deep sm:w-[300px]"
+              style={{ scrollSnapAlign: "center" }}
+            >
+              {historia.foto ? (
+                <>
+                  <Image
+                    src={historia.foto}
+                    alt={`${historia.nome}, aluno(a) da União Andrade`}
+                    fill
+                    sizes="300px"
+                    className="object-cover"
+                    style={{ objectPosition: historia.fotoPosicao }}
+                  />
+                  <div
+                    aria-hidden
+                    className="absolute inset-0"
+                    style={{
+                      background:
+                        "linear-gradient(180deg, transparent 40%, oklch(0.13 0.07 264 / 0.85) 78%, oklch(0.13 0.07 264 / 0.97) 100%)",
+                    }}
+                  />
+                </>
+              ) : (
+                <div
+                  aria-hidden
+                  className="absolute inset-0"
+                  style={{
+                    background:
+                      "radial-gradient(ellipse 260px 260px at 50% 20%, oklch(0.55 0.19 27 / 0.18) 0%, transparent 70%), var(--navy)",
+                  }}
+                />
+              )}
+
+              <div className="absolute inset-x-0 bottom-0 flex flex-col gap-2.5 p-6">
+                <QuoteMark />
+                <p className="font-sans text-sm italic leading-relaxed text-paper">
+                  {historia.quote}
+                </p>
+                <div className="pt-1">
+                  <div className="font-sans text-sm font-semibold text-paper">{historia.nome}</div>
+                  <div className="font-sans text-xs text-white/70">{historia.fato}</div>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <div className="mt-6 flex items-center justify-center gap-3">
+          <button
+            type="button"
+            onClick={() => scroll("left")}
+            aria-label="Ver depoimento anterior"
+            className="flex h-10 w-10 items-center justify-center rounded-full border border-line text-ink transition-colors hover:border-red hover:text-red"
+          >
+            <ArrowIcon direction="left" />
+          </button>
+          <button
+            type="button"
+            onClick={() => scroll("right")}
+            aria-label="Ver próximo depoimento"
+            className="flex h-10 w-10 items-center justify-center rounded-full border border-line text-ink transition-colors hover:border-red hover:text-red"
+          >
+            <ArrowIcon direction="right" />
+          </button>
+        </div>
+      </div>
+    </section>
+  );
+}

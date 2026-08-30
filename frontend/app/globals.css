@@ -1,0 +1,80 @@
+@import "tailwindcss";
+
+:root {
+  --navy: oklch(0.2 0.09 264);
+  --navy-deep: oklch(0.13 0.07 264);
+  --navy-light: oklch(0.32 0.085 264);
+  --paper: oklch(0.97 0.006 90);
+  --red: oklch(0.56 0.19 27);
+  --red-deep: oklch(0.42 0.17 25);
+  --ink: oklch(0.2 0.035 264);
+  --muted: oklch(0.44 0.02 264);
+  --line: oklch(0.88 0.01 264);
+  --surface: oklch(0.965 0.008 264);
+}
+
+@theme inline {
+  --color-navy: var(--navy);
+  --color-navy-deep: var(--navy-deep);
+  --color-navy-light: var(--navy-light);
+  --color-paper: var(--paper);
+  --color-red: var(--red);
+  --color-red-deep: var(--red-deep);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+  --color-surface: var(--surface);
+
+  --font-brand: var(--font-bevan);
+  --font-display: var(--font-unbounded);
+  --font-sans: var(--font-space-grotesk);
+}
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-sans), system-ui, sans-serif;
+}
+
+::selection {
+  background: var(--red);
+  color: var(--paper);
+}
+
+:focus-visible {
+  outline: 2px solid var(--red);
+  outline-offset: 3px;
+}
+
+.scroll-carousel {
+  scrollbar-width: thin;
+  scrollbar-color: var(--red) transparent;
+}
+
+.scroll-carousel::-webkit-scrollbar {
+  height: 6px;
+}
+
+.scroll-carousel::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.scroll-carousel::-webkit-scrollbar-thumb {
+  background-color: var(--red);
+  border-radius: 999px;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .reveal {
+    opacity: 0;
+    transform: translateY(18px);
+    transition:
+      opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+      transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .reveal.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
