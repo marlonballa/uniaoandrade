@@ -1,7 +1,3 @@
-# leftover from the pre-monorepo layout — safe to delete once Windows
-# releases its lock on frontend's old node_modules copy
-/site/
-
 # editor/OS noise
 .DS_Store
 Thumbs.db
