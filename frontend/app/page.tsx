@@ -3,6 +3,7 @@ import Link from "next/link";
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import Beneficios, { BENEFICIOS } from "@/components/Beneficios";
+import { ELEMENTOS } from "@/components/Metodologia";
 import Estatisticas from "@/components/Estatisticas";
 import Cidades from "@/components/Cidades";
 import Historias from "@/components/Historias";
@@ -158,18 +159,9 @@ export default function Home() {
               </p>
             </div>
             <div className="mt-6 grid grid-cols-2 gap-3 sm:grid-cols-4">
-              {[
-                "Socos e chutes",
-                "Defesa pessoal e torções",
-                "Derrubadas",
-                "Técnicas de combate",
-                "Poomsae (formas)",
-                "Condicionamento físico",
-                "Steps e movimentação",
-                "Coordenação e controle",
-              ].map((item) => (
-                <div key={item} className="rounded-xl border border-line bg-paper px-4 py-4 text-center">
-                  <span className="font-sans text-sm text-ink">{item}</span>
+              {ELEMENTOS.map((item) => (
+                <div key={item.label} className="rounded-xl border border-line bg-paper px-4 py-4 text-center">
+                  <span className="font-sans text-sm text-ink">{item.label}</span>
                 </div>
               ))}
             </div>

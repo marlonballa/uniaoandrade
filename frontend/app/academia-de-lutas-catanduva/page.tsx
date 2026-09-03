@@ -3,6 +3,7 @@ import Link from "next/link";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Jornada from "@/components/Jornada";
+import { ELEMENTOS } from "@/components/Metodologia";
 import { EXPERIMENTAL_CLASS_URL } from "@/lib/contact";
 import { getRoute } from "@/lib/routes";
 
@@ -108,9 +109,9 @@ export default function AcademiaDeLutasPage() {
               </h2>
             </div>
             <div className="mt-6 grid grid-cols-2 gap-3 sm:grid-cols-4">
-              {["Socos e chutes", "Defesa pessoal e torções", "Derrubadas", "Técnicas de combate", "Poomsae (formas)", "Condicionamento físico", "Steps e movimentação", "Coordenação e controle"].map((item) => (
-                <div key={item} className="rounded-xl border border-line bg-paper px-4 py-4 text-center">
-                  <span className="font-sans text-sm text-ink">{item}</span>
+              {ELEMENTOS.map((item) => (
+                <div key={item.label} className="rounded-xl border border-line bg-paper px-4 py-4 text-center">
+                  <span className="font-sans text-sm text-ink">{item.label}</span>
                 </div>
               ))}
             </div>

@@ -4,6 +4,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Beneficios from "@/components/Beneficios";
 import Jornada from "@/components/Jornada";
+import { ELEMENTOS } from "@/components/Metodologia";
 import { getRoute } from "@/lib/routes";
 
 const route = getRoute("/artes-marciais-catanduva");
@@ -67,9 +68,9 @@ export default function ArtesMarciaisPage() {
               </h2>
             </div>
             <div className="mt-6 grid grid-cols-2 gap-3 sm:grid-cols-4">
-              {["Socos e chutes", "Defesa pessoal e torções", "Derrubadas", "Técnicas de combate", "Poomsae (formas)", "Condicionamento físico", "Steps e movimentação", "Coordenação e controle"].map((item) => (
-                <div key={item} className="rounded-xl border border-line bg-paper px-4 py-4 text-center">
-                  <span className="font-sans text-sm text-ink">{item}</span>
+              {ELEMENTOS.map((item) => (
+                <div key={item.label} className="rounded-xl border border-line bg-paper px-4 py-4 text-center">
+                  <span className="font-sans text-sm text-ink">{item.label}</span>
                 </div>
               ))}
             </div>

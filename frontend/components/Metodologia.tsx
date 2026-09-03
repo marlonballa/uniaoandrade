@@ -1,4 +1,4 @@
-const ELEMENTOS = [
+export const ELEMENTOS = [
   {
     label: "Socos e chutes",
     path: "M6 4v6a6 6 0 0 0 12 0V4M9 20h6M12 16v4",
@@ -16,12 +16,20 @@ const ELEMENTOS = [
     path: "M12 3v3M12 18v3M4.2 12H3M21 12h-1.2M12 12m-5 0a5 5 0 1 0 10 0a5 5 0 1 0 -10 0",
   },
   {
-    label: "Técnicas de combate",
+    label: "Técnicas de combate real",
     path: "M5 12l5 5L20 7",
+  },
+  {
+    label: "Técnicas de combate ágil para competições",
+    path: "M7 6l5 6-5 6M13 6l5 6-5 6",
   },
   {
     label: "Poomsae (formas)",
     path: "M4 4h16v16H4zM8 8h8v8H8z",
+  },
+  {
+    label: "Quebramento",
+    path: "M3 14h7M14 14h7M10 14l1-4 1 4 1-4M12 4v6",
   },
   {
     label: "Condicionamento físico",
@@ -30,6 +38,10 @@ const ELEMENTOS = [
   {
     label: "Coordenação e controle",
     path: "M12 8m-4 0a4 4 0 1 0 8 0a4 4 0 1 0 -8 0M4 21c0-4 4-6 8-6s8 2 8 6",
+  },
+  {
+    label: "Conhecimento histórico",
+    path: "M12 6c-2-1.3-5-1.8-8-1v13c3-0.8 6-0.3 8 1c2-1.3 5-1.8 8-1V5c-3-0.8-6-0.3-8 1zM12 6v13",
   },
 ];
 
