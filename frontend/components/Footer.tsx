@@ -1,9 +1,11 @@
+import Link from "next/link";
 import Logo from "./Logo";
 import { INSTAGRAM_URL, WHATSAPP_NUMBER, whatsappLink, DEFAULT_WHATSAPP_MESSAGE } from "@/lib/contact";
+import { NAV_LINKS } from "@/lib/routes";
 
 export default function Footer() {
   return (
-    <footer id="contato" className="bg-navy-deep px-6 py-20 sm:px-10 lg:px-18 lg:pb-9 lg:pt-24">
+    <footer className="bg-navy-deep px-6 py-20 sm:px-10 lg:px-18 lg:pb-9 lg:pt-24">
       <div className="mx-auto flex max-w-[1440px] flex-col gap-16 lg:flex-row lg:justify-between">
         <div className="flex max-w-[380px] flex-col gap-5">
           <div className="flex items-center gap-3">
@@ -11,18 +13,18 @@ export default function Footer() {
             <span className="font-brand text-base tracking-wide text-paper">UNIÃO ANDRADE</span>
           </div>
           <p className="font-sans text-sm leading-relaxed text-white/65">
-            Taekwondo Kukkiwon Old School — arte marcial, luta e defesa
-            pessoal em Catanduva há mais de 20 anos.
+            Escola de Taekwondo Kukkiwon Old School. Arte marcial, luta e
+            defesa pessoal em Catanduva há mais de 20 anos.
           </p>
 
           <dl className="flex flex-col gap-1.5 font-sans text-sm text-white/80">
             <div>
               <dt className="sr-only">Endereço</dt>
-              <dd>R. Minas Gerais, 454 — Centro, Catanduva</dd>
+              <dd>R. Minas Gerais, 454, 1º andar, Centro, Catanduva-SP</dd>
             </div>
             <div>
               <dt className="sr-only">Horário</dt>
-              <dd>Segunda a sábado — veja os horários por turma</dd>
+              <dd>Segunda a sábado. Veja os horários por turma</dd>
             </div>
           </dl>
 
@@ -54,10 +56,11 @@ export default function Footer() {
           </div>
 
           <nav aria-label="Links do site" className="mt-2 flex flex-col gap-2 font-sans text-sm text-white/70">
-            <a href="#metodologia" className="w-fit hover:text-paper">Metodologia</a>
-            <a href="#programas" className="w-fit hover:text-paper">Programas de Treino</a>
-            <a href="#faq" className="w-fit hover:text-paper">FAQ</a>
-            <a href="#historias" className="w-fit hover:text-paper">Histórias</a>
+            {NAV_LINKS.map((link) => (
+              <Link key={link.href} href={link.href} className="w-fit hover:text-paper">
+                {link.label}
+              </Link>
+            ))}
           </nav>
         </div>
 
@@ -65,7 +68,8 @@ export default function Footer() {
           <h2 className="font-display text-xl text-paper">Fale com a gente</h2>
           <p className="mt-2 font-sans text-sm text-white/65">
             Tire suas dúvidas ou agende sua aula experimental gratuita direto
-            pelo WhatsApp ou pelo Instagram — resposta rápida, sem formulário.
+            pelo WhatsApp ou pelo Instagram, com resposta rápida e sem
+            formulário.
           </p>
           <div className="mt-6 flex flex-wrap items-center gap-4">
             <a
@@ -90,7 +94,7 @@ export default function Footer() {
 
       <div className="mx-auto mt-16 flex max-w-[1440px] flex-col gap-2 border-t border-white/10 pt-6 font-sans text-xs text-white/45 sm:flex-row sm:justify-between">
         <span>© {new Date().getFullYear()} União Andrade Taekwondo Marcial. Todos os direitos reservados.</span>
-        <span>Catanduva — SP</span>
+        <span>Catanduva, SP</span>
       </div>
     </footer>
   );

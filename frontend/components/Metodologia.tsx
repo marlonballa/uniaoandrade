@@ -52,12 +52,12 @@ export default function Metodologia() {
           Seguimos o currículo técnico oficial do Taekwondo na linha Kukkiwon,
           com a essência marcial de quem aprendeu antes do esporte virar só
           sobre pontos. Aqui o treino de Taekwondo não se resume a chutes
-          esportivos ou movimentos coreografados — é luta, defesa pessoal e
+          esportivos ou movimentos coreografados. É luta, defesa pessoal e
           arte marcial completa.
         </p>
         <p className="font-sans text-base leading-relaxed text-muted">
           Sob a direção do Mestre Evandro Andrade (4º Dan) e da equipe de
-          Kyosanim, o aluno é apresentado a cada elemento da arte marcial —
+          Kyosanim, o aluno é apresentado a cada elemento da arte marcial:
           técnico, físico, mental e filosófico.
         </p>
       </div>

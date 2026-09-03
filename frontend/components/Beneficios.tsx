@@ -71,7 +71,7 @@ const BENEFICIOS = [
   },
   {
     title: "Defesa pessoal real",
-    text: "Técnicas de luta e defesa pessoal aplicáveis de verdade — não coreografia para plateia.",
+    text: "Técnicas de luta e defesa pessoal aplicáveis de verdade, para o dia a dia.",
     Icon: IconDefesaPessoal,
   },
   {
@@ -98,7 +98,7 @@ export default function Beneficios() {
         </h2>
         <p className="max-w-[560px] font-sans text-base leading-relaxed text-muted">
           Mais do que condicionamento físico, o treino constrói disciplina,
-          autoconfiança e caráter — no seu tempo, sem comparação com ninguém.
+          autoconfiança e caráter, no seu tempo, sem comparação com ninguém.
         </p>
       </div>
 

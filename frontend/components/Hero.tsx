@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import Reveal from "./Reveal";
 import { EXPERIMENTAL_CLASS_URL } from "@/lib/contact";
 
@@ -38,12 +39,13 @@ export default function Hero() {
             </span>
 
             <h1 className="font-display text-4xl leading-[1.15] text-paper sm:text-5xl lg:text-[46px]">
-              Desde 2001 formando faixas-pretas em Catanduva e região
+              Escola de Taekwondo e Artes Marciais em Catanduva
             </h1>
 
             <p className="max-w-[480px] font-sans text-base leading-relaxed text-white/85 sm:text-lg">
-              Taekwondo para quem busca a arte marcial de verdade — luta, defesa
-              pessoal, disciplina e respeito, para crianças e adultos.
+              Desde 2001 formando faixas-pretas em Catanduva e região.
+              Taekwondo Kukkiwon Old School: luta, defesa pessoal, disciplina
+              e respeito, para crianças e adultos.
             </p>
 
             <div className="flex flex-wrap items-center gap-4 pt-1">
@@ -55,11 +57,11 @@ export default function Hero() {
               >
                 Agende sua aula experimental gratuita
               </a>
-              <a
-                href="#metodologia"
+              <Link
+                href="/taekwondo-catanduva"
                 className="group flex items-center gap-2 border-b border-white/40 pb-0.5 font-sans text-sm font-medium text-paper transition-colors hover:border-red hover:text-red"
               >
-                Conheça a escola
+                Conheça nosso método
                 <svg
                   width="14"
                   height="14"
@@ -71,7 +73,7 @@ export default function Hero() {
                 >
                   <path d="M5 12h14M13 6l6 6-6 6" />
                 </svg>
-              </a>
+              </Link>
             </div>
           </div>
         </Reveal>
@@ -92,11 +94,11 @@ export default function Hero() {
       {/* bottom info strip: glassmorfismo */}
       <div className="relative z-10 flex flex-wrap items-center justify-center gap-4 border-t border-white/10 bg-navy-deep/45 px-6 py-5 text-center backdrop-blur-xl backdrop-saturate-150 sm:gap-14">
         <span className="font-sans text-xs text-white/85">
-          R. Minas Gerais, 454 — Centro, Catanduva
+          R. Minas Gerais, 454, 1º andar, Centro, Catanduva-SP
         </span>
         <span className="hidden h-3.5 w-px bg-white/30 sm:block" />
         <span className="font-sans text-xs text-white/85">
-          Turmas de segunda a sábado — veja os horários por turma
+          Turmas de segunda a sábado. Veja os horários por turma
         </span>
       </div>
     </section>

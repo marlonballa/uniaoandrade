@@ -2,23 +2,18 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import Logo from "./Logo";
-
-const NAV_LINKS = [
-  { href: "#metodologia", label: "Metodologia" },
-  { href: "#programas", label: "Programas" },
-  { href: "#faq", label: "FAQ" },
-  { href: "#historias", label: "Histórias" },
-  { href: "#contato", label: "Contato" },
-];
+import { NAV_LINKS } from "@/lib/routes";
 
 export default function Header() {
   const [open, setOpen] = useState(false);
+  const pathname = usePathname();
 
   return (
     <header className="fixed inset-x-0 top-0 z-50 border-b border-white/10 bg-navy-deep/45 backdrop-blur-xl backdrop-saturate-150">
       <div className="mx-auto flex max-w-[1440px] items-center justify-between px-6 py-4 sm:px-10 lg:px-18">
-        <Link href="#top" className="flex items-center gap-3" aria-label="União Andrade, início">
+        <Link href="/" className="flex items-center gap-3" aria-label="União Andrade, início">
           <Logo className="h-10 w-10 shrink-0" />
           <span className="flex flex-col leading-tight">
             <span className="font-brand text-[17px] tracking-wide text-paper">
@@ -32,9 +27,14 @@ export default function Header() {
 
         <nav aria-label="Navegação principal" className="hidden items-center gap-10 text-sm font-medium text-white/85 lg:flex">
           {NAV_LINKS.map((link) => (
-            <a key={link.href} href={link.href} className="transition-colors hover:text-red">
+            <Link
+              key={link.href}
+              href={link.href}
+              className={`transition-colors hover:text-red ${pathname === link.href ? "text-red" : ""}`}
+              aria-current={pathname === link.href ? "page" : undefined}
+            >
               {link.label}
-            </a>
+            </Link>
           ))}
         </nav>
 
@@ -65,9 +65,9 @@ export default function Header() {
           <ul className="flex flex-col gap-5 text-base font-medium text-white/90">
             {NAV_LINKS.map((link) => (
               <li key={link.href}>
-                <a href={link.href} onClick={() => setOpen(false)} className="block py-1">
+                <Link href={link.href} onClick={() => setOpen(false)} className="block py-1">
                   {link.label}
-                </a>
+                </Link>
               </li>
             ))}
           </ul>

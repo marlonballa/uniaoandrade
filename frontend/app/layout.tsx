@@ -28,8 +28,8 @@ const siteUrl = "https://www.uniaoandrade.com.br";
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "União Andrade | Taekwondo Marcial em Catanduva",
-    template: "%s | União Andrade Taekwondo",
+    default: "Taekwondo e Artes Marciais em Catanduva | União Andrade",
+    template: "%s | União Andrade",
   },
   description:
     "Taekwondo Kukkiwon Old School em Catanduva-SP. Arte marcial, luta e defesa pessoal para crianças e adultos, com mais de 20 anos de tradição. Agende sua aula experimental.",

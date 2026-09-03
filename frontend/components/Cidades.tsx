@@ -27,7 +27,7 @@ export default function Cidades() {
         </h2>
         <p className="max-w-[560px] font-sans text-base leading-relaxed text-muted">
           Alunos de toda a região treinam Taekwondo, arte marcial e defesa
-          pessoal com a gente — sede em Catanduva, com turma aos sábados
+          pessoal com a gente, sede em Catanduva, com turma aos sábados
           também em Catiguá.
         </p>
       </div>

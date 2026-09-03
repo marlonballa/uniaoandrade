@@ -8,7 +8,7 @@ const PROGRAMAS = [
     fotoPosicao: "50% 22%",
     texto:
       "Coordenação, disciplina e diversão para os primeiros passos no Taekwondo, no ritmo de cada criança.",
-    horario: "Segunda e quarta, 18:30h",
+    horario: "Segunda, terça, quarta e quinta, 18h",
     local: "Catanduva",
   },
   {
@@ -17,8 +17,8 @@ const PROGRAMAS = [
     fotoAlt: "Turma de adolescentes e adultos da União Andrade no dojang",
     fotoPosicao: "50% 12%",
     texto:
-      "Técnica, luta e defesa pessoal de verdade — com uma aula extra na semana para quem quer evoluir mais rápido.",
-    horario: "Segunda e quarta, 18:30h + sexta-feira, 18:30h",
+      "Técnica, luta e defesa pessoal de verdade, com dois horários por semana para quem quer evoluir mais rápido.",
+    horario: "Segunda e quarta, 18h30 ou 19h30",
     local: "Catanduva",
   },
   {
@@ -28,7 +28,7 @@ const PROGRAMAS = [
     fotoPosicao: "50% 20%",
     texto:
       "Aula aberta a todas as idades e graduações, aos sábados, na unidade de Catiguá.",
-    horario: "Sábado, 09:30h às 11h",
+    horario: "Sábado, 9h30 às 11h",
     local: "Catiguá",
   },
 ];
@@ -72,7 +72,7 @@ export default function Programas() {
                     style={{ objectPosition: programa.fotoPosicao }}
                   />
                 ) : (
-                  "FOTO — TURMA MISTA (CATIGUÁ)"
+                  "FOTO: TURMA MISTA (CATIGUÁ)"
                 )}
               </div>
               <div className="flex flex-col gap-3.5 p-8">

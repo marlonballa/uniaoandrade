@@ -2,57 +2,7 @@
 
 import Image from "next/image";
 import { useRef } from "react";
-
-const HISTORIAS = [
-  {
-    nome: "Jorge",
-    foto: "/depoimentos/jorge-retomou-taekwondo.jpg",
-    fotoPosicao: "50% 15%",
-    fato: "Retomou o Taekwondo depois de 20 anos afastado.",
-    quote:
-      "Voltei depois de 20 anos longe do tatame. Achei que não ia lembrar de nada — mas o corpo lembra, e a vontade também. Foi como nunca ter saído.",
-  },
-  {
-    nome: "Letícia",
-    foto: "/depoimentos/leticia-faixa-amarela.jpg",
-    fotoPosicao: "50% 15%",
-    fato: "Conquistou a faixa amarela em julho de 2026.",
-    quote:
-      "Cada faixa é a prova de que consegui evoluir no meu ritmo. A faixa amarela não é só uma cor nova — é a certeza de que estou no caminho certo.",
-  },
-  {
-    nome: "Sr. Manuel",
-    foto: "/depoimentos/sr-manuel.jpg",
-    fotoPosicao: "50% 15%",
-    fato: "Começou o Taekwondo aos 70 anos.",
-    quote:
-      "Comecei aos 70. Muita gente achou estranho, mas eu queria provar pra mim mesmo que não existe idade certa pra recomeçar.",
-  },
-  {
-    nome: "Cláudio e Enzo",
-    foto: "/depoimentos/claudio-enzo.jpg",
-    fotoPosicao: "50% 35%",
-    fato: "Pai e filho treinam juntos na União Andrade.",
-    quote:
-      "Treinar com o Enzo virou o nosso momento da semana. Ele aprende disciplina, eu aprendo a ter paciência — os dois saímos melhores.",
-  },
-  {
-    nome: "Geniel e Mylena",
-    foto: "/depoimentos/geniel-mylena.jpg",
-    fotoPosicao: "50% 15%",
-    fato: "Mylena entrou para se soltar e perder a timidez — hoje está quase na faixa-preta.",
-    quote:
-      "Colocamos a Mylena no Taekwondo pra ela se soltar, conversar mais, perder a timidez. Hoje ela está quase na faixa-preta e é uma pessoa completamente diferente.",
-  },
-  {
-    nome: "Aniely e Wendel",
-    foto: null,
-    fotoPosicao: "",
-    fato: "Pai e filha treinaram juntos no treino especial de Dia dos Pais.",
-    quote:
-      "Foi lindo ver a interação, o carinho e a alegria compartilhados entre pais e filhos treinando juntos — um momento que vai ficar marcado para sempre em nossos corações.",
-  },
-];
+import { HISTORIAS, type Historia } from "@/lib/historias-data";
 
 function QuoteMark() {
   return (
@@ -70,8 +20,22 @@ function ArrowIcon({ direction }: { direction: "left" | "right" }) {
   );
 }
 
-export default function Historias() {
+type HistoriasProps = {
+  items?: Historia[];
+  names?: string[];
+  eyebrow?: string;
+  heading?: string;
+};
+
+export default function Historias({
+  items,
+  names,
+  eyebrow = "HISTÓRIAS DE TRANSFORMAÇÃO",
+  heading = "Quem treina com a gente, conta",
+}: HistoriasProps) {
   const trackRef = useRef<HTMLDivElement>(null);
+  const historias = items ?? (names ? HISTORIAS.filter((h) => names.includes(h.nome)) : HISTORIAS);
+  const showArrows = historias.length > 2;
 
   function scroll(direction: "left" | "right") {
     const el = trackRef.current;
@@ -84,20 +48,22 @@ export default function Historias() {
     <section id="historias" className="py-24 sm:py-28">
       <div className="mx-auto flex max-w-[1440px] flex-col items-center gap-4 px-6 text-center sm:px-10 lg:px-18">
         <span className="font-sans text-[13px] font-semibold tracking-[0.18em] text-red">
-          HISTÓRIAS DE TRANSFORMAÇÃO
+          {eyebrow}
         </span>
         <h2 className="max-w-[680px] font-display text-3xl text-ink sm:text-4xl">
-          Quem treina com a gente, conta
+          {heading}
         </h2>
       </div>
 
       <div className="relative mt-14">
         <div
           ref={trackRef}
-          className="scroll-carousel flex gap-6 overflow-x-auto px-[calc(50%-130px)] pb-4 sm:px-10 lg:px-18"
+          className={`scroll-carousel flex gap-6 overflow-x-auto pb-4 sm:px-10 lg:px-18 ${
+            showArrows ? "px-[calc(50%-130px)]" : "justify-center px-6"
+          }`}
           style={{ scrollSnapType: "x mandatory" }}
         >
-          {HISTORIAS.map((historia) => (
+          {historias.map((historia) => (
             <div
               key={historia.nome}
               className="relative aspect-[9/16] w-[260px] shrink-0 overflow-hidden rounded-2xl border border-line bg-navy-deep sm:w-[300px]"
@@ -147,24 +113,26 @@ export default function Historias() {
           ))}
         </div>
 
-        <div className="mt-6 flex items-center justify-center gap-3">
-          <button
-            type="button"
-            onClick={() => scroll("left")}
-            aria-label="Ver depoimento anterior"
-            className="flex h-10 w-10 items-center justify-center rounded-full border border-line text-ink transition-colors hover:border-red hover:text-red"
-          >
-            <ArrowIcon direction="left" />
-          </button>
-          <button
-            type="button"
-            onClick={() => scroll("right")}
-            aria-label="Ver próximo depoimento"
-            className="flex h-10 w-10 items-center justify-center rounded-full border border-line text-ink transition-colors hover:border-red hover:text-red"
-          >
-            <ArrowIcon direction="right" />
-          </button>
-        </div>
+        {showArrows ? (
+          <div className="mt-6 flex items-center justify-center gap-3">
+            <button
+              type="button"
+              onClick={() => scroll("left")}
+              aria-label="Ver depoimento anterior"
+              className="flex h-10 w-10 items-center justify-center rounded-full border border-line text-ink transition-colors hover:border-red hover:text-red"
+            >
+              <ArrowIcon direction="left" />
+            </button>
+            <button
+              type="button"
+              onClick={() => scroll("right")}
+              aria-label="Ver próximo depoimento"
+              className="flex h-10 w-10 items-center justify-center rounded-full border border-line text-ink transition-colors hover:border-red hover:text-red"
+            >
+              <ArrowIcon direction="right" />
+            </button>
+          </div>
+        ) : null}
       </div>
     </section>
   );

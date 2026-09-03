@@ -33,7 +33,7 @@ export default function Equipe() {
         </h2>
         <p className="max-w-[560px] font-sans text-base leading-relaxed text-muted">
           Mestre Evandro Andrade (4º Dan) e os Kyosanim Joildo, Gustavo,
-          Nayara e Ritinha conduzem o treino — cada aluno acompanhado por
+          Nayara e Ritinha conduzem o treino, cada aluno acompanhado por
           quem vive o Taekwondo como arte marcial todos os dias.
         </p>
       </div>

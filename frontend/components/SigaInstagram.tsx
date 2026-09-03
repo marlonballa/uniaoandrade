@@ -17,7 +17,7 @@ export default function SigaInstagram() {
         <InstagramIcon />
         <h2 className="font-display text-2xl text-ink sm:text-3xl">Acompanhe no Instagram</h2>
         <p className="font-sans text-base leading-relaxed text-muted">
-          Bastidores do treino, graduações e novidades da União Andrade —
+          Bastidores do treino, graduações e novidades da União Andrade,
           tudo em @uniaoandrade.
         </p>
         <a

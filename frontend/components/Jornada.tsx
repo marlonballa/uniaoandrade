@@ -1,6 +1,18 @@
 import { DEFAULT_WHATSAPP_MESSAGE, EXPERIMENTAL_CLASS_URL, whatsappLink } from "@/lib/contact";
 
-export default function Jornada() {
+type JornadaProps = {
+  eyebrow?: string;
+  heading?: string;
+  paragraph?: string;
+  footnote?: string;
+};
+
+export default function Jornada({
+  eyebrow = "COMECE QUANDO ESTIVER PRONTO",
+  heading = "Embarque nessa jornada conosco",
+  paragraph = "Não existe idade certa para começar, só o momento em que você decide. Nossa turma adulta tem gente que começou aos 30, 40 e depois dos 50; nossa turma kids acompanha cada criança no seu próprio ritmo.",
+  footnote = "Sem custo e sem compromisso, é só para você sentir como é treinar com a gente.",
+}: JornadaProps) {
   return (
     <section className="relative overflow-hidden bg-navy px-6 py-24 text-center sm:px-10 lg:px-18 lg:py-28">
       <div
@@ -13,16 +25,13 @@ export default function Jornada() {
 
       <div className="relative mx-auto flex max-w-[680px] flex-col items-center gap-5">
         <span className="font-sans text-[13px] font-semibold tracking-[0.18em] text-red">
-          COMECE QUANDO ESTIVER PRONTO
+          {eyebrow}
         </span>
         <h2 className="font-display text-3xl text-paper sm:text-4xl">
-          Embarque nessa jornada conosco
+          {heading}
         </h2>
         <p className="max-w-[600px] font-sans text-base leading-relaxed text-white/80">
-          Não existe idade certa para começar — só o momento em que você
-          decide. Nossa turma adulta tem gente que começou aos 30, 40 e
-          depois dos 50; nossas turmas kids acompanham cada criança no seu
-          próprio ritmo.
+          {paragraph}
         </p>
 
         <div className="mt-2 flex flex-wrap items-center justify-center gap-5">
@@ -43,9 +52,7 @@ export default function Jornada() {
             Fale conosco no WhatsApp
           </a>
         </div>
-        <p className="font-sans text-xs text-white/60">
-          Sem custo e sem compromisso — é só para você sentir como é treinar com a gente.
-        </p>
+        <p className="font-sans text-xs text-white/60">{footnote}</p>
       </div>
     </section>
   );
