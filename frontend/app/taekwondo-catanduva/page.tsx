@@ -22,10 +22,24 @@ export const metadata: Metadata = {
 
 const PERGUNTAS_TAEKWONDO = FAQ_ITEMS.filter((item) =>
   [
+    "Taekwondo é uma luta forte? Serve para defesa pessoal?",
     "O Taekwondo tem soco, ou é só chute?",
     "Dá para aprender Taekwondo sozinho, sem ir a uma academia?",
     "O Taekwondo tem risco de lesão?",
     "Qual a diferença da União Andrade para outras academias?",
+    "Quanto tempo leva para virar faixa-preta?",
+    "Quais são as faixas do Taekwondo? Qual é a mais alta?",
+    "Qual a diferença entre Taekwondo e Jiu-Jitsu ou Muay Thai?",
+    "Qual a diferença entre Taekwondo e Karatê?",
+    "O que significa Taekwondo?",
+    "Qual é o nome da roupa usada no Taekwondo?",
+    "Como se chama quem pratica Taekwondo?",
+    "Quais são os princípios do Taekwondo?",
+    "Taekwondo muda o corpo? Como fica o corpo de quem treina?",
+    "Quais são os golpes principais do Taekwondo?",
+    "Quais os benefícios do Taekwondo?",
+    "Qual é a melhor arte marcial para iniciantes?",
+    "Posso colocar meu filho de 3 anos no Taekwondo?",
   ].includes(item.q),
 );
 
