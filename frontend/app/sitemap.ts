@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next";
 import { ROUTES } from "@/lib/routes";
+import { getAllPosts } from "@/lib/blog";
 
 const siteUrl = "https://www.uniaoandrade.com.br";
 
@@ -13,10 +14,19 @@ const PRIORITY: Record<string, number> = {
 };
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  return ROUTES.map((route) => ({
+  const routeEntries: MetadataRoute.Sitemap = ROUTES.map((route) => ({
     url: `${siteUrl}${route.href === "/" ? "" : route.href}`,
     lastModified: new Date(),
     changeFrequency: "monthly",
     priority: PRIORITY[route.href] ?? 0.5,
   }));
+
+  const postEntries: MetadataRoute.Sitemap = getAllPosts().map((post) => ({
+    url: `${siteUrl}/blog/${post.slug}`,
+    lastModified: new Date(post.date),
+    changeFrequency: "yearly",
+    priority: 0.4,
+  }));
+
+  return [...routeEntries, ...postEntries];
 }

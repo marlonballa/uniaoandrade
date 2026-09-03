@@ -76,6 +76,13 @@ export const ROUTES: SiteRoute[] = [
     description:
       "Conheça o Mestre Evandro Andrade (4º Dan) e a equipe de Kyosanim, Joildo, Gustavo, Nayara e Ritinha, que ensina Taekwondo na União Andrade, em Catanduva.",
   },
+  {
+    href: "/blog",
+    label: "Blog",
+    title: "Blog",
+    description:
+      "Artigos sobre Taekwondo infantil, Taekwondo para adultos e a técnica do Taekwondo Kukkiwon Old School, escritos pela União Andrade em Catanduva.",
+  },
 ];
 
 export function getRoute(href: string): SiteRoute {
@@ -97,7 +104,7 @@ const P0_HREFS = [
 // Nav principal (header): só as páginas P0, para não sobrecarregar o menu.
 export const NAV_LINKS = ROUTES.filter((r) => P0_HREFS.includes(r.href));
 
-// Nav do rodapé: as páginas P0 + Artes Marciais (única página P1 com link no rodapé).
+// Nav do rodapé: as páginas P0 + Artes Marciais (única página P1 com link no rodapé) + Blog.
 export const FOOTER_LINKS = ROUTES.filter(
-  (r) => P0_HREFS.includes(r.href) || r.href === "/artes-marciais-catanduva",
+  (r) => P0_HREFS.includes(r.href) || r.href === "/artes-marciais-catanduva" || r.href === "/blog",
 );
