@@ -143,6 +143,44 @@ export default function Home() {
           </div>
         </section>
 
+        <section className="px-6 py-24 sm:px-10 lg:px-18">
+          <div className="mx-auto flex max-w-[1200px] flex-col gap-4">
+            <div className="flex flex-col items-center gap-3 text-center">
+              <span className="font-sans text-[13px] font-semibold tracking-[0.18em] text-red">
+                O QUE VOCÊ VAI APRENDER
+              </span>
+              <h2 className="max-w-[600px] font-display text-3xl text-ink sm:text-4xl">
+                Tudo que ensinamos no Taekwondo
+              </h2>
+              <p className="max-w-[560px] font-sans text-base leading-relaxed text-muted">
+                Currículo técnico completo da linha Kukkiwon Old School, do
+                primeiro treino em diante.
+              </p>
+            </div>
+            <div className="mt-6 grid grid-cols-2 gap-3 sm:grid-cols-4">
+              {[
+                "Socos e chutes",
+                "Defesa pessoal e torções",
+                "Derrubadas",
+                "Técnicas de combate",
+                "Poomsae (formas)",
+                "Condicionamento físico",
+                "Steps e movimentação",
+                "Coordenação e controle",
+              ].map((item) => (
+                <div key={item} className="rounded-xl border border-line bg-paper px-4 py-4 text-center">
+                  <span className="font-sans text-sm text-ink">{item}</span>
+                </div>
+              ))}
+            </div>
+            <div className="mt-2 text-center">
+              <Link href="/taekwondo-catanduva" className="font-sans text-sm font-semibold text-red hover:text-red-deep">
+                Ver metodologia completa →
+              </Link>
+            </div>
+          </div>
+        </section>
+
         <Beneficios
           items={BENEFICIOS_HOME}
           moreLink={{ href: "/artes-marciais-catanduva", label: "Ver todos os benefícios →" }}
