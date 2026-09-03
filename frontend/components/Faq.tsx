@@ -29,7 +29,7 @@ const FAQ_ITEMS = [
   },
   {
     q: "Como funciona a aula experimental?",
-    a: "É simples: você agenda pelo WhatsApp ou Instagram, vem conhecer o dojang e treina uma aula com a turma. Sem compromisso — só para sentir como é treinar Taekwondo de verdade.",
+    a: "É simples e é gratuita: você agenda pelo WhatsApp, Instagram ou pelo botão do site, vem conhecer o dojang e treina uma aula com a turma, sem pagar nada e sem compromisso — só para sentir como é treinar Taekwondo de verdade.",
   },
   {
     q: "O Taekwondo tem soco, ou é só chute?",

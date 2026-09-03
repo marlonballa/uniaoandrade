@@ -38,7 +38,7 @@ Site institucional da União Andrade, uma escola de Taekwondo tradicional (linha
 
 - Site estático institucional nesta fase — sem CMS, sem sistema de matrícula/pagamento online.
 - Captação de lead via link direto do WhatsApp (wa.me, com número real) e Instagram — é o mecanismo principal dos CTAs "Agende sua aula experimental" e "Fale conosco no WhatsApp".
-- Formulário de contato real na seção de contato, com back-end em Node.js (API route do Next.js) enviando e-mail para a academia — não depende de PHP nem de hospedagem compartilhada tradicional.
+- Sem formulário de contato no site — o contato acontece direto por WhatsApp (wa.me) e Instagram; o formulário existente foi removido por decisão do cliente.
 - Logo real (`frontend/public/logo.jpeg`) e 4 fotos reais do Mestre e da equipe de Kyosanim no dojang (`frontend/public/equipe-*.jpg`, `mestre-evandro-*.jpg`) já recebidas e em uso no hero, na seção "Quem ensina" e no banner "Embarque nessa jornada". Ainda faltam: fotos/vídeo das turmas Kids/Adolescentes/Adultos em aula e depoimentos reais de alunos — esses continuam como placeholders.
 
 ## Brand Commitments
@@ -63,4 +63,4 @@ Site institucional da União Andrade, uma escola de Taekwondo tradicional (linha
 1. Arte marcial tradicional, não esporte de competição — toda superfície reforça disciplina e tradição, nunca vitória/competição.
 2. "No seu tempo, sem pressa" — reduzir o medo de começar tarde (adultos) e o medo de errar a escolha (pais), nunca usar urgência artificial.
 3. Só fatos reais — nunca inventar depoimentos, números ou provas sociais; placeholders ficam marcados até o cliente fornecer o real.
-4. Back-end simples e nativo do Next.js — o formulário de contato e qualquer lógica de servidor futura vivem em API routes Node.js do próprio Next.js, sem depender de PHP; a hospedagem escolhida precisa suportar Node.js (Vercel ou um plano com Node/VPS).
+4. Back-end simples e nativo do Next.js — qualquer lógica de servidor futura vive em API routes Node.js do próprio Next.js, sem depender de PHP; a hospedagem escolhida precisa suportar Node.js (Vercel ou um plano com Node/VPS).

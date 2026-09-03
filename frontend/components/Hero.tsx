@@ -53,7 +53,7 @@ export default function Hero() {
                 rel="noopener noreferrer"
                 className="rounded-2xl bg-paper px-8 py-4 font-sans text-sm font-semibold text-navy-deep shadow-[0_8px_24px_oklch(0.05_0.02_264/0.35)] transition-transform hover:-translate-y-0.5 hover:shadow-[0_12px_28px_oklch(0.05_0.02_264/0.4)]"
               >
-                Agende sua aula experimental
+                Agende sua aula experimental gratuita
               </a>
               <a
                 href="#metodologia"

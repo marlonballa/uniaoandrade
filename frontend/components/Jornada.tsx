@@ -32,7 +32,7 @@ export default function Jornada() {
             rel="noopener noreferrer"
             className="rounded-2xl bg-paper px-8 py-4 font-sans text-sm font-semibold text-navy-deep shadow-[0_8px_24px_oklch(0.05_0.02_264/0.35)] transition-transform hover:-translate-y-0.5"
           >
-            Agende sua aula experimental
+            Agende sua aula experimental gratuita
           </a>
           <a
             href={whatsappLink(DEFAULT_WHATSAPP_MESSAGE)}
@@ -43,6 +43,9 @@ export default function Jornada() {
             Fale conosco no WhatsApp
           </a>
         </div>
+        <p className="font-sans text-xs text-white/60">
+          Sem custo e sem compromisso — é só para você sentir como é treinar com a gente.
+        </p>
       </div>
     </section>
   );

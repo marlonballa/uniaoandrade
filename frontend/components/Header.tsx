@@ -7,8 +7,8 @@ import Logo from "./Logo";
 const NAV_LINKS = [
   { href: "#metodologia", label: "Metodologia" },
   { href: "#programas", label: "Programas" },
-  { href: "#historias", label: "Histórias" },
   { href: "#faq", label: "FAQ" },
+  { href: "#historias", label: "Histórias" },
   { href: "#contato", label: "Contato" },
 ];
 

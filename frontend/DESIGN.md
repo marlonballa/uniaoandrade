@@ -143,8 +143,6 @@ com borda de 1px em `line`, nunca `border-left` colorido.
 - **FAQ**: acordeão controlado por estado React, uma pergunta aberta por
   vez, transição `grid-template-rows` (0fr→1fr) — a única interação
   autoral do site, deliberadamente não repetida em outras seções.
-- **ContactForm**: client component com estados idle/loading/success/error,
-  honeypot anti-spam, POST para `/api/contact` (Node.js/nodemailer).
 
 ## Do's and Don'ts
 

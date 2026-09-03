@@ -1,8 +1,7 @@
 # União Andrade | Taekwondo Marcial — site
 
 Next.js (App Router) + Tailwind CSS v4 + TypeScript. Backend em Node.js
-(Route Handlers do próprio Next.js) para o formulário de contato e a busca
-de posts do Instagram.
+(Route Handlers do próprio Next.js) para a busca de posts do Instagram.
 
 ## Rodando localmente
 
@@ -12,22 +11,6 @@ npm run dev
 ```
 
 Abra http://localhost:3000.
-
-## Formulário de contato (e-mail via SMTP)
-
-Copie `.env.example` para `.env.local` e preencha:
-
-```
-SMTP_HOST=
-SMTP_PORT=465
-SMTP_USER=
-SMTP_PASS=
-CONTACT_TO_EMAIL=
-```
-
-Sem essas variáveis, o formulário responde com uma mensagem pedindo para
-falar pelo WhatsApp em vez de travar — não é um bug, é o comportamento
-esperado até o e-mail ser configurado.
 
 ## WhatsApp
 
@@ -146,6 +129,5 @@ rode Node.js:
   do Mestre/equipe de Kyosanim já estão em uso).
 - Depoimentos reais para "Histórias de Transformação" (hoje são
   placeholders com texto entre colchetes).
-- Variáveis de SMTP para o formulário de contato funcionar de verdade.
 - Variáveis do Instagram (`INSTAGRAM_USER_ID`, `INSTAGRAM_ACCESS_TOKEN`)
   para a seção "No Instagram" aparecer no site.

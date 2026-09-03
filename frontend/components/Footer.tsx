@@ -1,5 +1,4 @@
 import Logo from "./Logo";
-import ContactForm from "./ContactForm";
 import { INSTAGRAM_URL, WHATSAPP_NUMBER, whatsappLink, DEFAULT_WHATSAPP_MESSAGE } from "@/lib/contact";
 
 export default function Footer() {
@@ -57,19 +56,34 @@ export default function Footer() {
           <nav aria-label="Links do site" className="mt-2 flex flex-col gap-2 font-sans text-sm text-white/70">
             <a href="#metodologia" className="w-fit hover:text-paper">Metodologia</a>
             <a href="#programas" className="w-fit hover:text-paper">Programas de Treino</a>
-            <a href="#historias" className="w-fit hover:text-paper">Histórias</a>
             <a href="#faq" className="w-fit hover:text-paper">FAQ</a>
+            <a href="#historias" className="w-fit hover:text-paper">Histórias</a>
           </nav>
         </div>
 
         <div className="flex-1 lg:max-w-[480px]">
           <h2 className="font-display text-xl text-paper">Fale com a gente</h2>
           <p className="mt-2 font-sans text-sm text-white/65">
-            Prefere e-mail? Preencha o formulário. Prefere resposta na hora?
-            Chame no WhatsApp.
+            Tire suas dúvidas ou agende sua aula experimental gratuita direto
+            pelo WhatsApp ou pelo Instagram — resposta rápida, sem formulário.
           </p>
-          <div className="mt-6">
-            <ContactForm />
+          <div className="mt-6 flex flex-wrap items-center gap-4">
+            <a
+              href={whatsappLink(DEFAULT_WHATSAPP_MESSAGE)}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="rounded-2xl bg-red px-7 py-3.5 font-sans text-sm font-semibold text-paper transition-opacity hover:opacity-90"
+            >
+              Chamar no WhatsApp
+            </a>
+            <a
+              href={INSTAGRAM_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="border-b border-white/40 pb-0.5 font-sans text-sm font-medium text-paper transition-colors hover:border-red hover:text-red"
+            >
+              Ver no Instagram
+            </a>
           </div>
         </div>
       </div>

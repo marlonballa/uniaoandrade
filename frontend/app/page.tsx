@@ -26,10 +26,10 @@ export default function Home() {
         <Jornada />
         <Programas />
         <Cidades />
-        <Historias />
         <SigaInstagram />
         <Galeria />
         <Faq />
+        <Historias />
       </main>
       <Footer />
     </>
