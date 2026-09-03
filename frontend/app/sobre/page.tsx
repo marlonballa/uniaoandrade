@@ -73,7 +73,7 @@ export default function SobrePage() {
           </div>
         </section>
 
-        <Equipe />
+        <Equipe moreLink={{ href: "/equipe", label: "Conheça a equipe completa →" }} />
 
         <section className="bg-surface px-6 py-18 sm:px-10 lg:px-18">
           <div className="mx-auto flex max-w-[800px] flex-col gap-4">

@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
-import Beneficios from "@/components/Beneficios";
+import Beneficios, { BENEFICIOS } from "@/components/Beneficios";
 import Estatisticas from "@/components/Estatisticas";
 import Cidades from "@/components/Cidades";
 import Historias from "@/components/Historias";
@@ -23,6 +23,10 @@ export const metadata: Metadata = {
 };
 
 const AULA_EXPERIMENTAL = FAQ_ITEMS.find((item) => item.q === "Como funciona a aula experimental?")!;
+
+const BENEFICIOS_HOME = BENEFICIOS.filter((item) =>
+  ["Disciplina e autocontrole", "Defesa pessoal real", "Comunidade"].includes(item.title),
+);
 
 const FAQ_HOME = FAQ_ITEMS.filter((item) =>
   [
@@ -52,7 +56,7 @@ export default function Home() {
               todo mundo.
             </p>
           </div>
-          <div className="mx-auto mt-14 grid max-w-[1440px] grid-cols-1 gap-6 sm:grid-cols-3">
+          <div className="mx-auto mt-14 grid max-w-[1440px] grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
             <Link
               href="/taekwondo-infantil-catanduva"
               className="flex flex-col gap-3.5 rounded-2xl border border-line bg-paper p-8 transition-shadow hover:shadow-[0_12px_32px_oklch(0.2_0.03_264/0.08)]"
@@ -81,6 +85,21 @@ export default function Home() {
               </p>
               <span className="mt-1 font-sans text-sm font-semibold text-red">
                 Ver turma adulta →
+              </span>
+            </Link>
+            <Link
+              href="/defesa-pessoal-catanduva"
+              className="flex flex-col gap-3.5 rounded-2xl border border-line bg-paper p-8 transition-shadow hover:shadow-[0_12px_32px_oklch(0.2_0.03_264/0.08)]"
+            >
+              <span className="font-sans text-[11px] font-semibold tracking-[0.18em] text-red">
+                TÉCNICAS APLICÁVEIS
+              </span>
+              <h3 className="font-display text-xl text-ink">Defesa Pessoal</h3>
+              <p className="font-sans text-sm leading-relaxed text-muted">
+                Técnicas reais, para o dia a dia, sem coreografia.
+              </p>
+              <span className="mt-1 font-sans text-sm font-semibold text-red">
+                Ver defesa pessoal →
               </span>
             </Link>
             <Link
@@ -124,7 +143,10 @@ export default function Home() {
           </div>
         </section>
 
-        <Beneficios />
+        <Beneficios
+          items={BENEFICIOS_HOME}
+          moreLink={{ href: "/artes-marciais-catanduva", label: "Ver todos os benefícios →" }}
+        />
 
         <section className="px-6 py-24 sm:px-10 lg:px-18">
           <div className="mx-auto flex max-w-[1440px] flex-col items-center gap-4 text-center">

@@ -53,7 +53,13 @@ function IconComunidade() {
   );
 }
 
-const BENEFICIOS = [
+export type BeneficioItem = {
+  title: string;
+  text: string;
+  Icon: () => React.ReactElement;
+};
+
+export const BENEFICIOS: BeneficioItem[] = [
   {
     title: "Disciplina e autocontrole",
     text: "Rotina e limites que se refletem dentro e fora do tatame.",
@@ -86,24 +92,37 @@ const BENEFICIOS = [
   },
 ];
 
-export default function Beneficios() {
+type BeneficiosProps = {
+  items?: BeneficioItem[];
+  eyebrow?: string;
+  heading?: string;
+  description?: string;
+  moreLink?: { href: string; label: string };
+};
+
+export default function Beneficios({
+  items = BENEFICIOS,
+  eyebrow = "BENEFÍCIOS",
+  heading = "O que o Taekwondo desenvolve de verdade",
+  description = "Mais do que condicionamento físico, o treino constrói disciplina, autoconfiança e caráter, no seu tempo, sem comparação com ninguém.",
+  moreLink,
+}: BeneficiosProps) {
   return (
     <section className="bg-surface px-6 py-24 sm:px-10 lg:px-18 lg:py-28">
       <div className="mx-auto flex max-w-[1440px] flex-col items-center gap-4 text-center">
         <span className="font-sans text-[13px] font-semibold tracking-[0.18em] text-red">
-          BENEFÍCIOS
+          {eyebrow}
         </span>
         <h2 className="max-w-[680px] font-display text-3xl text-ink sm:text-4xl">
-          O que o Taekwondo desenvolve de verdade
+          {heading}
         </h2>
         <p className="max-w-[560px] font-sans text-base leading-relaxed text-muted">
-          Mais do que condicionamento físico, o treino constrói disciplina,
-          autoconfiança e caráter, no seu tempo, sem comparação com ninguém.
+          {description}
         </p>
       </div>
 
       <div className="mx-auto mt-16 grid max-w-[1440px] grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-        {BENEFICIOS.map((item) => (
+        {items.map((item) => (
           <div
             key={item.title}
             className="flex flex-col gap-3.5 rounded-2xl border border-line bg-paper p-8 transition-shadow hover:shadow-[0_12px_32px_oklch(0.2_0.03_264/0.08)]"
@@ -114,6 +133,14 @@ export default function Beneficios() {
           </div>
         ))}
       </div>
+
+      {moreLink ? (
+        <div className="mx-auto mt-4 max-w-[1440px] text-center">
+          <a href={moreLink.href} className="font-sans text-sm font-semibold text-red hover:text-red-deep">
+            {moreLink.label}
+          </a>
+        </div>
+      ) : null}
     </section>
   );
 }

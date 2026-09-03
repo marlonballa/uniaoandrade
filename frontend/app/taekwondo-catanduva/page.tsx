@@ -172,7 +172,7 @@ export default function TaekwondoCatanduvaPage() {
           </div>
         </section>
 
-        <Equipe />
+        <Equipe moreLink={{ href: "/equipe", label: "Conheça a equipe completa →" }} />
         <Programas />
         <Cidades />
 

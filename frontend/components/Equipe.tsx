@@ -21,7 +21,11 @@ const FOTOS = [
   },
 ];
 
-export default function Equipe() {
+type EquipeProps = {
+  moreLink?: { href: string; label: string };
+};
+
+export default function Equipe({ moreLink }: EquipeProps) {
   return (
     <section className="bg-surface px-6 py-24 sm:px-10 lg:px-18 lg:py-28">
       <div className="mx-auto flex max-w-[1440px] flex-col items-center gap-4 text-center">
@@ -57,6 +61,14 @@ export default function Equipe() {
           </div>
         ))}
       </div>
+
+      {moreLink ? (
+        <div className="mx-auto mt-8 max-w-[1200px] text-center">
+          <a href={moreLink.href} className="font-sans text-sm font-semibold text-red hover:text-red-deep">
+            {moreLink.label}
+          </a>
+        </div>
+      ) : null}
     </section>
   );
 }

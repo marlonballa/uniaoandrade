@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Logo from "./Logo";
 import { INSTAGRAM_URL, WHATSAPP_NUMBER, whatsappLink, DEFAULT_WHATSAPP_MESSAGE } from "@/lib/contact";
-import { NAV_LINKS } from "@/lib/routes";
+import { FOOTER_LINKS } from "@/lib/routes";
 
 export default function Footer() {
   return (
@@ -56,7 +56,7 @@ export default function Footer() {
           </div>
 
           <nav aria-label="Links do site" className="mt-2 flex flex-col gap-2 font-sans text-sm text-white/70">
-            {NAV_LINKS.map((link) => (
+            {FOOTER_LINKS.map((link) => (
               <Link key={link.href} href={link.href} className="w-fit hover:text-paper">
                 {link.label}
               </Link>
