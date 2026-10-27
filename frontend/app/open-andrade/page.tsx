@@ -52,14 +52,14 @@ export default async function OpenAndradePage({
               <p className="mt-6 max-w-[58ch] font-sans text-base leading-relaxed text-white/85 sm:text-lg">
                 Nosso torneio interno será um encontro de aprendizado, convivência e evolução para toda a equipe. No tatame, teremos Kyorugui (lutas) e Poomsae (formas).
               </p>
-              <div className="mt-8 flex flex-wrap items-center gap-4">
-                <div className="flex min-h-[76px] items-center gap-3 bg-red px-4 py-3 text-paper shadow-[0_8px_24px_oklch(0.05_0.02_264/0.25)]">
+              <div className="mt-8 flex flex-nowrap items-center gap-4">
+                <div className="flex min-h-[76px] shrink-0 items-center gap-3 bg-red px-4 py-3 text-paper shadow-[0_8px_24px_oklch(0.05_0.02_264/0.25)]">
                   <span className="font-display text-4xl leading-none">15</span>
                   <span className="font-sans text-xs font-bold leading-tight tracking-[0.12em]">
                     NOV<br />2026
                   </span>
                 </div>
-                <div className="flex flex-col gap-2 border-l border-white/25 pl-4">
+                <div className="flex min-w-0 flex-1 flex-col gap-2 border-l border-white/25 pl-4">
                   <p className="font-sans text-sm leading-snug text-white/80">
                     Chegada dos alunos <strong className="font-semibold text-paper">até às 08h</strong>
                   </p>
@@ -81,7 +81,7 @@ export default async function OpenAndradePage({
 
             <div className="relative aspect-[16/10] overflow-hidden border border-white/15 bg-navy lg:aspect-[16/11]">
               <Image
-                src="/alunos/grupo-treino-medalhas.jpg"
+                src="/alunos/open-andrade-2026.png"
                 alt="Alunos e instrutores da União Andrade reunidos no tatame com medalhas"
                 fill
                 fetchPriority="high"
@@ -103,7 +103,7 @@ export default async function OpenAndradePage({
           <div className="mx-auto grid max-w-[1200px] gap-10 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1fr)] lg:gap-16">
             <div className="flex flex-col gap-5 lg:pt-2">
               <h2 className="font-display text-xl leading-snug text-ink sm:text-2xl">
-                Inscreva seu aluno
+                Realize a inscrição
               </h2>
               <p className="max-w-[42ch] font-sans text-base leading-relaxed text-muted">
                 Preencha os dados do responsável e do aluno, depois escolha as modalidades de participação. Use um formulário para cada aluno.
