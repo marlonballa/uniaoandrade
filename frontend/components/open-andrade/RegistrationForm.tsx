@@ -180,7 +180,7 @@ export default function RegistrationForm({ confirmationPreview = false }: Regist
             rel="noopener noreferrer"
             aria-disabled={confirmationPreview || undefined}
             onClick={confirmationPreview ? (event) => event.preventDefault() : undefined}
-            className="inline-flex min-h-12 w-full items-center justify-center bg-[#25D366] px-5 py-3.5 font-sans text-sm font-semibold text-[#062C18] transition-colors hover:bg-[#20bd5a] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#075E54] active:translate-y-px sm:w-fit"
+            className="inline-flex min-h-12 w-full items-center justify-center bg-[#198754] px-5 py-3.5 font-sans text-sm font-semibold text-white transition-colors hover:bg-[#157347] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#075E54] active:translate-y-px sm:w-fit"
           >
             Enviar comprovante ao Sabonim Evandro
           </a>
