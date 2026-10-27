@@ -68,9 +68,15 @@ export default async function OpenAndradePage({
                   </p>
                 </div>
               </div>
-              <p className="mt-5 font-sans text-sm leading-relaxed text-white/80">
-                Inscrições até <strong className="font-semibold text-paper">8 de novembro de 2026, às 23h59.</strong>
-              </p>
+              <div className="mt-5 inline-flex max-w-full flex-wrap items-center gap-x-3 gap-y-2 rounded-xl border border-white/15 bg-white/5 px-3.5 py-2.5">
+                <span className="inline-flex items-center gap-2 font-sans text-sm text-white/75">
+                  <span aria-hidden="true" className="h-2 w-2 shrink-0 rounded-full bg-red" />
+                  Inscrições até
+                </span>
+                <strong className="font-sans text-sm font-semibold text-paper">
+                  8 de novembro de 2026, às 23h59.
+                </strong>
+              </div>
             </div>
 
             <div className="relative aspect-[16/10] overflow-hidden border border-white/15 bg-navy lg:aspect-[16/11]">
