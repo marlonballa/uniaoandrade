@@ -18,6 +18,10 @@ type RegistrationResponse = {
   payment: Payment;
 };
 
+type RegistrationFormProps = {
+  confirmationPreview?: boolean;
+};
+
 const PIX_KEY = "+5517996195606";
 const PIX_KEY_DISPLAY = "17 99619-5606";
 const WHATSAPP_NUMBER = PIX_KEY.slice(1);
@@ -29,13 +33,22 @@ function formatCurrency(amountCents: number) {
   return (amountCents / 100).toLocaleString("pt-BR", { style: "currency", currency: "BRL" });
 }
 
-export default function RegistrationForm() {
+export default function RegistrationForm({ confirmationPreview = false }: RegistrationFormProps) {
   const [kyorugui, setKyorugui] = useState(false);
   const [poomsae, setPoomsae] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState("");
-  const [payment, setPayment] = useState<Payment | null>(null);
-  const [registeredStudentName, setRegisteredStudentName] = useState("");
+  const [payment, setPayment] = useState<Payment | null>(
+    confirmationPreview
+      ? {
+          amountCents: OPEN_ANDRADE_TWO_MODALITIES_FEE_CENTS,
+          copyPaste: "PREVIA LOCAL DO OPEN ANDRADE - QR ILUSTRATIVO SEM PAGAMENTO",
+        }
+      : null,
+  );
+  const [registeredStudentName, setRegisteredStudentName] = useState(
+    confirmationPreview ? "Aluno de demonstração" : "",
+  );
   const [copied, setCopied] = useState(false);
   const hasSelectedModality = kyorugui || poomsae;
   const selectedFeeCents = getOpenAndradeFeeCents(kyorugui, poomsae);
@@ -112,6 +125,15 @@ export default function RegistrationForm() {
           </p>
         </div>
 
+        {confirmationPreview ? (
+          <p
+            role="note"
+            className="mb-5 rounded-xl border border-red/30 bg-red/5 p-3 font-sans text-sm leading-relaxed text-ink"
+          >
+            Prévia local: esta inscrição não foi salva. O QR Code e o código são ilustrativos e não aceitam pagamento.
+          </p>
+        ) : null}
+
         <div className="flex items-center justify-between gap-4">
           <span className="font-sans text-sm text-muted">Taxa por aluno</span>
           <span className="font-display text-2xl text-ink">{formatCurrency(payment.amountCents)}</span>
@@ -149,9 +171,15 @@ export default function RegistrationForm() {
             Recebedor: Evandro José de Andrade · Chave Pix telefone: {PIX_KEY_DISPLAY}.
           </p>
           <a
-            href={`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(`Olá, Sabonim Evandro! Segue o comprovante da inscrição de ${registeredStudentName} no Open Andrade.`)}`}
+            href={
+              confirmationPreview
+                ? undefined
+                : `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(`Olá, Sabonim Evandro! Segue o comprovante da inscrição de ${registeredStudentName} no Open Andrade.`)}`
+            }
             target="_blank"
             rel="noopener noreferrer"
+            aria-disabled={confirmationPreview || undefined}
+            onClick={confirmationPreview ? (event) => event.preventDefault() : undefined}
             className="inline-flex min-h-12 w-full items-center justify-center bg-red px-5 py-3.5 font-sans text-sm font-semibold text-white transition-colors hover:bg-red-deep active:translate-y-px sm:w-fit"
           >
             Enviar comprovante ao Sabonim Evandro

@@ -13,7 +13,14 @@ export const metadata: Metadata = {
   alternates: { canonical: route.href },
 };
 
-export default function OpenAndradePage() {
+export default async function OpenAndradePage({
+  searchParams,
+}: {
+  searchParams: Promise<{ preview?: string | string[] }>;
+}) {
+  const confirmationPreview =
+    process.env.NODE_ENV === "development" && (await searchParams).preview === "confirmation";
+
   return (
     <>
       <Header />
@@ -107,7 +114,7 @@ export default function OpenAndradePage() {
               </div>
             </div>
 
-            <RegistrationForm />
+            <RegistrationForm confirmationPreview={confirmationPreview} />
           </div>
         </section>
       </main>
