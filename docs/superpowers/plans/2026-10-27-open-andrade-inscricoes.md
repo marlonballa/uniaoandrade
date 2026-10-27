@@ -18,8 +18,8 @@
 - Reveal Pix only after a successful Neon insert; payment starts as pending and is marked paid manually.
 - Use only the existing Neon `neondb` production branch; do not create a new database or modify unrelated tables.
 - Keep credentials in environment variables and out of Git.
-- Event details supplied by the user: 15/11/2026; students arrive by 08h and the tournament starts at 09h; registration deadline 11/11/2026 at 23:59. Do not invent a location.
-- Stop accepting new registrations at the server-side deadline of 11/11/2026 23:59 BRT.
+- Event details supplied by the user: 15/11/2026; students arrive by 08h and the tournament starts at 09h; registration deadline 08/11/2026 at 23:59. Do not invent a location.
+- Stop accepting new registrations at the server-side deadline of 08/11/2026 23:59 BRT.
 - Preserve the current União Andrade colors, fonts, tone, and responsive behavior.
 
 ## Review Focus

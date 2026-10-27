@@ -15,7 +15,7 @@ function normalizeName(value: unknown) {
 export async function POST(request: Request) {
   if (isOpenAndradeRegistrationClosed()) {
     return Response.json(
-      { error: "As inscrições para o Open Andrade foram encerradas em 11 de novembro, às 23h59." },
+      { error: "As inscrições para o Open Andrade foram encerradas em 8 de novembro, às 23h59." },
       { status: 410, headers: { "Cache-Control": "no-store" } },
     );
   }

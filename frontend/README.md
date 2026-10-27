@@ -22,7 +22,7 @@ e R$ 45,00 para as duas. O Pix e o QR Code só aparecem depois que a inscrição
 pago no painel.
 
 O Torneio Interno acontece em 15 de novembro de 2026. Os alunos devem chegar
-até às 8h; o início será às 9h. O prazo para inscrição termina em 11 de
+até às 8h; o início será às 9h. O prazo para inscrição termina em 8 de
 novembro de 2026, às 23h59. Depois de pagar, o responsável envia o comprovante
 ao Sabonim Evandro pelo WhatsApp. O servidor encerra o recebimento de novas
 inscrições após o prazo.

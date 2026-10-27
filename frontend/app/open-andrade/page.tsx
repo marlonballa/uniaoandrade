@@ -69,7 +69,7 @@ export default async function OpenAndradePage({
                 </div>
               </div>
               <p className="mt-5 font-sans text-sm leading-relaxed text-white/80">
-                Inscrições até <strong className="font-semibold text-paper">11 de novembro de 2026, às 23h59.</strong>
+                Inscrições até <strong className="font-semibold text-paper">8 de novembro de 2026, às 23h59.</strong>
               </p>
             </div>
 
