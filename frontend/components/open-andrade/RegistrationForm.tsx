@@ -117,12 +117,12 @@ export default function RegistrationForm({ confirmationPreview = false }: Regist
       >
         <div className="mb-6 border-b border-line pb-5">
           <p className="font-sans text-sm font-semibold text-navy-light">Inscrição registrada</p>
-          <h2 id="registration-success-title" className="mt-2 font-display text-2xl text-ink">
-            Agora, faça o Pix
-          </h2>
-          <p className="mt-2 font-sans text-sm leading-relaxed text-muted">
+          <h2
+            id="registration-success-title"
+            className="mt-2 max-w-[42ch] font-sans text-base font-semibold leading-relaxed text-ink sm:text-lg"
+          >
             Para concluir, faça o Pix e envie o comprovante ao Sabonim Evandro.
-          </p>
+          </h2>
         </div>
 
         {confirmationPreview ? (
@@ -180,7 +180,7 @@ export default function RegistrationForm({ confirmationPreview = false }: Regist
             rel="noopener noreferrer"
             aria-disabled={confirmationPreview || undefined}
             onClick={confirmationPreview ? (event) => event.preventDefault() : undefined}
-            className="inline-flex min-h-12 w-full items-center justify-center bg-red px-5 py-3.5 font-sans text-sm font-semibold text-white transition-colors hover:bg-red-deep active:translate-y-px sm:w-fit"
+            className="inline-flex min-h-12 w-full items-center justify-center bg-[#25D366] px-5 py-3.5 font-sans text-sm font-semibold text-[#062C18] transition-colors hover:bg-[#20bd5a] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#075E54] active:translate-y-px sm:w-fit"
           >
             Enviar comprovante ao Sabonim Evandro
           </a>
