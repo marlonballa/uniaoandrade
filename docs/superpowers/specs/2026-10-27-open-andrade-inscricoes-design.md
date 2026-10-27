@@ -2,45 +2,47 @@
 
 ## Intenção
 
-Permitir que responsáveis inscrevam alunos no Open Andrade de Taekwondo pelo site da União Andrade e que a organização consulte inscrições e acompanhe pagamentos.
+Abrir inscrições para o Open Andrade pelo site da União Andrade e dar à organização uma tela simples para acompanhar quem se inscreveu e o status do pagamento.
 
 ## Objetivos
 
-- Coletar nome do responsável e nome do aluno.
-- Permitir selecionar Kyorugui, Poomsae ou ambos; exigir ao menos uma modalidade.
-- Exibir instruções e dados de pagamento Pix fornecidos pela União Andrade.
-- Salvar cada inscrição no banco Neon existente.
-- Disponibilizar uma área administrativa protegida para consultar inscrições e marcar o pagamento como pendente ou pago.
+- Criar uma página pública de inscrição no site atual.
+- Coletar somente nome do responsável, nome do aluno e modalidades: Kyorugui, Poomsae ou ambas.
+- Registrar uma inscrição por aluno no projeto Neon já existente.
+- Depois que o envio for salvo com sucesso, confirmar a inscrição na tela e então mostrar os dados Pix para pagamento.
+- Mostrar cada inscrição em um painel privado, inicialmente com status “Pendente” e ação para marcar “Pago”.
 
-## Fora de escopo
+## Fora de escopo para a primeira versão
 
-- Processar pagamentos ou confirmar Pix automaticamente.
-- Criar outro banco ou mover a hospedagem do site para Render.
-- Inventar valor, chave Pix, QR Code, data, local ou regras do evento.
+- Idade, data de nascimento, peso ou faixa.
+- Confirmação automática do Pix, integração com gateway ou upload de comprovante.
+- Cadastro de vários alunos em um único envio; um responsável poderá enviar outra inscrição para cada aluno.
+- Criar um banco novo ou mover a hospedagem do site para Render.
 
 ## Abordagens consideradas
 
-1. **Google Forms e Sheets:** caminho de menor configuração, com respostas em uma planilha e atualização manual do status de pagamento. Não aproveita o banco já existente e oferece uma experiência menos integrada ao site.
-2. **Formulário e painel próprios com o Neon existente:** mantém a inscrição no site e armazena os dados no PostgreSQL já criado pela União Andrade. Foi escolhido como direção, considerando que o usuário informou que esse banco já existe.
+1. **Google Forms e Sheets:** exige menos desenvolvimento e permite acompanhar pagamentos em uma coluna da planilha, mas deixa o formulário e o controle administrativo fora do site.
+2. **Formulário e painel próprios com o Neon existente:** mantém inscrição e acompanhamento dentro do site e reaproveita o banco que a União Andrade já tem. Esta é a direção escolhida pelo usuário.
 
 ## Direção proposta
 
-- Implementar uma página do evento no Next.js existente, seguindo os estilos e a navegação atual.
-- Reutilizar o projeto Neon informado pelo usuário. A hospedagem permanece na Vercel; não é necessário conectar Render.
-- Proteger o painel administrativo com autenticação e permitir listar inscrições e atualizar manualmente o status do Pix.
-- Tratar cada submissão como uma inscrição de um aluno, com uma ou ambas as modalidades selecionadas.
-- Manter valor e dados Pix em configuração clara, preenchida somente com os dados fornecidos pela União Andrade.
-- Conferir o schema existente antes de criar tabelas; não presumir que o banco esteja vazio.
+- Formulário direto, com responsável, aluno e duas opções de modalidade. Exigir ao menos uma modalidade.
+- Taxa de R$ 30,00 por aluno. Premissa proposta: o mesmo valor cobre uma ou ambas as modalidades.
+- Considerar “inscrição confirmada” como o registro salvo com sucesso no Neon. A tela de sucesso exibe o Pix após essa gravação; a inscrição permanece pendente de pagamento.
+- Mostrar instrução clara para copiar o Pix ou ler o QR Code, usando somente valor e dados fornecidos pela União Andrade.
+- Painel administrativo com autenticação, lista de inscrições, nome do aluno, responsável, modalidades, data de envio e status do pagamento. Permitir marcar o Pix como pago.
+- Manter o site na Vercel e usar o banco Neon já existente. O painel deve usar rotas de servidor do Next.js para ler e gravar no banco.
 
 ## Restrições e dependências
 
-- O repositório não contém configuração local de conexão com Neon nem metadados de projeto Vercel. O endereço do Console identifica o projeto, mas não fornece acesso ao schema ou credenciais neste workspace.
-- A conexão deverá ser configurada por variável de ambiente na Vercel e, para desenvolvimento local, em arquivo local ignorado pelo Git. Segredos não devem entrar no código ou neste documento.
-- Para completar e publicar a página serão necessários o valor da taxa, a chave Pix copia e cola ou imagem do QR Code e os detalhes confirmados do evento que devem aparecer ao participante.
-- Por padrão, a confirmação será manual no painel, pois o fluxo solicitado usa Pix direto. Confirmação automática exigiria integração adicional com um provedor de pagamentos.
+- O projeto local não tem conexão Neon configurada nem vínculo local com a Vercel. A credencial deve ser configurada em variável de ambiente, sem entrar no Git.
+- O Console Neon mostra o projeto União Andrade, database `neondb` e somente a branch `production`. O usuário autorizou trabalhar diretamente em produção.
+- Uma consulta somente de leitura em `information_schema.tables` foi executada com sucesso na produção. Não retornou tabelas próprias da aplicação; nenhum dado foi gravado.
+- O Console avisava que consultar a branch arquivada iria desarquivá-la. A consulta conectou ao banco conforme a autorização do usuário.
+- A taxa de R$ 30,00 está definida. Para preencher a página ainda faltam a chave Pix copia e cola ou imagem do QR Code, além dos dados de data/local do evento.
 
 ## Pontos deixados ao implementador
 
-- Inspecionar o schema do branch Neon indicado antes de alterar o banco.
-- Escolher o mecanismo de autenticação adequado para uma área administrativa de acesso restrito.
-- Validar proteção contra submissões inválidas e exposição pública dos dados dos alunos.
+- Escolher uma autenticação simples e segura para uma pequena equipe administrativa.
+- Adicionar a estrutura mínima de dados necessária sem alterar tabelas existentes.
+- Validar a submissão e impedir que o público acesse a lista administrativa ou os dados de outras inscrições.
