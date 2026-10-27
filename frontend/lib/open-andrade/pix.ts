@@ -4,7 +4,9 @@ import {
 } from "@/lib/open-andrade/pricing";
 
 const PIX_KEY = "+5517996195606";
-const MERCHANT_NAME = "Evandro José de Andrade";
+// Keep the BR Code name ASCII-only for bank-reader compatibility. The payer app
+// resolves and displays the account-holder name from the Pix key in the DICT.
+const MERCHANT_NAME = "Evandro Jose de Andrade";
 const MERCHANT_CITY = "CATANDUVA";
 
 function field(id: string, value: string) {
