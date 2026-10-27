@@ -5,9 +5,13 @@ import { useEffect, useRef, type ReactNode } from "react";
 export default function Reveal({
   children,
   delay = 0,
+  variant = "text",
+  className = "",
 }: {
   children: ReactNode;
   delay?: number;
+  variant?: "text" | "media";
+  className?: string;
 }) {
   const ref = useRef<HTMLDivElement>(null);
 
@@ -22,8 +26,10 @@ export default function Reveal({
     return () => window.clearTimeout(timer);
   }, [delay]);
 
+  const base = variant === "media" ? "reveal-media" : "reveal";
+
   return (
-    <div ref={ref} className="reveal">
+    <div ref={ref} className={className ? `${base} ${className}` : base}>
       {children}
     </div>
   );

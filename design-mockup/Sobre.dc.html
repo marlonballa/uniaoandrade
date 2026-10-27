@@ -1,0 +1,196 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bevan&family=Unbounded:wght@500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<style>
+  *{box-sizing:border-box;}
+  body{margin:0;font-family:'Space Grotesk',system-ui,sans-serif;background:oklch(0.97 0.006 90);color:oklch(0.2 0.035 264);}
+  a{color:oklch(0.56 0.19 27);text-decoration:none;}
+  a:hover{color:oklch(0.42 0.17 25);}
+  .brand{font-family:'Bevan',serif;}
+  .disp{font-family:'Unbounded',system-ui,sans-serif;}
+  .wrap{max-width:1440px;margin:0 auto;padding:0 72px;}
+  .eyebrow{font-size:13px;font-weight:600;letter-spacing:0.18em;color:oklch(0.56 0.19 27);text-transform:uppercase;}
+  .h2{font-family:'Unbounded',system-ui,sans-serif;font-size:34px;line-height:1.18;color:oklch(0.2 0.035 264);margin:0;font-weight:600;}
+  .muted{color:oklch(0.44 0.02 264);font-size:16px;line-height:1.65;margin:0;}
+  .muted-light{color:rgba(255,255,255,0.72);}
+  .card{border:1px solid oklch(0.88 0.01 264);border-radius:16px;background:oklch(0.97 0.006 90);}
+  .btn-primary{display:inline-flex;align-items:center;gap:8px;background:oklch(0.97 0.006 90);color:oklch(0.13 0.07 264);font-weight:600;font-size:14px;padding:16px 32px;border-radius:16px;box-shadow:0 8px 24px oklch(0.05 0.02 264/0.35);}
+  .btn-whats{display:inline-flex;align-items:center;gap:8px;background:oklch(0.56 0.19 27);color:oklch(0.97 0.006 90);font-weight:600;font-size:14px;padding:14px 26px;border-radius:16px;}
+  .btn-sec{color:oklch(0.97 0.006 90);font-size:14px;font-weight:500;border-bottom:1px solid rgba(255,255,255,0.4);padding-bottom:2px;}
+  .photo-ph{position:relative;border-radius:16px;overflow:hidden;border:1px solid oklch(0.88 0.01 264);background:linear-gradient(135deg,oklch(0.90 0.02 264),oklch(0.82 0.03 264));display:flex;align-items:center;justify-content:center;padding:16px;text-align:center;}
+  .photo-ph span{font-size:11px;color:oklch(0.44 0.02 264);letter-spacing:0.04em;}
+</style>
+</helmet>
+
+<div>
+
+<!-- HEADER -->
+<header style="background:oklch(0.13 0.07 264);">
+  <div class="wrap" style="display:flex;align-items:center;justify-content:space-between;padding-top:20px;padding-bottom:20px;">
+    <div style="display:flex;align-items:center;gap:12px;">
+      <div style="width:44px;height:44px;border-radius:999px;background:radial-gradient(circle at 35% 30%, oklch(0.56 0.19 27), oklch(0.42 0.17 25) 75%);display:flex;align-items:center;justify-content:center;border:2px solid rgba(255,255,255,0.2);flex-shrink:0;">
+        <span class="brand" style="color:oklch(0.97 0.006 90);font-size:14px;">UA</span>
+      </div>
+      <div style="display:flex;flex-direction:column;line-height:1.25;">
+        <span class="brand" style="color:oklch(0.97 0.006 90);font-size:16px;letter-spacing:0.02em;">UNIÃO ANDRADE</span>
+        <span style="color:oklch(0.56 0.19 27);font-size:10px;font-weight:600;letter-spacing:0.2em;">TAEKWONDO MARCIAL</span>
+      </div>
+    </div>
+    <nav style="display:flex;align-items:center;gap:36px;">
+      <a href="#" style="color:rgba(255,255,255,0.8);font-size:14px;font-weight:500;">Taekwondo</a>
+      <a href="#" style="color:rgba(255,255,255,0.8);font-size:14px;font-weight:500;">Infantil</a>
+      <a href="#" style="color:rgba(255,255,255,0.8);font-size:14px;font-weight:500;">Adulto</a>
+      <a href="#" style="color:oklch(0.56 0.19 27);font-size:14px;font-weight:600;">Sobre</a>
+      <a href="#" style="color:rgba(255,255,255,0.8);font-size:14px;font-weight:500;">Contato</a>
+      <a href="#" class="btn-whats" style="padding:10px 20px;font-size:13px;">Fale no WhatsApp</a>
+    </nav>
+  </div>
+</header>
+
+<!-- SLIM PAGE HEADER -->
+<section style="background:oklch(0.13 0.07 264);padding:64px 0 56px 0;">
+  <div class="wrap" style="max-width:760px;display:flex;flex-direction:column;gap:16px;">
+    <span class="eyebrow">SOBRE A UNIÃO ANDRADE</span>
+    <h1 class="disp" style="font-size:42px;line-height:1.15;color:oklch(0.97 0.006 90);margin:0;">Sobre a União Andrade</h1>
+    <p class="muted muted-light" style="font-size:17px;max-width:620px;">A trajetória do Mestre Evandro Andrade (4º Dan) e da equipe de Kyosanim que ensina Taekwondo em Catanduva desde 2001.</p>
+  </div>
+</section>
+
+<!-- +20 ANOS -->
+<section style="padding:80px 0;">
+  <div class="wrap" style="max-width:800px;display:flex;flex-direction:column;gap:14px;">
+    <span class="eyebrow">+20 ANOS DE TAEKWONDO EM CATANDUVA</span>
+    <h2 class="h2">Uma tradição que começou em 2001</h2>
+    <p class="muted" style="font-size:16px;">Desde 2001 o Mestre Evandro Andrade ensina Taekwondo em Catanduva, formando dezenas de faixas-pretas ao longo de mais de 20 anos, sempre preservando a linha técnica Kukkiwon Old School.</p>
+  </div>
+</section>
+
+<!-- MESTRE EVANDRO -->
+<section style="background:oklch(0.965 0.008 264);padding:80px 0;">
+  <div class="wrap" style="display:flex;gap:56px;align-items:center;">
+    <div class="photo-ph" style="width:340px;aspect-ratio:3/4;flex-shrink:0;"><span>FOTO: MESTRE EVANDRO ANDRADE</span></div>
+    <div style="flex:1;display:flex;flex-direction:column;gap:14px;">
+      <span class="eyebrow">MESTRE EVANDRO ANDRADE (4º DAN)</span>
+      <h2 class="h2" style="font-size:30px;">Mais de 20 anos dedicados ao Taekwondo tradicional</h2>
+      <p class="muted" style="font-size:16px;">Mestre Evandro Andrade dirige a União Andrade desde 2001, conduzindo o método Kukkiwon Old School: técnica, disciplina, filosofia e tradição marcial.</p>
+      <div class="card" style="padding:16px 22px;display:inline-flex;gap:10px;align-items:center;width:fit-content;">
+        <span style="font-size:13px;font-weight:600;color:oklch(0.56 0.19 27);">FILIAÇÃO</span>
+        <span style="font-size:13px;color:oklch(0.2 0.035 264);">Vinculados à Liga Nacional</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EQUIPE -->
+<section style="padding:80px 0;">
+  <div class="wrap" style="display:flex;flex-direction:column;align-items:center;gap:14px;text-align:center;margin-bottom:44px;">
+    <span class="eyebrow">EQUIPE DE KYOSANIM</span>
+    <h2 class="h2">Mestre Evandro Andrade e equipe de Kyosanim</h2>
+    <p class="muted" style="max-width:600px;">Mestre Evandro Andrade (4º Dan) e os Kyosanim Joildo, Gustavo, Nayara e Ritinha conduzem o treino, cada aluno acompanhado por quem vive o Taekwondo como arte marcial todos os dias.</p>
+  </div>
+  <div class="wrap" style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;max-width:1200px;margin:0 auto;">
+    <div style="display:flex;flex-direction:column;gap:10px;">
+      <div class="photo-ph" style="aspect-ratio:3/4;"><span>MESTRE EVANDRO, KYOSANIM JOILDO E GUSTAVO</span></div>
+      <span style="text-align:center;font-size:13px;font-weight:500;">Kyosanim Joildo, Mestre Evandro e Kyosanim Gustavo</span>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:10px;">
+      <div class="photo-ph" style="aspect-ratio:3/4;"><span>KYOSANIM NAYARA, JOILDO E RITINHA</span></div>
+      <span style="text-align:center;font-size:13px;font-weight:500;">Kyosanim Nayara, Kyosanim Joildo e Kyosanim Ritinha</span>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:10px;">
+      <div class="photo-ph" style="aspect-ratio:3/4;"><span>MESTRE EVANDRO E KYOSANIM RITINHA</span></div>
+      <span style="text-align:center;font-size:13px;font-weight:500;">Mestre Evandro e Kyosanim Ritinha</span>
+    </div>
+  </div>
+</section>
+
+<!-- FILOSOFIA -->
+<section style="background:oklch(0.965 0.008 264);padding:72px 0;">
+  <div class="wrap" style="max-width:800px;display:flex;flex-direction:column;gap:14px;">
+    <span class="eyebrow">NOSSA FILOSOFIA</span>
+    <h2 class="h2" style="font-size:30px;">Kukkiwon Old School</h2>
+    <p class="muted" style="font-size:16px;">Seguimos o currículo técnico oficial do Taekwondo na linha Kukkiwon, com a essência marcial de quem aprendeu antes do esporte virar só sobre pontos. O aluno é apresentado a cada elemento da arte marcial: técnico, físico, mental e filosófico. <a href="#">Conheça o método completo →</a></p>
+  </div>
+</section>
+
+<!-- FAIXAS-PRETAS -->
+<section style="padding:72px 0;">
+  <div class="wrap" style="display:flex;justify-content:center;">
+    <div style="display:flex;flex-direction:column;align-items:center;gap:8px;text-align:center;">
+      <span class="disp" style="font-size:40px;font-weight:700;color:oklch(0.2 0.035 264);">Dezenas</span>
+      <span style="font-size:12px;font-weight:600;letter-spacing:0.1em;color:oklch(0.44 0.02 264);">DE FAIXAS-PRETAS FORMADAS DESDE 2001</span>
+    </div>
+  </div>
+</section>
+
+<!-- DEPOIMENTO -->
+<section style="background:oklch(0.965 0.008 264);padding:80px 0;">
+  <div class="wrap" style="display:flex;justify-content:center;">
+    <div style="position:relative;width:280px;aspect-ratio:9/16;border-radius:16px;overflow:hidden;border:1px solid oklch(0.88 0.01 264);background:linear-gradient(180deg, oklch(0.30 0.07 264) 0%, oklch(0.13 0.07 264) 100%);">
+      <div style="position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;padding:24px;gap:8px;">
+        <p style="font-style:italic;color:oklch(0.97 0.006 90);font-size:14px;line-height:1.5;margin:0;">"Foi lindo ver a interação, o carinho e a alegria compartilhados entre pais e filhos treinando juntos. Um momento que vai ficar marcado para sempre em nossos corações."</p>
+        <div><div style="font-size:14px;font-weight:600;color:oklch(0.97 0.006 90);">Aniely e Wendel</div><div style="font-size:12px;color:rgba(255,255,255,0.65);">Pai e filha, treino especial de Dia dos Pais</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA FECHAMENTO -->
+<section style="position:relative;background:oklch(0.20 0.09 264);padding:96px 0;text-align:center;overflow:hidden;">
+  <div style="position:absolute;bottom:-160px;right:-140px;width:420px;height:420px;border-radius:999px;background:radial-gradient(circle, oklch(0.55 0.19 27 / 0.18) 0%, transparent 70%);"></div>
+  <div class="wrap" style="position:relative;max-width:680px;margin:0 auto;display:flex;flex-direction:column;align-items:center;gap:16px;">
+    <span class="eyebrow">CONHEÇA A UNIÃO ANDRADE DE PERTO</span>
+    <h2 class="h2" style="color:oklch(0.97 0.006 90);">Venha treinar com quem vive o Taekwondo todos os dias</h2>
+    <div style="display:flex;gap:20px;margin-top:6px;">
+      <a href="#" class="btn-sec">Conheça nossas turmas →</a>
+      <a href="#" class="btn-primary">Agende sua aula experimental gratuita</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer style="background:oklch(0.13 0.07 264);padding:88px 0 36px 0;">
+  <div class="wrap" style="display:flex;justify-content:space-between;gap:64px;">
+    <div style="max-width:380px;display:flex;flex-direction:column;gap:18px;">
+      <div style="display:flex;align-items:center;gap:12px;">
+        <div style="width:36px;height:36px;border-radius:999px;background:radial-gradient(circle at 35% 30%, oklch(0.56 0.19 27), oklch(0.42 0.17 25) 75%);"></div>
+        <span class="brand" style="color:oklch(0.97 0.006 90);font-size:15px;">UNIÃO ANDRADE</span>
+      </div>
+      <p class="muted muted-light" style="font-size:14px;">Escola de Taekwondo Kukkiwon Old School. Arte marcial, luta e defesa pessoal em Catanduva há mais de 20 anos.</p>
+      <div style="font-size:14px;color:rgba(255,255,255,0.8);display:flex;flex-direction:column;gap:5px;">
+        <span>R. Minas Gerais, 454, 1º andar, Centro, Catanduva-SP</span>
+        <span>Segunda a sábado. Veja os horários por turma</span>
+      </div>
+      <nav style="display:flex;flex-direction:column;gap:9px;margin-top:6px;font-size:14px;">
+        <a href="#" style="color:rgba(255,255,255,0.7);">Taekwondo</a>
+        <a href="#" style="color:rgba(255,255,255,0.7);">Taekwondo Infantil</a>
+        <a href="#" style="color:rgba(255,255,255,0.7);">Taekwondo Adulto</a>
+        <a href="#" style="color:rgba(255,255,255,0.7);">Sobre</a>
+      </nav>
+    </div>
+    <div style="max-width:440px;">
+      <h2 class="disp" style="font-size:20px;color:oklch(0.97 0.006 90);margin:0;">Fale com a gente</h2>
+      <p class="muted muted-light" style="font-size:14px;margin-top:10px;">Tire suas dúvidas ou agende sua aula experimental gratuita direto pelo WhatsApp ou pelo Instagram, com resposta rápida e sem formulário.</p>
+      <div style="display:flex;gap:16px;margin-top:22px;">
+        <a href="#" class="btn-whats">Chamar no WhatsApp</a>
+        <a href="#" class="btn-sec">Ver no Instagram</a>
+      </div>
+    </div>
+  </div>
+  <div class="wrap" style="margin-top:56px;padding-top:22px;border-top:1px solid rgba(255,255,255,0.1);display:flex;justify-content:space-between;font-size:12px;color:rgba(255,255,255,0.45);">
+    <span>© 2026 União Andrade Taekwondo Marcial. Todos os direitos reservados.</span>
+    <span>Catanduva, SP</span>
+  </div>
+</footer>
+
+</div>
+</x-dc>
+</body>
+</html>

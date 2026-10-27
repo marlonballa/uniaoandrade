@@ -46,33 +46,46 @@ export default function Header() {
           aria-label={open ? "Fechar menu" : "Abrir menu"}
           onClick={() => setOpen((v) => !v)}
         >
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
-            {open ? (
-              <path d="M6 6l12 12M18 6 6 18" />
-            ) : (
-              <path d="M4 7h16M4 12h16M4 17h16" />
-            )}
-          </svg>
+          <span aria-hidden className="relative flex h-4 w-5 flex-col justify-between">
+            <span
+              className={`h-0.5 w-full rounded-full bg-current transition-transform duration-300 ease-out ${
+                open ? "translate-y-[7px] rotate-45" : ""
+              }`}
+            />
+            <span
+              className={`h-0.5 w-full rounded-full bg-current transition-opacity duration-200 ${
+                open ? "opacity-0" : "opacity-100"
+              }`}
+            />
+            <span
+              className={`h-0.5 w-full rounded-full bg-current transition-transform duration-300 ease-out ${
+                open ? "-translate-y-[7px] -rotate-45" : ""
+              }`}
+            />
+          </span>
         </button>
       </div>
 
-      {open ? (
-        <nav
-          id="mobile-nav"
-          aria-label="Navegação móvel"
-          className="border-t border-white/10 bg-navy-deep/95 px-6 py-6 backdrop-blur-xl lg:hidden"
-        >
-          <ul className="flex flex-col gap-5 text-base font-medium text-white/90">
-            {NAV_LINKS.map((link) => (
-              <li key={link.href}>
-                <Link href={link.href} onClick={() => setOpen(false)} className="block py-1">
-                  {link.label}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </nav>
-      ) : null}
+      <nav
+        id="mobile-nav"
+        aria-label="Navegação móvel"
+        inert={!open}
+        className={`overflow-hidden border-t border-white/10 bg-navy-deep/95 backdrop-blur-xl transition-[max-height,opacity,transform] duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] lg:hidden ${
+          open
+            ? "max-h-[360px] opacity-100 motion-safe:translate-y-0"
+            : "max-h-0 opacity-0 motion-safe:-translate-y-1"
+        }`}
+      >
+        <ul className="flex flex-col gap-5 px-6 py-6 text-base font-medium text-white/90">
+          {NAV_LINKS.map((link) => (
+            <li key={link.href}>
+              <Link href={link.href} onClick={() => setOpen(false)} className="block py-1">
+                {link.label}
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </nav>
     </header>
   );
 }

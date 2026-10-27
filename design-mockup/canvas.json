@@ -1,0 +1,14 @@
+{
+  "artboards": [
+    { "file": "Main.dc.html", "x": 0, "y": 0, "w": 1440, "h": 4900, "title": "Home" },
+    { "file": "TaekwondoCatanduva.dc.html", "x": 1540, "y": 0, "w": 1440, "h": 5500, "title": "Taekwondo em Catanduva" },
+    { "file": "TaekwondoInfantil.dc.html", "x": 0, "y": 5650, "w": 1440, "h": 4300, "title": "Taekwondo Infantil" },
+    { "file": "TaekwondoAdulto.dc.html", "x": 1540, "y": 5650, "w": 1440, "h": 4000, "title": "Taekwondo Adulto" },
+    { "file": "Sobre.dc.html", "x": 0, "y": 10100, "w": 1440, "h": 4000, "title": "Sobre" },
+    { "file": "Contato.dc.html", "x": 1540, "y": 10100, "w": 1440, "h": 2600, "title": "Contato" }
+  ],
+  "annotations": [
+    { "id": "note-p0", "x": 0, "y": -100, "w": 500, "text": "Mockup das 6 páginas P0 do blueprint de SEO — Home reescrita + Taekwondo Catanduva, Infantil, Adulto, Sobre e Contato." }
+  ],
+  "launch": { "view": "canvas" }
+}

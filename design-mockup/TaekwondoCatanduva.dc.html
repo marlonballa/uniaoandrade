@@ -1,0 +1,277 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bevan&family=Unbounded:wght@500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<style>
+  *{box-sizing:border-box;}
+  body{margin:0;font-family:'Space Grotesk',system-ui,sans-serif;background:oklch(0.97 0.006 90);color:oklch(0.2 0.035 264);}
+  a{color:oklch(0.56 0.19 27);text-decoration:none;}
+  a:hover{color:oklch(0.42 0.17 25);}
+  .brand{font-family:'Bevan',serif;}
+  .disp{font-family:'Unbounded',system-ui,sans-serif;}
+  .wrap{max-width:1440px;margin:0 auto;padding:0 72px;}
+  .eyebrow{font-size:13px;font-weight:600;letter-spacing:0.18em;color:oklch(0.56 0.19 27);text-transform:uppercase;}
+  .h2{font-family:'Unbounded',system-ui,sans-serif;font-size:34px;line-height:1.18;color:oklch(0.2 0.035 264);margin:0;font-weight:600;}
+  .muted{color:oklch(0.44 0.02 264);font-size:16px;line-height:1.65;margin:0;}
+  .muted-light{color:rgba(255,255,255,0.72);}
+  .card{border:1px solid oklch(0.88 0.01 264);border-radius:16px;background:oklch(0.97 0.006 90);}
+  .btn-primary{display:inline-flex;align-items:center;gap:8px;background:oklch(0.97 0.006 90);color:oklch(0.13 0.07 264);font-weight:600;font-size:14px;padding:16px 32px;border-radius:16px;box-shadow:0 8px 24px oklch(0.05 0.02 264/0.35);}
+  .btn-whats{display:inline-flex;align-items:center;gap:8px;background:oklch(0.56 0.19 27);color:oklch(0.97 0.006 90);font-weight:600;font-size:14px;padding:14px 26px;border-radius:16px;}
+  .btn-sec{color:oklch(0.97 0.006 90);font-size:14px;font-weight:500;border-bottom:1px solid rgba(255,255,255,0.4);padding-bottom:2px;}
+  .photo-ph{position:relative;border-radius:16px;overflow:hidden;border:1px solid oklch(0.88 0.01 264);background:linear-gradient(135deg,oklch(0.90 0.02 264),oklch(0.82 0.03 264));display:flex;align-items:center;justify-content:center;padding:16px;text-align:center;}
+  .photo-ph span{font-size:11px;color:oklch(0.44 0.02 264);letter-spacing:0.04em;}
+  .elem{display:flex;align-items:center;gap:12px;border:1px solid oklch(0.88 0.01 264);border-radius:12px;background:oklch(0.965 0.008 264);padding:16px 18px;}
+  .elem span{font-size:14px;color:oklch(0.2 0.035 264);}
+</style>
+</helmet>
+
+<div>
+
+<!-- HEADER -->
+<header style="background:oklch(0.13 0.07 264);">
+  <div class="wrap" style="display:flex;align-items:center;justify-content:space-between;padding-top:20px;padding-bottom:20px;">
+    <div style="display:flex;align-items:center;gap:12px;">
+      <div style="width:44px;height:44px;border-radius:999px;background:radial-gradient(circle at 35% 30%, oklch(0.56 0.19 27), oklch(0.42 0.17 25) 75%);display:flex;align-items:center;justify-content:center;border:2px solid rgba(255,255,255,0.2);flex-shrink:0;">
+        <span class="brand" style="color:oklch(0.97 0.006 90);font-size:14px;">UA</span>
+      </div>
+      <div style="display:flex;flex-direction:column;line-height:1.25;">
+        <span class="brand" style="color:oklch(0.97 0.006 90);font-size:16px;letter-spacing:0.02em;">UNIÃO ANDRADE</span>
+        <span style="color:oklch(0.56 0.19 27);font-size:10px;font-weight:600;letter-spacing:0.2em;">TAEKWONDO MARCIAL</span>
+      </div>
+    </div>
+    <nav style="display:flex;align-items:center;gap:36px;">
+      <a href="#" style="color:oklch(0.56 0.19 27);font-size:14px;font-weight:600;">Taekwondo</a>
+      <a href="#" style="color:rgba(255,255,255,0.8);font-size:14px;font-weight:500;">Infantil</a>
+      <a href="#" style="color:rgba(255,255,255,0.8);font-size:14px;font-weight:500;">Adulto</a>
+      <a href="#" style="color:rgba(255,255,255,0.8);font-size:14px;font-weight:500;">Sobre</a>
+      <a href="#" style="color:rgba(255,255,255,0.8);font-size:14px;font-weight:500;">Contato</a>
+      <a href="#" class="btn-whats" style="padding:10px 20px;font-size:13px;">Fale no WhatsApp</a>
+    </nav>
+  </div>
+</header>
+
+<!-- SLIM PAGE HEADER -->
+<section style="background:oklch(0.13 0.07 264);padding:64px 0 56px 0;">
+  <div class="wrap" style="max-width:760px;display:flex;flex-direction:column;gap:16px;">
+    <span class="eyebrow">TAEKWONDO EM CATANDUVA</span>
+    <h1 class="disp" style="font-size:42px;line-height:1.15;color:oklch(0.97 0.006 90);margin:0;">Taekwondo em Catanduva</h1>
+    <p class="muted muted-light" style="font-size:17px;max-width:620px;">Aulas de Taekwondo Kukkiwon Old School, com Mestre Evandro Andrade (4º Dan). Método, turmas, horários e aula experimental gratuita.</p>
+    <div style="display:flex;gap:20px;margin-top:6px;">
+      <a href="#" class="btn-primary">Agende sua aula experimental</a>
+      <a href="#" class="btn-sec">Fale no WhatsApp</a>
+    </div>
+  </div>
+</section>
+
+<!-- O QUE É TREINAR AQUI -->
+<section style="padding:88px 0 0 0;">
+  <div class="wrap" style="max-width:800px;display:flex;flex-direction:column;gap:16px;">
+    <span class="eyebrow">O QUE É TREINAR AQUI</span>
+    <h2 class="h2">Arte marcial de verdade, não coreografia esportiva</h2>
+    <p class="muted" style="font-size:17px;">O treino de Taekwondo na União Andrade não se resume a chutes esportivos ou movimentos coreografados. É luta, defesa pessoal e arte marcial completa, com foco em tradição e técnica.</p>
+  </div>
+</section>
+
+<!-- MÉTODO -->
+<section style="padding:64px 0 88px 0;">
+  <div class="wrap" style="display:flex;gap:64px;">
+    <div style="flex:1;max-width:420px;display:flex;flex-direction:column;gap:16px;">
+      <span class="eyebrow">NOSSO MÉTODO</span>
+      <h2 class="h2" style="font-size:30px;">Taekwondo Kukkiwon<br>Old School</h2>
+      <p class="muted" style="font-size:15px;">Seguimos o currículo técnico oficial do Taekwondo na linha Kukkiwon, com a essência marcial de quem aprendeu antes do esporte virar só sobre pontos.</p>
+      <p class="muted" style="font-size:15px;">Sob a direção do Mestre Evandro Andrade (4º Dan) e da equipe de Kyosanim, o aluno é apresentado a cada elemento da arte marcial: técnico, físico, mental e filosófico.</p>
+    </div>
+    <div style="flex:1;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;">
+      <div class="elem"><span>Socos e chutes</span></div>
+      <div class="elem"><span>Defesa pessoal e torções</span></div>
+      <div class="elem"><span>Derrubadas</span></div>
+      <div class="elem"><span>Steps e movimentação</span></div>
+      <div class="elem"><span>Técnicas de combate</span></div>
+      <div class="elem"><span>Poomsae (formas)</span></div>
+      <div class="elem"><span>Condicionamento físico</span></div>
+      <div class="elem"><span>Coordenação e controle</span></div>
+      <div class="elem" style="grid-column:span 2;"><span>Disciplina, autocontrole e filosofia do Taekwondo</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- POOMSAE / KYORUGI -->
+<section style="background:oklch(0.965 0.008 264);padding:72px 0;">
+  <div class="wrap" style="max-width:800px;display:flex;flex-direction:column;gap:14px;">
+    <span class="eyebrow">POOMSAE, KYORUGI E FUNDAMENTOS</span>
+    <h2 class="h2" style="font-size:30px;">Formas, combate e base técnica</h2>
+    <p class="muted" style="font-size:16px;">O treino combina Poomsae (formas, sequências de movimentos que preservam a tradição técnica) e técnicas de combate, sempre construídos sobre a base de socos, chutes, defesa pessoal e torções trabalhada desde o primeiro dia.</p>
+  </div>
+</section>
+
+<!-- PARA QUEM É -->
+<section style="padding:72px 0;">
+  <div class="wrap" style="display:flex;flex-direction:column;align-items:center;gap:14px;text-align:center;margin-bottom:44px;">
+    <span class="eyebrow">PARA QUEM É</span>
+    <h2 class="h2">Tem lugar para você, no seu tempo</h2>
+  </div>
+  <div class="wrap" style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px;">
+    <div class="card" style="padding:32px;"><h3 class="disp" style="font-size:18px;margin:0 0 8px 0;">Crianças e adolescentes</h3><p class="muted" style="font-size:14px;">Sem idade única de entrada, cada criança no seu próprio ritmo. <a href="#">Taekwondo Infantil →</a></p></div>
+    <div class="card" style="padding:32px;"><h3 class="disp" style="font-size:18px;margin:0 0 8px 0;">Adultos e graduados</h3><p class="muted" style="font-size:14px;">Nunca é tarde para começar, sem comparação com ninguém. <a href="#">Taekwondo Adulto →</a></p></div>
+  </div>
+</section>
+
+<!-- COMO FUNCIONA UMA AULA -->
+<section style="background:oklch(0.965 0.008 264);padding:72px 0;">
+  <div class="wrap" style="max-width:800px;display:flex;flex-direction:column;gap:14px;">
+    <span class="eyebrow">COMO FUNCIONA UMA AULA</span>
+    <h2 class="h2" style="font-size:30px;">Progressão gradual e supervisão constante</h2>
+    <p class="muted" style="font-size:16px;">Como em qualquer arte marcial, existe contato, por isso o treino segue progressão gradual, com equipamentos de proteção e supervisão constante do Mestre e da equipe de instrutores.</p>
+  </div>
+</section>
+
+<!-- SISTEMA DE FAIXAS -->
+<section style="padding:72px 0;">
+  <div class="wrap" style="max-width:800px;display:flex;flex-direction:column;gap:14px;">
+    <span class="eyebrow">SISTEMA DE FAIXAS E GRADUAÇÃO</span>
+    <h2 class="h2" style="font-size:30px;">Cada graduação é conquistada</h2>
+    <p class="muted" style="font-size:16px;">É um processo gradual. Cada graduação é conquistada com o tempo de treino e a evolução técnica de cada aluno. A evolução passa por faixas coloridas até chegar à faixa-preta, seguindo os critérios da linha Kukkiwon Old School que a União Andrade preserva há mais de 20 anos. Ao longo desse tempo, já formamos dezenas de faixas-pretas.</p>
+  </div>
+</section>
+
+<!-- QUEM ENSINA -->
+<section style="background:oklch(0.965 0.008 264);padding:80px 0;">
+  <div class="wrap" style="display:flex;flex-direction:column;align-items:center;gap:14px;text-align:center;margin-bottom:44px;">
+    <span class="eyebrow">QUEM ENSINA</span>
+    <h2 class="h2">Mestre Evandro Andrade e equipe de Kyosanim</h2>
+    <p class="muted" style="max-width:600px;">Mestre Evandro Andrade (4º Dan) e os Kyosanim Joildo, Gustavo, Nayara e Ritinha conduzem o treino, cada aluno acompanhado por quem vive o Taekwondo como arte marcial todos os dias. <a href="#">Conheça a equipe →</a></p>
+  </div>
+  <div class="wrap" style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;">
+    <div class="photo-ph" style="aspect-ratio:3/4;"><span>MESTRE EVANDRO, KYOSANIM JOILDO E GUSTAVO</span></div>
+    <div class="photo-ph" style="aspect-ratio:3/4;"><span>KYOSANIM NAYARA, JOILDO E RITINHA</span></div>
+    <div class="photo-ph" style="aspect-ratio:3/4;"><span>MESTRE EVANDRO E KYOSANIM RITINHA</span></div>
+  </div>
+</section>
+
+<!-- TURMAS E HORÁRIOS -->
+<section style="padding:80px 0;">
+  <div class="wrap" style="display:flex;flex-direction:column;align-items:center;gap:14px;text-align:center;margin-bottom:48px;">
+    <span class="eyebrow">TURMAS E HORÁRIOS</span>
+    <h2 class="h2">Turmas para cada fase da jornada</h2>
+  </div>
+  <div class="wrap" style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;">
+    <div class="card" style="overflow:hidden;">
+      <div class="photo-ph" style="border-radius:0;border:none;aspect-ratio:4/3;"><span>TURMA KIDS NO TATAME</span></div>
+      <div style="padding:24px;display:flex;flex-direction:column;gap:10px;">
+        <h3 class="disp" style="font-size:18px;margin:0;">Kids e Iniciantes</h3>
+        <p class="muted" style="font-size:14px;">Coordenação, disciplina e diversão para os primeiros passos no Taekwondo, no ritmo de cada criança.</p>
+        <div style="border-top:1px solid oklch(0.88 0.01 264);padding-top:10px;font-size:14px;font-weight:600;">Segunda, terça, quarta e quinta, 18h</div>
+        <div style="font-size:12px;color:oklch(0.44 0.02 264);">Catanduva</div>
+      </div>
+    </div>
+    <div class="card" style="overflow:hidden;">
+      <div class="photo-ph" style="border-radius:0;border:none;aspect-ratio:4/3;"><span>TURMA DE ADOLESCENTES E ADULTOS</span></div>
+      <div style="padding:24px;display:flex;flex-direction:column;gap:10px;">
+        <h3 class="disp" style="font-size:18px;margin:0;">Adolescentes, Adultos e Graduados</h3>
+        <p class="muted" style="font-size:14px;">Técnica, luta e defesa pessoal de verdade, com dois horários para quem quer evoluir mais rápido.</p>
+        <div style="border-top:1px solid oklch(0.88 0.01 264);padding-top:10px;font-size:14px;font-weight:600;">Segunda e quarta, 18h30 ou 19h30</div>
+        <div style="font-size:12px;color:oklch(0.44 0.02 264);">Catanduva</div>
+      </div>
+    </div>
+    <div class="card" style="overflow:hidden;">
+      <div class="photo-ph" style="border-radius:0;border:none;aspect-ratio:4/3;"><span>TURMA MISTA EM CATIGUÁ</span></div>
+      <div style="padding:24px;display:flex;flex-direction:column;gap:10px;">
+        <h3 class="disp" style="font-size:18px;margin:0;">Turma Mista</h3>
+        <p class="muted" style="font-size:14px;">Aula aberta a todas as idades e graduações, aos sábados, na unidade de Catiguá.</p>
+        <div style="border-top:1px solid oklch(0.88 0.01 264);padding-top:10px;font-size:14px;font-weight:600;">Sábado, 9h30 às 11h</div>
+        <div style="font-size:12px;color:oklch(0.44 0.02 264);">Catiguá</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REGIÃO ATENDIDA -->
+<section style="background:oklch(0.965 0.008 264);padding:64px 0;">
+  <div class="wrap" style="display:flex;flex-direction:column;align-items:center;gap:14px;text-align:center;">
+    <span class="eyebrow">REGIÃO ATENDIDA</span>
+    <h2 class="h2">Presente em Catanduva e região</h2>
+  </div>
+  <div class="wrap" style="display:flex;justify-content:center;gap:16px;margin-top:36px;flex-wrap:wrap;">
+    <div class="card" style="padding:16px 24px;border-color:oklch(0.56 0.19 27);border-width:1.5px;font-size:14px;font-weight:600;">Catanduva (sede)</div>
+    <div class="card" style="padding:16px 24px;font-size:14px;">Catiguá</div>
+    <div class="card" style="padding:16px 24px;font-size:14px;">Santa Adélia</div>
+    <div class="card" style="padding:16px 24px;font-size:14px;">Dois Córregos</div>
+    <div class="card" style="padding:16px 24px;font-size:14px;">Fernando Prestes</div>
+  </div>
+</section>
+
+<!-- PERGUNTAS -->
+<section style="padding:80px 0;">
+  <div class="wrap" style="max-width:800px;margin:0 auto;">
+    <div style="text-align:center;display:flex;flex-direction:column;align-items:center;gap:14px;margin-bottom:44px;">
+      <span class="eyebrow">PERGUNTAS SOBRE TAEKWONDO EM CATANDUVA</span>
+      <h2 class="h2">Tire suas dúvidas</h2>
+    </div>
+    <div style="border-top:1px solid oklch(0.88 0.01 264);">
+      <div style="padding:24px 0;border-bottom:1px solid oklch(0.88 0.01 264);"><span style="font-size:16px;font-weight:600;">O Taekwondo tem soco, ou é só chute?</span><p class="muted" style="font-size:14px;margin-top:8px;">Tem soco, sim. Apesar do nome remeter aos pés, o Taekwondo trabalha socos, defesas, torções e até derrubadas. Chute é só uma parte de uma arte marcial completa.</p></div>
+      <div style="padding:24px 0;border-bottom:1px solid oklch(0.88 0.01 264);"><span style="font-size:16px;font-weight:600;">Dá para aprender sozinho, sem ir a uma academia?</span><p class="muted" style="font-size:14px;margin-top:8px;">Dá pra imitar alguns movimentos por vídeo, mas faixa, graduação e a evolução técnica de verdade só acontecem com professor e turma.</p></div>
+      <div style="padding:24px 0;border-bottom:1px solid oklch(0.88 0.01 264);"><span style="font-size:16px;font-weight:600;">O Taekwondo tem risco de lesão?</span><p class="muted" style="font-size:14px;margin-top:8px;">Como em qualquer arte marcial, existe contato, por isso o treino segue progressão gradual, com equipamentos de proteção e supervisão constante.</p></div>
+      <div style="padding:24px 0;"><span style="font-size:16px;font-weight:600;">Qual a diferença da União Andrade para outras academias?</span><p class="muted" style="font-size:14px;margin-top:8px;">Trabalhamos o Taekwondo como arte marcial tradicional. A linha Kukkiwon Old School preserva técnica, disciplina, filosofia e tradição.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA FECHAMENTO -->
+<section style="position:relative;background:oklch(0.20 0.09 264);padding:96px 0;text-align:center;overflow:hidden;">
+  <div style="position:absolute;bottom:-160px;left:-140px;width:420px;height:420px;border-radius:999px;background:radial-gradient(circle, oklch(0.55 0.19 27 / 0.18) 0%, transparent 70%);"></div>
+  <div class="wrap" style="position:relative;max-width:680px;margin:0 auto;display:flex;flex-direction:column;align-items:center;gap:16px;">
+    <span class="eyebrow">COMECE QUANDO ESTIVER PRONTO</span>
+    <h2 class="h2" style="color:oklch(0.97 0.006 90);">Embarque nessa jornada conosco</h2>
+    <p class="muted muted-light" style="font-size:16px;">Não existe idade certa para começar. Só o momento em que você decide.</p>
+    <div style="display:flex;gap:20px;margin-top:6px;">
+      <a href="#" class="btn-primary">Agende sua aula experimental gratuita</a>
+      <a href="#" class="btn-sec">Fale conosco no WhatsApp</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer style="background:oklch(0.13 0.07 264);padding:88px 0 36px 0;">
+  <div class="wrap" style="display:flex;justify-content:space-between;gap:64px;">
+    <div style="max-width:380px;display:flex;flex-direction:column;gap:18px;">
+      <div style="display:flex;align-items:center;gap:12px;">
+        <div style="width:36px;height:36px;border-radius:999px;background:radial-gradient(circle at 35% 30%, oklch(0.56 0.19 27), oklch(0.42 0.17 25) 75%);"></div>
+        <span class="brand" style="color:oklch(0.97 0.006 90);font-size:15px;">UNIÃO ANDRADE</span>
+      </div>
+      <p class="muted muted-light" style="font-size:14px;">Escola de Taekwondo Kukkiwon Old School. Arte marcial, luta e defesa pessoal em Catanduva há mais de 20 anos.</p>
+      <div style="font-size:14px;color:rgba(255,255,255,0.8);display:flex;flex-direction:column;gap:5px;">
+        <span>R. Minas Gerais, 454, 1º andar, Centro, Catanduva-SP</span>
+        <span>Segunda a sábado. Veja os horários por turma</span>
+      </div>
+      <nav style="display:flex;flex-direction:column;gap:9px;margin-top:6px;font-size:14px;">
+        <a href="#" style="color:rgba(255,255,255,0.7);">Taekwondo</a>
+        <a href="#" style="color:rgba(255,255,255,0.7);">Taekwondo Infantil</a>
+        <a href="#" style="color:rgba(255,255,255,0.7);">Taekwondo Adulto</a>
+        <a href="#" style="color:rgba(255,255,255,0.7);">Sobre</a>
+      </nav>
+    </div>
+    <div style="max-width:440px;">
+      <h2 class="disp" style="font-size:20px;color:oklch(0.97 0.006 90);margin:0;">Fale com a gente</h2>
+      <p class="muted muted-light" style="font-size:14px;margin-top:10px;">Tire suas dúvidas ou agende sua aula experimental gratuita direto pelo WhatsApp ou pelo Instagram, com resposta rápida e sem formulário.</p>
+      <div style="display:flex;gap:16px;margin-top:22px;">
+        <a href="#" class="btn-whats">Chamar no WhatsApp</a>
+        <a href="#" class="btn-sec">Ver no Instagram</a>
+      </div>
+    </div>
+  </div>
+  <div class="wrap" style="margin-top:56px;padding-top:22px;border-top:1px solid rgba(255,255,255,0.1);display:flex;justify-content:space-between;font-size:12px;color:rgba(255,255,255,0.45);">
+    <span>© 2026 União Andrade Taekwondo Marcial. Todos os direitos reservados.</span>
+    <span>Catanduva, SP</span>
+  </div>
+</footer>
+
+</div>
+</x-dc>
+</body>
+</html>

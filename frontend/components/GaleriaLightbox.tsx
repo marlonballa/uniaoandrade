@@ -73,7 +73,7 @@ export default function GaleriaLightbox({ photos }: { photos: string[] }) {
 
       {openIndex !== null ? (
         <div
-          className="fixed inset-0 z-50 flex items-center justify-center bg-navy-deep/95 p-4 backdrop-blur-sm"
+          className="fixed inset-0 z-50 flex items-center justify-center bg-navy-deep/95 p-4 backdrop-blur-sm motion-safe:animate-[lightbox-in_0.25s_cubic-bezier(0.16,1,0.3,1)]"
           onClick={close}
           role="dialog"
           aria-modal="true"
@@ -107,14 +107,19 @@ export default function GaleriaLightbox({ photos }: { photos: string[] }) {
             className="relative h-[78vh] w-[88vw] max-w-4xl"
             onClick={(e) => e.stopPropagation()}
           >
-            <Image
-              src={photos[openIndex]}
-              alt={`Foto ${openIndex + 1} da União Andrade no dojang`}
-              fill
-              sizes="90vw"
-              className="object-contain"
-              priority
-            />
+            <div
+              key={openIndex}
+              className="absolute inset-0 motion-safe:animate-[photo-fade_0.2s_ease-out]"
+            >
+              <Image
+                src={photos[openIndex]}
+                alt={`Foto ${openIndex + 1} da União Andrade no dojang`}
+                fill
+                sizes="90vw"
+                className="object-contain"
+                priority
+              />
+            </div>
           </div>
 
           <button

@@ -78,17 +78,19 @@ export default function Hero() {
           </div>
         </Reveal>
 
-        <div className="relative mx-auto aspect-[3/4] w-full max-w-[360px] shrink-0 overflow-hidden rounded-2xl border border-white/15 shadow-[0_24px_60px_oklch(0.05_0.02_264/0.5)] lg:mx-0">
-          <Image
-            src="/mestre-evandro-esther.jpg"
-            alt="Mestre Evandro Andrade com a filha Esther, faixa vermelha, na União Andrade"
-            fill
-            priority
-            sizes="(min-width: 1024px) 360px, 80vw"
-            className="object-cover"
-            style={{ objectPosition: "50% 15%" }}
-          />
-        </div>
+        <Reveal delay={150} variant="media" className="mx-auto w-full max-w-[360px] shrink-0 lg:mx-0">
+          <div className="relative aspect-[3/4] overflow-hidden rounded-2xl border border-white/15 shadow-[0_24px_60px_oklch(0.05_0.02_264/0.5)]">
+            <Image
+              src="/mestre-evandro-esther.jpg"
+              alt="Mestre Evandro Andrade com a filha Esther, faixa vermelha, na União Andrade"
+              fill
+              priority
+              sizes="(min-width: 1024px) 360px, 80vw"
+              className="object-cover"
+              style={{ objectPosition: "50% 15%" }}
+            />
+          </div>
+        </Reveal>
       </div>
 
       {/* bottom info strip: glassmorfismo */}

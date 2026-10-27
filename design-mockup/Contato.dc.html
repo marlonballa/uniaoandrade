@@ -1,0 +1,163 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bevan&family=Unbounded:wght@500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<style>
+  *{box-sizing:border-box;}
+  body{margin:0;font-family:'Space Grotesk',system-ui,sans-serif;background:oklch(0.97 0.006 90);color:oklch(0.2 0.035 264);}
+  a{color:oklch(0.56 0.19 27);text-decoration:none;}
+  a:hover{color:oklch(0.42 0.17 25);}
+  .brand{font-family:'Bevan',serif;}
+  .disp{font-family:'Unbounded',system-ui,sans-serif;}
+  .wrap{max-width:1440px;margin:0 auto;padding:0 72px;}
+  .eyebrow{font-size:13px;font-weight:600;letter-spacing:0.18em;color:oklch(0.56 0.19 27);text-transform:uppercase;}
+  .h2{font-family:'Unbounded',system-ui,sans-serif;font-size:34px;line-height:1.18;color:oklch(0.2 0.035 264);margin:0;font-weight:600;}
+  .muted{color:oklch(0.44 0.02 264);font-size:16px;line-height:1.65;margin:0;}
+  .muted-light{color:rgba(255,255,255,0.72);}
+  .card{border:1px solid oklch(0.88 0.01 264);border-radius:16px;background:oklch(0.97 0.006 90);}
+  .btn-primary{display:inline-flex;align-items:center;gap:8px;background:oklch(0.97 0.006 90);color:oklch(0.13 0.07 264);font-weight:600;font-size:14px;padding:16px 32px;border-radius:16px;box-shadow:0 8px 24px oklch(0.05 0.02 264/0.35);}
+  .btn-whats{display:inline-flex;align-items:center;gap:8px;background:oklch(0.56 0.19 27);color:oklch(0.97 0.006 90);font-weight:600;font-size:14px;padding:14px 26px;border-radius:16px;}
+  .btn-sec{color:oklch(0.97 0.006 90);font-size:14px;font-weight:500;border-bottom:1px solid rgba(255,255,255,0.4);padding-bottom:2px;}
+  .photo-ph{position:relative;border-radius:16px;overflow:hidden;border:1px solid oklch(0.88 0.01 264);background:linear-gradient(135deg,oklch(0.90 0.02 264),oklch(0.82 0.03 264));display:flex;align-items:center;justify-content:center;padding:16px;text-align:center;}
+  .photo-ph span{font-size:11px;color:oklch(0.44 0.02 264);letter-spacing:0.04em;}
+  .row{display:flex;justify-content:space-between;padding:16px 0;border-bottom:1px solid oklch(0.88 0.01 264);font-size:15px;}
+</style>
+</helmet>
+
+<div>
+
+<!-- HEADER -->
+<header style="background:oklch(0.13 0.07 264);">
+  <div class="wrap" style="display:flex;align-items:center;justify-content:space-between;padding-top:20px;padding-bottom:20px;">
+    <div style="display:flex;align-items:center;gap:12px;">
+      <div style="width:44px;height:44px;border-radius:999px;background:radial-gradient(circle at 35% 30%, oklch(0.56 0.19 27), oklch(0.42 0.17 25) 75%);display:flex;align-items:center;justify-content:center;border:2px solid rgba(255,255,255,0.2);flex-shrink:0;">
+        <span class="brand" style="color:oklch(0.97 0.006 90);font-size:14px;">UA</span>
+      </div>
+      <div style="display:flex;flex-direction:column;line-height:1.25;">
+        <span class="brand" style="color:oklch(0.97 0.006 90);font-size:16px;letter-spacing:0.02em;">UNIÃO ANDRADE</span>
+        <span style="color:oklch(0.56 0.19 27);font-size:10px;font-weight:600;letter-spacing:0.2em;">TAEKWONDO MARCIAL</span>
+      </div>
+    </div>
+    <nav style="display:flex;align-items:center;gap:36px;">
+      <a href="#" style="color:rgba(255,255,255,0.8);font-size:14px;font-weight:500;">Taekwondo</a>
+      <a href="#" style="color:rgba(255,255,255,0.8);font-size:14px;font-weight:500;">Infantil</a>
+      <a href="#" style="color:rgba(255,255,255,0.8);font-size:14px;font-weight:500;">Adulto</a>
+      <a href="#" style="color:rgba(255,255,255,0.8);font-size:14px;font-weight:500;">Sobre</a>
+      <a href="#" style="color:oklch(0.56 0.19 27);font-size:14px;font-weight:600;">Contato</a>
+      <a href="#" class="btn-whats" style="padding:10px 20px;font-size:13px;">Fale no WhatsApp</a>
+    </nav>
+  </div>
+</header>
+
+<!-- SLIM PAGE HEADER -->
+<section style="background:oklch(0.13 0.07 264);padding:64px 0 48px 0;">
+  <div class="wrap" style="max-width:700px;display:flex;flex-direction:column;gap:14px;">
+    <span class="eyebrow">CONTATO E ENDEREÇO</span>
+    <h1 class="disp" style="font-size:38px;line-height:1.15;color:oklch(0.97 0.006 90);margin:0;">Fale com a União Andrade</h1>
+    <p class="muted muted-light" style="font-size:16px;">Endereço, telefone e horários em Catanduva. Fale pelo WhatsApp ou Instagram e agende sua aula experimental gratuita.</p>
+  </div>
+</section>
+
+<!-- ENDEREÇO E MAPA -->
+<section style="padding:64px 0;">
+  <div class="wrap" style="display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center;">
+    <div style="display:flex;flex-direction:column;gap:14px;">
+      <span class="eyebrow">ENDEREÇO E COMO CHEGAR</span>
+      <h2 class="h2" style="font-size:28px;">R. Minas Gerais, 454, 1º andar</h2>
+      <p class="muted" style="font-size:15px;">Centro, Catanduva-SP.</p>
+      <div style="display:flex;gap:16px;margin-top:6px;">
+        <a href="#" class="btn-whats">Chamar no WhatsApp</a>
+        <a href="#" style="font-size:14px;font-weight:600;align-self:center;">Ver no Instagram</a>
+      </div>
+    </div>
+    <div class="photo-ph" style="aspect-ratio:4/3;"><span>MAPA DO GOOGLE: PENDENTE PLACE ID</span></div>
+  </div>
+</section>
+
+<!-- HORÁRIOS -->
+<section style="background:oklch(0.965 0.008 264);padding:64px 0;">
+  <div class="wrap" style="max-width:800px;margin:0 auto;">
+    <div style="display:flex;flex-direction:column;gap:14px;margin-bottom:32px;">
+      <span class="eyebrow">HORÁRIOS DAS TURMAS</span>
+      <h2 class="h2" style="font-size:28px;">Segunda a sábado</h2>
+    </div>
+    <div style="border-top:1px solid oklch(0.88 0.01 264);">
+      <div class="row"><span style="font-weight:600;">Kids e Iniciantes</span><span class="muted">Seg, ter, qua e qui, 18h, Catanduva</span></div>
+      <div class="row"><span style="font-weight:600;">Adolescentes, Adultos e Graduados</span><span class="muted">Seg e qua, 18h30 ou 19h30, Catanduva</span></div>
+      <div class="row" style="border-bottom:none;"><span style="font-weight:600;">Turma Mista</span><span class="muted">Sábado, 9h30 às 11h, Catiguá</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- WHATSAPP CTA -->
+<section style="padding:64px 0;">
+  <div class="wrap" style="max-width:680px;margin:0 auto;display:flex;flex-direction:column;align-items:center;gap:16px;text-align:center;">
+    <span class="eyebrow">FALE PELO WHATSAPP OU INSTAGRAM</span>
+    <h2 class="h2" style="font-size:28px;">Resposta rápida, sem formulário</h2>
+    <p class="muted" style="font-size:15px;">Tire suas dúvidas ou agende sua aula experimental gratuita direto pelo WhatsApp ou pelo Instagram.</p>
+    <div style="display:flex;gap:16px;margin-top:6px;">
+      <a href="#" class="btn-primary" style="background:oklch(0.56 0.19 27);color:oklch(0.97 0.006 90);">Chamar no WhatsApp</a>
+      <a href="#" style="font-size:14px;font-weight:600;align-self:center;">Ver no Instagram</a>
+    </div>
+  </div>
+</section>
+
+<!-- PERGUNTAS RÁPIDAS -->
+<section style="background:oklch(0.965 0.008 264);padding:64px 0;">
+  <div class="wrap" style="max-width:800px;margin:0 auto;">
+    <div style="display:flex;flex-direction:column;gap:14px;margin-bottom:28px;text-align:center;align-items:center;">
+      <span class="eyebrow">PERGUNTAS RÁPIDAS</span>
+      <h2 class="h2" style="font-size:26px;">Antes de vir nos visitar</h2>
+    </div>
+    <div style="border-top:1px solid oklch(0.88 0.01 264);">
+      <div style="padding:22px 0;border-bottom:1px solid oklch(0.88 0.01 264);"><span style="font-size:15px;font-weight:600;">Como funciona a aula experimental?</span><p class="muted" style="font-size:14px;margin-top:8px;">É gratuita e sem compromisso. Venha com roupa de treino confortável (bermuda e camiseta, ou calça legging e camiseta). O dobok só é obrigatório depois da matrícula.</p></div>
+      <div style="padding:22px 0;"><span style="font-size:15px;font-weight:600;">Preciso agendar antes de ir?</span><p class="muted" style="font-size:14px;margin-top:8px;">Sim, chame no WhatsApp ou Instagram para combinar o melhor dia e horário para sua aula experimental.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer style="background:oklch(0.13 0.07 264);padding:80px 0 36px 0;">
+  <div class="wrap" style="display:flex;justify-content:space-between;gap:64px;">
+    <div style="max-width:380px;display:flex;flex-direction:column;gap:18px;">
+      <div style="display:flex;align-items:center;gap:12px;">
+        <div style="width:36px;height:36px;border-radius:999px;background:radial-gradient(circle at 35% 30%, oklch(0.56 0.19 27), oklch(0.42 0.17 25) 75%);"></div>
+        <span class="brand" style="color:oklch(0.97 0.006 90);font-size:15px;">UNIÃO ANDRADE</span>
+      </div>
+      <p class="muted muted-light" style="font-size:14px;">Escola de Taekwondo Kukkiwon Old School. Arte marcial, luta e defesa pessoal em Catanduva há mais de 20 anos.</p>
+      <div style="font-size:14px;color:rgba(255,255,255,0.8);display:flex;flex-direction:column;gap:5px;">
+        <span>R. Minas Gerais, 454, 1º andar, Centro, Catanduva-SP</span>
+        <span>Segunda a sábado. Veja os horários por turma</span>
+      </div>
+      <nav style="display:flex;flex-direction:column;gap:9px;margin-top:6px;font-size:14px;">
+        <a href="#" style="color:rgba(255,255,255,0.7);">Taekwondo</a>
+        <a href="#" style="color:rgba(255,255,255,0.7);">Taekwondo Infantil</a>
+        <a href="#" style="color:rgba(255,255,255,0.7);">Taekwondo Adulto</a>
+        <a href="#" style="color:rgba(255,255,255,0.7);">Sobre</a>
+      </nav>
+    </div>
+    <div style="max-width:440px;">
+      <h2 class="disp" style="font-size:20px;color:oklch(0.97 0.006 90);margin:0;">Fale com a gente</h2>
+      <p class="muted muted-light" style="font-size:14px;margin-top:10px;">Tire suas dúvidas ou agende sua aula experimental gratuita direto pelo WhatsApp ou pelo Instagram, com resposta rápida e sem formulário.</p>
+      <div style="display:flex;gap:16px;margin-top:22px;">
+        <a href="#" class="btn-whats">Chamar no WhatsApp</a>
+        <a href="#" class="btn-sec">Ver no Instagram</a>
+      </div>
+    </div>
+  </div>
+  <div class="wrap" style="margin-top:56px;padding-top:22px;border-top:1px solid rgba(255,255,255,0.1);display:flex;justify-content:space-between;font-size:12px;color:rgba(255,255,255,0.45);">
+    <span>© 2026 União Andrade Taekwondo Marcial. Todos os direitos reservados.</span>
+    <span>Catanduva, SP</span>
+  </div>
+</footer>
+
+</div>
+</x-dc>
+</body>
+</html>

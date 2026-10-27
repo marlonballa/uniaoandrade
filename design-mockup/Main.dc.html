@@ -1,0 +1,294 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bevan&family=Unbounded:wght@500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<style>
+  *{box-sizing:border-box;}
+  body{margin:0;font-family:'Space Grotesk',system-ui,sans-serif;background:oklch(0.97 0.006 90);color:oklch(0.2 0.035 264);}
+  a{color:oklch(0.56 0.19 27);text-decoration:none;}
+  a:hover{color:oklch(0.42 0.17 25);}
+  .brand{font-family:'Bevan',serif;}
+  .disp{font-family:'Unbounded',system-ui,sans-serif;}
+  .wrap{max-width:1440px;margin:0 auto;padding:0 72px;}
+  .eyebrow{font-size:13px;font-weight:600;letter-spacing:0.18em;color:oklch(0.56 0.19 27);text-transform:uppercase;}
+  .h2{font-family:'Unbounded',system-ui,sans-serif;font-size:36px;line-height:1.18;color:oklch(0.2 0.035 264);margin:0;font-weight:600;}
+  .h2-light{color:oklch(0.97 0.006 90);}
+  .muted{color:oklch(0.44 0.02 264);font-size:16px;line-height:1.65;margin:0;}
+  .muted-light{color:rgba(255,255,255,0.72);}
+  .card{border:1px solid oklch(0.88 0.01 264);border-radius:16px;background:oklch(0.97 0.006 90);}
+  .btn-primary{display:inline-flex;align-items:center;gap:8px;background:oklch(0.97 0.006 90);color:oklch(0.13 0.07 264);font-weight:600;font-size:14px;padding:16px 32px;border-radius:16px;box-shadow:0 8px 24px oklch(0.05 0.02 264/0.35);}
+  .btn-whats{display:inline-flex;align-items:center;gap:8px;background:oklch(0.56 0.19 27);color:oklch(0.97 0.006 90);font-weight:600;font-size:14px;padding:14px 26px;border-radius:16px;}
+  .btn-sec{color:oklch(0.97 0.006 90);font-size:14px;font-weight:500;border-bottom:1px solid rgba(255,255,255,0.4);padding-bottom:2px;}
+  .photo-ph{position:relative;border-radius:16px;overflow:hidden;border:1px solid oklch(0.88 0.01 264);background:linear-gradient(135deg,oklch(0.90 0.02 264),oklch(0.82 0.03 264));display:flex;align-items:center;justify-content:center;padding:16px;text-align:center;}
+  .photo-ph span{font-size:11px;color:oklch(0.44 0.02 264);letter-spacing:0.04em;}
+  .photo-ph-dark{background:linear-gradient(135deg,oklch(0.30 0.07 264),oklch(0.18 0.06 264));}
+  .photo-ph-dark span{color:rgba(255,255,255,0.55);}
+</style>
+</helmet>
+
+<div>
+
+<!-- HEADER -->
+<header style="background:oklch(0.13 0.07 264);">
+  <div class="wrap" style="display:flex;align-items:center;justify-content:space-between;padding-top:20px;padding-bottom:20px;">
+    <div style="display:flex;align-items:center;gap:12px;">
+      <div style="width:44px;height:44px;border-radius:999px;background:radial-gradient(circle at 35% 30%, oklch(0.56 0.19 27), oklch(0.42 0.17 25) 75%);display:flex;align-items:center;justify-content:center;border:2px solid rgba(255,255,255,0.2);flex-shrink:0;">
+        <span class="brand" style="color:oklch(0.97 0.006 90);font-size:14px;">UA</span>
+      </div>
+      <div style="display:flex;flex-direction:column;line-height:1.25;">
+        <span class="brand" style="color:oklch(0.97 0.006 90);font-size:16px;letter-spacing:0.02em;">UNIÃO ANDRADE</span>
+        <span style="color:oklch(0.56 0.19 27);font-size:10px;font-weight:600;letter-spacing:0.2em;">TAEKWONDO MARCIAL</span>
+      </div>
+    </div>
+    <nav style="display:flex;align-items:center;gap:36px;">
+      <a href="#" style="color:oklch(0.97 0.006 90);font-size:14px;font-weight:500;">Taekwondo</a>
+      <a href="#" style="color:rgba(255,255,255,0.8);font-size:14px;font-weight:500;">Infantil</a>
+      <a href="#" style="color:rgba(255,255,255,0.8);font-size:14px;font-weight:500;">Adulto</a>
+      <a href="#" style="color:rgba(255,255,255,0.8);font-size:14px;font-weight:500;">Sobre</a>
+      <a href="#" style="color:rgba(255,255,255,0.8);font-size:14px;font-weight:500;">Contato</a>
+      <a href="#" class="btn-whats" style="padding:10px 20px;font-size:13px;">Fale no WhatsApp</a>
+    </nav>
+  </div>
+</header>
+
+<!-- HERO -->
+<section style="position:relative;background:linear-gradient(150deg, oklch(0.20 0.08 264) 0%, oklch(0.07 0.02 250) 78%);overflow:hidden;">
+  <div style="position:absolute;top:-110px;right:-100px;width:560px;height:560px;border-radius:999px;background:radial-gradient(circle, oklch(0.55 0.19 27 / 0.22) 0%, transparent 70%);"></div>
+  <div class="wrap" style="position:relative;display:flex;gap:64px;align-items:center;padding-top:96px;padding-bottom:64px;">
+    <div style="flex:1;max-width:600px;display:flex;flex-direction:column;gap:22px;">
+      <span class="eyebrow">TAEKWONDO · ARTES MARCIAIS · CATANDUVA</span>
+      <h1 class="disp" style="font-size:46px;line-height:1.15;color:oklch(0.97 0.006 90);margin:0;">Escola de Taekwondo e Artes Marciais em Catanduva</h1>
+      <p class="muted muted-light" style="font-size:18px;max-width:480px;">Desde 2001 formando faixas-pretas em Catanduva e região. Taekwondo Kukkiwon Old School: luta, defesa pessoal, disciplina e respeito, para crianças e adultos.</p>
+      <div style="display:flex;align-items:center;gap:20px;padding-top:6px;">
+        <a href="#" class="btn-primary">Agende sua aula experimental gratuita</a>
+        <a href="#" class="btn-sec">Conheça nosso método →</a>
+      </div>
+    </div>
+    <div class="photo-ph photo-ph-dark" style="width:340px;aspect-ratio:3/4;flex-shrink:0;">
+      <span>FOTO: MESTRE EVANDRO ANDRADE COM A FILHA ESTHER</span>
+    </div>
+  </div>
+  <div style="position:relative;border-top:1px solid rgba(255,255,255,0.1);padding:20px 0;text-align:center;">
+    <span style="color:rgba(255,255,255,0.85);font-size:13px;">R. Minas Gerais, 454, 1º andar, Centro, Catanduva-SP</span>
+    <span style="color:rgba(255,255,255,0.3);margin:0 20px;">|</span>
+    <span style="color:rgba(255,255,255,0.85);font-size:13px;">Turmas de segunda a sábado. Veja os horários por turma</span>
+  </div>
+</section>
+
+<!-- MODALIDADES -->
+<section style="padding:88px 0;">
+  <div class="wrap" style="display:flex;flex-direction:column;align-items:center;gap:14px;text-align:center;">
+    <span class="eyebrow">MODALIDADES</span>
+    <h2 class="h2">Para cada fase da jornada</h2>
+    <p class="muted" style="max-width:560px;">Turmas separadas por fase, mas o mesmo método tradicional para todo mundo.</p>
+  </div>
+  <div class="wrap" style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px;margin-top:52px;">
+    <div class="card" style="padding:32px;display:flex;flex-direction:column;gap:14px;">
+      <span class="eyebrow" style="font-size:11px;">KIDS E INICIANTES</span>
+      <h3 class="disp" style="font-size:20px;margin:0;color:oklch(0.2 0.035 264);">Taekwondo Infantil</h3>
+      <p class="muted" style="font-size:14px;">Coordenação, disciplina e diversão no ritmo de cada criança.</p>
+      <a href="#" style="font-size:13px;font-weight:600;">Ver turma infantil →</a>
+    </div>
+    <div class="card" style="padding:32px;display:flex;flex-direction:column;gap:14px;">
+      <span class="eyebrow" style="font-size:11px;">ADOLESCENTES E ADULTOS</span>
+      <h3 class="disp" style="font-size:20px;margin:0;color:oklch(0.2 0.035 264);">Taekwondo Adulto</h3>
+      <p class="muted" style="font-size:14px;">Técnica, luta e defesa pessoal de verdade, sem idade limite.</p>
+      <a href="#" style="font-size:13px;font-weight:600;">Ver turma adulta →</a>
+    </div>
+    <div class="card" style="padding:32px;display:flex;flex-direction:column;gap:14px;background:oklch(0.13 0.07 264);border-color:oklch(0.13 0.07 264);">
+      <span class="eyebrow" style="font-size:11px;">MÉTODO COMPLETO</span>
+      <h3 class="disp" style="font-size:20px;margin:0;color:oklch(0.97 0.006 90);">Kukkiwon Old School</h3>
+      <p class="muted muted-light" style="font-size:14px;">Conheça a metodologia, o sistema de faixas e a equipe completa.</p>
+      <a href="#" style="font-size:13px;font-weight:600;color:oklch(0.97 0.006 90);">Ver metodologia →</a>
+    </div>
+  </div>
+</section>
+
+<!-- POR QUE TREINAR AQUI -->
+<section style="background:oklch(0.965 0.008 264);padding:80px 0 0 0;">
+  <div class="wrap" style="display:flex;flex-direction:column;align-items:center;gap:14px;text-align:center;">
+    <span class="eyebrow">POR QUE TREINAR NA UNIÃO ANDRADE</span>
+    <h2 class="h2" style="max-width:680px;">Tradição marcial de verdade</h2>
+    <p class="muted" style="max-width:600px;">Seguimos o currículo técnico oficial do Taekwondo na linha Kukkiwon, com a essência marcial de quem aprendeu antes do esporte virar só sobre pontos. É luta, defesa pessoal e arte marcial completa.</p>
+  </div>
+  <div style="background:oklch(0.13 0.07 264);margin-top:56px;padding:56px 0;">
+    <div class="wrap" style="display:flex;justify-content:center;gap:0;">
+      <div style="display:flex;flex-direction:column;align-items:center;gap:8px;padding:0 56px;border-right:1px solid rgba(255,255,255,0.15);">
+        <span class="disp" style="font-size:38px;font-weight:700;color:oklch(0.97 0.006 90);">+20</span>
+        <span style="font-size:11px;font-weight:600;letter-spacing:0.1em;color:rgba(255,255,255,0.6);">ANOS DE TRADIÇÃO EM CATANDUVA</span>
+      </div>
+      <div style="display:flex;flex-direction:column;align-items:center;gap:8px;padding:0 56px;border-right:1px solid rgba(255,255,255,0.15);">
+        <span class="disp" style="font-size:38px;font-weight:700;color:oklch(0.97 0.006 90);">Dezenas</span>
+        <span style="font-size:11px;font-weight:600;letter-spacing:0.1em;color:rgba(255,255,255,0.6);">DE FAIXAS-PRETAS FORMADAS</span>
+      </div>
+      <div style="display:flex;flex-direction:column;align-items:center;gap:8px;padding:0 56px;">
+        <span class="disp" style="font-size:38px;font-weight:700;color:oklch(0.97 0.006 90);">5</span>
+        <span style="font-size:11px;font-weight:600;letter-spacing:0.1em;color:rgba(255,255,255,0.6);">PROFESSORES (MESTRE E KYOSANIM)</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PARA QUEM É -->
+<section style="padding:88px 0;">
+  <div class="wrap" style="display:flex;flex-direction:column;align-items:center;gap:14px;text-align:center;">
+    <span class="eyebrow">PARA QUEM É</span>
+    <h2 class="h2">Tem espaço para você, no seu tempo</h2>
+  </div>
+  <div class="wrap" style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:28px;margin-top:48px;">
+    <div class="card" style="padding:36px;display:flex;flex-direction:column;gap:12px;background:oklch(0.965 0.008 264);">
+      <h3 class="disp" style="font-size:20px;margin:0;">Crianças e adolescentes</h3>
+      <p class="muted" style="font-size:15px;">Turma Kids e Iniciantes: coordenação, disciplina e diversão para os primeiros passos, sem idade única de entrada.</p>
+      <a href="#" style="font-size:13px;font-weight:600;">Taekwondo Infantil →</a>
+    </div>
+    <div class="card" style="padding:36px;display:flex;flex-direction:column;gap:12px;background:oklch(0.965 0.008 264);">
+      <h3 class="disp" style="font-size:20px;margin:0;">Adultos e graduados</h3>
+      <p class="muted" style="font-size:15px;">Turma de Adolescentes, Adultos e Graduados: nossa turma tem gente que começou aos 30, 40 e depois dos 50.</p>
+      <a href="#" style="font-size:13px;font-weight:600;">Taekwondo Adulto →</a>
+    </div>
+  </div>
+</section>
+
+<!-- COMO FUNCIONA A PRIMEIRA AULA -->
+<section style="background:oklch(0.965 0.008 264);padding:88px 0;">
+  <div class="wrap" style="max-width:680px;margin:0 auto;display:flex;flex-direction:column;align-items:center;gap:16px;text-align:center;">
+    <span class="eyebrow">COMO FUNCIONA A PRIMEIRA AULA</span>
+    <h2 class="h2">Simples, gratuita e sem compromisso</h2>
+    <p class="muted" style="font-size:17px;">Você agenda pelo WhatsApp, Instagram ou pelo botão do site, vem conhecer o dojang e treina uma aula com a turma, sem pagar nada e sem compromisso. Venha com roupa de treino confortável. O dobok só é obrigatório depois da matrícula.</p>
+    <a href="#" class="btn-primary" style="background:oklch(0.56 0.19 27);color:oklch(0.97 0.006 90);margin-top:8px;">Quero agendar minha aula gratuita</a>
+  </div>
+</section>
+
+<!-- DEPOIMENTOS -->
+<section style="padding:88px 0 96px 0;overflow:hidden;">
+  <div class="wrap" style="display:flex;flex-direction:column;align-items:center;gap:14px;text-align:center;">
+    <span class="eyebrow">HISTÓRIAS DE TRANSFORMAÇÃO</span>
+    <h2 class="h2">Quem treina com a gente, conta</h2>
+  </div>
+  <div style="display:flex;gap:24px;margin-top:48px;padding-left:72px;overflow:visible;">
+    <div style="position:relative;width:240px;aspect-ratio:9/16;flex-shrink:0;border-radius:16px;overflow:hidden;border:1px solid oklch(0.88 0.01 264);background:linear-gradient(180deg, oklch(0.30 0.07 264) 0%, oklch(0.13 0.07 264) 100%);">
+      <div style="position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;padding:22px;gap:8px;">
+        <p style="font-style:italic;color:oklch(0.97 0.006 90);font-size:13px;line-height:1.5;margin:0;">"Voltei depois de 20 anos longe do tatame. O corpo lembra, e a vontade também."</p>
+        <div><div style="font-size:13px;font-weight:600;color:oklch(0.97 0.006 90);">Jorge</div><div style="font-size:11px;color:rgba(255,255,255,0.65);">Retomou o Taekwondo depois de 20 anos afastado</div></div>
+      </div>
+    </div>
+    <div style="position:relative;width:240px;aspect-ratio:9/16;flex-shrink:0;border-radius:16px;overflow:hidden;border:1px solid oklch(0.88 0.01 264);background:linear-gradient(180deg, oklch(0.30 0.07 264) 0%, oklch(0.13 0.07 264) 100%);">
+      <div style="position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;padding:22px;gap:8px;">
+        <p style="font-style:italic;color:oklch(0.97 0.006 90);font-size:13px;line-height:1.5;margin:0;">"Comecei aos 70. Queria provar pra mim mesmo que não existe idade certa pra recomeçar."</p>
+        <div><div style="font-size:13px;font-weight:600;color:oklch(0.97 0.006 90);">Sr. Manuel</div><div style="font-size:11px;color:rgba(255,255,255,0.65);">Começou o Taekwondo aos 70 anos</div></div>
+      </div>
+    </div>
+    <div style="position:relative;width:240px;aspect-ratio:9/16;flex-shrink:0;border-radius:16px;overflow:hidden;border:1px solid oklch(0.88 0.01 264);background:linear-gradient(180deg, oklch(0.30 0.07 264) 0%, oklch(0.13 0.07 264) 100%);">
+      <div style="position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;padding:22px;gap:8px;">
+        <p style="font-style:italic;color:oklch(0.97 0.006 90);font-size:13px;line-height:1.5;margin:0;">"Treinar com o Enzo virou o nosso momento da semana. Os dois saímos melhores."</p>
+        <div><div style="font-size:13px;font-weight:600;color:oklch(0.97 0.006 90);">Cláudio e Enzo</div><div style="font-size:11px;color:rgba(255,255,255,0.65);">Pai e filho treinam juntos</div></div>
+      </div>
+    </div>
+    <div style="position:relative;width:240px;aspect-ratio:9/16;flex-shrink:0;border-radius:16px;overflow:hidden;border:1px solid oklch(0.88 0.01 264);background:linear-gradient(180deg, oklch(0.30 0.07 264) 0%, oklch(0.13 0.07 264) 100%);">
+      <div style="position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;padding:22px;gap:8px;">
+        <p style="font-style:italic;color:oklch(0.97 0.006 90);font-size:13px;line-height:1.5;margin:0;">"Colocamos a Mylena no Taekwondo pra ela se soltar. Hoje ela está quase na faixa-preta."</p>
+        <div><div style="font-size:13px;font-weight:600;color:oklch(0.97 0.006 90);">Geniel e Mylena</div><div style="font-size:11px;color:rgba(255,255,255,0.65);">Mylena está quase na faixa-preta</div></div>
+      </div>
+    </div>
+    <div style="width:80px;aspect-ratio:9/16;flex-shrink:0;border-radius:16px;background:linear-gradient(180deg, oklch(0.30 0.07 264) 0%, oklch(0.13 0.07 264) 100%);opacity:0.5;"></div>
+  </div>
+</section>
+
+<!-- LOCALIZAÇÃO -->
+<section style="background:oklch(0.965 0.008 264);padding:88px 0;">
+  <div class="wrap" style="display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center;">
+    <div style="display:flex;flex-direction:column;gap:16px;">
+      <span class="eyebrow">LOCALIZAÇÃO</span>
+      <h2 class="h2">Venha treinar com a gente</h2>
+      <div style="display:flex;flex-direction:column;gap:6px;margin-top:6px;">
+        <span style="font-size:15px;color:oklch(0.2 0.035 264);font-weight:500;">R. Minas Gerais, 454, 1º andar, Centro, Catanduva-SP</span>
+        <span class="muted" style="font-size:14px;">Segunda a sábado. Veja os horários por turma</span>
+      </div>
+      <div style="display:flex;gap:16px;margin-top:12px;">
+        <a href="#" class="btn-whats">Chamar no WhatsApp</a>
+        <a href="#" style="font-size:14px;font-weight:600;align-self:center;">Ver no Instagram</a>
+      </div>
+    </div>
+    <div class="photo-ph" style="aspect-ratio:4/3;">
+      <span>MAPA DO GOOGLE: PENDENTE PLACE ID</span>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ CURTO -->
+<section style="padding:88px 0;">
+  <div class="wrap" style="max-width:800px;margin:0 auto;display:flex;flex-direction:column;gap:0;">
+    <div style="text-align:center;display:flex;flex-direction:column;align-items:center;gap:14px;margin-bottom:44px;">
+      <span class="eyebrow">PERGUNTAS FREQUENTES</span>
+      <h2 class="h2">Antes de agendar sua aula</h2>
+    </div>
+    <div style="border-top:1px solid oklch(0.88 0.01 264);">
+      <div style="padding:26px 0;border-bottom:1px solid oklch(0.88 0.01 264);">
+        <div style="display:flex;justify-content:space-between;align-items:center;">
+          <span style="font-size:17px;font-weight:600;">Como funciona a aula experimental?</span>
+          <span style="color:oklch(0.56 0.19 27);font-size:20px;">–</span>
+        </div>
+        <p class="muted" style="font-size:14px;margin-top:12px;">É simples e é gratuita: você agenda pelo WhatsApp, Instagram ou pelo botão do site, vem conhecer o dojang e treina uma aula com a turma, sem pagar nada e sem compromisso. Venha com roupa de treino confortável. O dobok só é obrigatório depois da matrícula.</p>
+      </div>
+      <div style="padding:26px 0;border-bottom:1px solid oklch(0.88 0.01 264);display:flex;justify-content:space-between;align-items:center;">
+        <span style="font-size:17px;font-weight:600;color:oklch(0.44 0.02 264);">Dá para começar Taekwondo depois dos 30 ou 40 anos?</span>
+        <span style="color:oklch(0.56 0.19 27);font-size:20px;">+</span>
+      </div>
+      <div style="padding:26px 0;border-bottom:1px solid oklch(0.88 0.01 264);display:flex;justify-content:space-between;align-items:center;">
+        <span style="font-size:17px;font-weight:600;color:oklch(0.44 0.02 264);">Qual a idade ideal para uma criança começar?</span>
+        <span style="color:oklch(0.56 0.19 27);font-size:20px;">+</span>
+      </div>
+      <div style="padding:26px 0;display:flex;justify-content:space-between;align-items:center;">
+        <span style="font-size:17px;font-weight:600;color:oklch(0.44 0.02 264);">Qual a diferença entre Taekwondo e Jiu-Jitsu ou Muay Thai?</span>
+        <span style="color:oklch(0.56 0.19 27);font-size:20px;">+</span>
+      </div>
+    </div>
+    <a href="#" style="text-align:center;margin-top:28px;font-size:14px;font-weight:600;">Ver todas as perguntas →</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer style="background:oklch(0.13 0.07 264);padding:88px 0 36px 0;">
+  <div class="wrap" style="display:flex;justify-content:space-between;gap:64px;">
+    <div style="max-width:380px;display:flex;flex-direction:column;gap:18px;">
+      <div style="display:flex;align-items:center;gap:12px;">
+        <div style="width:36px;height:36px;border-radius:999px;background:radial-gradient(circle at 35% 30%, oklch(0.56 0.19 27), oklch(0.42 0.17 25) 75%);"></div>
+        <span class="brand" style="color:oklch(0.97 0.006 90);font-size:15px;">UNIÃO ANDRADE</span>
+      </div>
+      <p class="muted muted-light" style="font-size:14px;">Escola de Taekwondo Kukkiwon Old School. Arte marcial, luta e defesa pessoal em Catanduva há mais de 20 anos.</p>
+      <div style="font-size:14px;color:rgba(255,255,255,0.8);display:flex;flex-direction:column;gap:5px;">
+        <span>R. Minas Gerais, 454, 1º andar, Centro, Catanduva-SP</span>
+        <span>Segunda a sábado. Veja os horários por turma</span>
+      </div>
+      <nav style="display:flex;flex-direction:column;gap:9px;margin-top:6px;font-size:14px;">
+        <a href="#" style="color:rgba(255,255,255,0.7);">Taekwondo</a>
+        <a href="#" style="color:rgba(255,255,255,0.7);">Taekwondo Infantil</a>
+        <a href="#" style="color:rgba(255,255,255,0.7);">Taekwondo Adulto</a>
+        <a href="#" style="color:rgba(255,255,255,0.7);">Sobre</a>
+      </nav>
+    </div>
+    <div style="max-width:440px;">
+      <h2 class="disp" style="font-size:20px;color:oklch(0.97 0.006 90);margin:0;">Fale com a gente</h2>
+      <p class="muted muted-light" style="font-size:14px;margin-top:10px;">Tire suas dúvidas ou agende sua aula experimental gratuita direto pelo WhatsApp ou pelo Instagram, com resposta rápida e sem formulário.</p>
+      <div style="display:flex;gap:16px;margin-top:22px;">
+        <a href="#" class="btn-whats">Chamar no WhatsApp</a>
+        <a href="#" class="btn-sec">Ver no Instagram</a>
+      </div>
+    </div>
+  </div>
+  <div class="wrap" style="margin-top:56px;padding-top:22px;border-top:1px solid rgba(255,255,255,0.1);display:flex;justify-content:space-between;font-size:12px;color:rgba(255,255,255,0.45);">
+    <span>© 2026 União Andrade Taekwondo Marcial. Todos os direitos reservados.</span>
+    <span>Catanduva, SP</span>
+  </div>
+</footer>
+
+</div>
+</x-dc>
+</body>
+</html>
