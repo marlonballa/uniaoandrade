@@ -44,6 +44,25 @@ export default function Home() {
       <main>
         <Hero />
 
+        <section className="bg-navy-deep px-6 py-10 sm:px-10 lg:px-18">
+          <div className="mx-auto flex max-w-[1200px] flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
+            <div className="max-w-[650px]">
+              <h2 className="font-display text-xl leading-snug text-paper sm:text-2xl">
+                Open Andrade de Taekwondo
+              </h2>
+              <p className="mt-2 font-sans text-sm leading-relaxed text-white/80 sm:text-base">
+                Inscreva o aluno em Kyorugui, Poomsae ou nas duas modalidades. Taxa de R$ 30,00 por aluno.
+              </p>
+            </div>
+            <Link
+              href="/open-andrade"
+              className="inline-flex min-h-12 shrink-0 items-center justify-center rounded-xl bg-paper px-6 py-3 font-sans text-sm font-semibold text-navy-deep shadow-[0_8px_24px_oklch(0.05_0.02_264/0.28)] transition-colors hover:bg-white active:translate-y-px"
+            >
+              Fazer inscrição
+            </Link>
+          </div>
+        </section>
+
         <section className="px-6 py-24 sm:px-10 lg:px-18">
           <div className="mx-auto flex max-w-[1440px] flex-col items-center gap-4 text-center">
             <span className="font-sans text-[13px] font-semibold tracking-[0.18em] text-red">

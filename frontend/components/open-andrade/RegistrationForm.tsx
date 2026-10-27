@@ -1,0 +1,267 @@
+"use client";
+
+import { useState, type FormEvent } from "react";
+import { QRCodeSVG } from "qrcode.react";
+
+type Payment = {
+  amountCents: number;
+  copyPaste: string;
+};
+
+type RegistrationResponse = {
+  registrationId: string;
+  payment: Payment;
+};
+
+const PIX_KEY = "+5517996195606";
+const PIX_KEY_DISPLAY = "17 99619-5606";
+const WHATSAPP_NUMBER = PIX_KEY.slice(1);
+
+const inputClassName =
+  "mt-2 w-full rounded-xl border border-line bg-paper px-4 py-3.5 font-sans text-base text-ink shadow-sm transition placeholder:text-muted/80 hover:border-navy-light/50 focus:border-red focus:outline-none focus:ring-2 focus:ring-red/20";
+
+export default function RegistrationForm() {
+  const [kyorugui, setKyorugui] = useState(false);
+  const [poomsae, setPoomsae] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [error, setError] = useState("");
+  const [payment, setPayment] = useState<Payment | null>(null);
+  const [registeredStudentName, setRegisteredStudentName] = useState("");
+  const [copied, setCopied] = useState(false);
+
+  async function handleSubmit(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    setError("");
+
+    if (!kyorugui && !poomsae) {
+      setError("Selecione Kyorugui, Poomsae ou as duas modalidades.");
+      return;
+    }
+
+    const formData = new FormData(event.currentTarget);
+    setIsSubmitting(true);
+
+    try {
+      const response = await fetch("/api/open-andrade/registrations", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          responsibleName: formData.get("responsibleName"),
+          studentName: formData.get("studentName"),
+          kyorugui,
+          poomsae,
+        }),
+      });
+
+      const data = (await response.json()) as RegistrationResponse | { error?: string };
+
+      if (!response.ok || !("payment" in data)) {
+        setError(
+          "error" in data && data.error
+            ? data.error
+            : "Não foi possível enviar a inscrição. Tente novamente em instantes.",
+        );
+        return;
+      }
+
+      setRegisteredStudentName(String(formData.get("studentName") ?? "").trim());
+      setPayment(data.payment);
+    } catch {
+      setError("Não foi possível enviar a inscrição. Verifique sua conexão e tente novamente.");
+    } finally {
+      setIsSubmitting(false);
+    }
+  }
+
+  async function copyPix() {
+    if (!payment) return;
+
+    try {
+      await navigator.clipboard.writeText(payment.copyPaste);
+      setCopied(true);
+      window.setTimeout(() => setCopied(false), 1800);
+    } catch {
+      setError("Não foi possível copiar o Pix. Selecione o código e copie manualmente.");
+    }
+  }
+
+  if (payment) {
+    return (
+      <section
+        aria-labelledby="registration-success-title"
+        className="rounded-2xl border border-line bg-paper p-6 shadow-[0_12px_32px_oklch(0.2_0.03_264/0.08)] sm:p-8"
+      >
+        <div className="mb-6 border-b border-line pb-5">
+          <p className="font-sans text-sm font-semibold text-navy-light">Inscrição registrada</p>
+          <h2 id="registration-success-title" className="mt-2 font-display text-2xl text-ink">
+            Agora, faça o Pix
+          </h2>
+          <p className="mt-2 font-sans text-sm leading-relaxed text-muted">
+            Para concluir, faça o Pix e envie o comprovante ao Sabonim Evandro.
+          </p>
+        </div>
+
+        <div className="flex items-center justify-between gap-4">
+          <span className="font-sans text-sm text-muted">Taxa por aluno</span>
+          <span className="font-display text-2xl text-ink">
+            {(payment.amountCents / 100).toLocaleString("pt-BR", {
+              style: "currency",
+              currency: "BRL",
+            })}
+          </span>
+        </div>
+
+        <div className="mt-6 flex justify-center rounded-xl bg-white p-5">
+          <QRCodeSVG
+            value={payment.copyPaste}
+            size={210}
+            level="M"
+            marginSize={4}
+            title="QR Code Pix da inscrição"
+          />
+        </div>
+
+        <div className="mt-6 flex flex-col gap-3">
+          <label htmlFor="pix-copy-paste" className="font-sans text-sm font-semibold text-ink">
+            Pix copia e cola
+          </label>
+          <textarea
+            id="pix-copy-paste"
+            readOnly
+            value={payment.copyPaste}
+            rows={4}
+            className="w-full resize-y rounded-xl border border-line bg-surface p-3 font-sans text-xs leading-relaxed text-ink focus:border-red focus:outline-none focus:ring-2 focus:ring-red/20"
+          />
+          <button
+            type="button"
+            onClick={copyPix}
+            className="min-h-12 w-full rounded-xl bg-navy-deep px-5 py-3.5 font-sans text-sm font-semibold text-paper shadow-[0_8px_24px_oklch(0.05_0.02_264/0.22)] transition-colors hover:bg-navy-light active:translate-y-px sm:w-fit"
+          >
+            {copied ? "Pix copiado" : "Copiar Pix"}
+          </button>
+          <p className="font-sans text-sm leading-relaxed text-muted">
+            Recebedor: Evandro José de Andrade · Chave Pix telefone: {PIX_KEY_DISPLAY}.
+          </p>
+          <a
+            href={`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(`Olá, Sabonim Evandro! Segue o comprovante da inscrição de ${registeredStudentName} no Open Andrade.`)}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex min-h-12 w-full items-center justify-center bg-red px-5 py-3.5 font-sans text-sm font-semibold text-white transition-colors hover:bg-red-deep active:translate-y-px sm:w-fit"
+          >
+            Enviar comprovante ao Sabonim Evandro
+          </a>
+          <p className="font-sans text-xs leading-relaxed text-muted">
+            WhatsApp: {PIX_KEY_DISPLAY}
+          </p>
+        </div>
+
+        {error ? (
+          <p role="alert" className="mt-4 font-sans text-sm text-red-deep">
+            {error}
+          </p>
+        ) : null}
+      </section>
+    );
+  }
+
+  return (
+    <form
+      onSubmit={handleSubmit}
+      className="flex flex-col gap-5 rounded-2xl border border-line bg-paper p-6 shadow-[0_12px_32px_oklch(0.2_0.03_264/0.08)] sm:p-8"
+    >
+      <div>
+        <label htmlFor="responsible-name" className="font-sans text-sm font-semibold text-ink">
+          Nome do responsável
+        </label>
+        <input
+          id="responsible-name"
+          name="responsibleName"
+          type="text"
+          autoComplete="name"
+          maxLength={120}
+          required
+          placeholder="Nome completo"
+          className={inputClassName}
+        />
+      </div>
+
+      <div>
+        <label htmlFor="student-name" className="font-sans text-sm font-semibold text-ink">
+          Nome do aluno
+        </label>
+        <input
+          id="student-name"
+          name="studentName"
+          type="text"
+          autoComplete="off"
+          maxLength={120}
+          required
+          placeholder="Nome completo do aluno"
+          className={inputClassName}
+        />
+      </div>
+
+      <fieldset className="flex flex-col gap-3">
+        <legend className="font-sans text-sm font-semibold text-ink">Modalidade</legend>
+        <p id="modalities-help" className="-mt-1 font-sans text-sm text-muted">
+          Escolha uma ou as duas.
+        </p>
+        <div className="grid gap-3 sm:grid-cols-2">
+          <label
+            className={`flex min-h-14 cursor-pointer items-center gap-3 rounded-xl border px-4 py-3 font-sans text-sm font-medium transition-colors ${
+              kyorugui
+                ? "border-navy-deep bg-surface text-ink"
+                : "border-line bg-paper text-ink hover:border-navy-light/60"
+            }`}
+          >
+            <input
+              type="checkbox"
+              checked={kyorugui}
+              onChange={(event) => setKyorugui(event.target.checked)}
+              aria-describedby="modalities-help"
+              className="h-4 w-4 accent-navy-deep"
+            />
+            <span>Kyorugui</span>
+          </label>
+          <label
+            className={`flex min-h-14 cursor-pointer items-center gap-3 rounded-xl border px-4 py-3 font-sans text-sm font-medium transition-colors ${
+              poomsae
+                ? "border-navy-deep bg-surface text-ink"
+                : "border-line bg-paper text-ink hover:border-navy-light/60"
+            }`}
+          >
+            <input
+              type="checkbox"
+              checked={poomsae}
+              onChange={(event) => setPoomsae(event.target.checked)}
+              aria-describedby="modalities-help"
+              className="h-4 w-4 accent-navy-deep"
+            />
+            <span>Poomsae</span>
+          </label>
+        </div>
+      </fieldset>
+
+      <div className="flex flex-col gap-4 border-t border-line pt-5">
+        <p className="font-sans text-sm leading-relaxed text-muted">
+          Taxa de inscrição: <strong className="font-semibold text-ink">R$ 30,00 por aluno.</strong>
+        </p>
+        <p className="-mt-2 font-sans text-sm leading-relaxed text-muted">
+          Após o pagamento, envie o comprovante pelo WhatsApp ao Sabonim Evandro.
+        </p>
+        {error ? (
+          <p role="alert" className="font-sans text-sm leading-relaxed text-red-deep">
+            {error}
+          </p>
+        ) : null}
+        <button
+          type="submit"
+          disabled={isSubmitting}
+          className="min-h-14 w-full rounded-xl bg-navy-deep px-6 py-4 font-sans text-sm font-semibold text-paper shadow-[0_8px_24px_oklch(0.05_0.02_264/0.22)] transition-colors hover:bg-navy-light active:translate-y-px disabled:cursor-wait disabled:bg-navy-light/70 sm:text-base"
+        >
+          {isSubmitting ? "Enviando inscrição…" : "Confirmar inscrição"}
+        </button>
+      </div>
+    </form>
+  );
+}
