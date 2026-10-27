@@ -12,6 +12,46 @@ npm run dev
 
 Abra http://localhost:3000.
 
+## Open Andrade de Taekwondo
+
+As inscrições ficam em `/open-andrade`; o painel de acompanhamento fica em
+`/admin/open-andrade`. Cada aluno tem um envio individual, com responsável,
+aluno e modalidades Kyorugui/Poomsae. A taxa é de R$ 30,00 para uma modalidade
+e R$ 45,00 para as duas. O Pix e o QR Code só aparecem depois que a inscrição
+é salva no Neon. A equipe confere o recebimento e marca cada pagamento como
+pago no painel.
+
+O Torneio Interno acontece em 15 de novembro de 2026. Os alunos devem chegar
+até às 8h; o início será às 9h. O prazo para inscrição termina em 8 de
+novembro de 2026, às 23h59. Depois de pagar, o responsável envia o comprovante
+ao Sabonim Evandro pelo WhatsApp. O servidor encerra o recebimento de novas
+inscrições após o prazo.
+
+### Preparar o banco e as variáveis
+
+As tabelas `public.open_andrade_registrations` e
+`public.open_andrade_rate_limits` ficam no banco `neondb` da branch de
+produção da União Andrade. As migrações idempotentes estão em
+`db/migrations/001_open_andrade_registrations.sql`,
+`db/migrations/002_open_andrade_rate_limits.sql` e
+`db/migrations/003_open_andrade_modality_pricing.sql` e
+`db/migrations/004_open_andrade_idempotency.sql`. As migrações criam as tabelas
+de inscrições e limite de tentativas, ajustam o valor por modalidade e evitam
+duplicidade quando uma tentativa de envio é repetida. A tabela de
+limite de tentativas armazena somente um hash da origem da requisição, nunca
+o IP em texto aberto. O formulário aceita até 60 envios por hora por origem
+e o login do painel até 10 tentativas a cada 15 minutos.
+
+Para rodar as inscrições, copie `.env.example` para `.env.local` e preencha:
+
+- `DATABASE_URL`: connection string do Neon para o banco `neondb`.
+- `OPEN_ANDRADE_ADMIN_PASSWORD`: senha longa e exclusiva do painel, com pelo menos 24 caracteres.
+- `OPEN_ANDRADE_SESSION_SECRET`: segredo aleatório com pelo menos 32 bytes.
+
+Não envie essas variáveis ao Git. Na Vercel, cadastre os mesmos três valores
+nas variáveis de ambiente do projeto e publique uma nova implantação. A chave
+Pix é fixa nesta funcionalidade e não fica armazenada em variáveis ou no banco.
+
 ## WhatsApp
 
 O número usado nos botões "Agende sua aula experimental" /
@@ -118,7 +158,9 @@ rode Node.js:
   repositório `uniaoandrade` (monorepo). Ao importar o repositório na
   Vercel, configure **Root Directory = `frontend`** nas configurações
   do projeto — sem isso a Vercel tenta buildar a partir da raiz do
-  repositório e não encontra o `package.json`.
+  repositório e não encontra o `package.json`. O backend do Open Andrade usa
+  o cabeçalho de IP confiável da Vercel; ao trocar de provedor, configure um
+  proxy confiável antes de reabrir as inscrições.
 - **KingHost**: precisa do plano com Node.js/VPS Cloud, não do plano
   compartilhado tradicional (que só roda PHP).
 
