@@ -1,7 +1,11 @@
+import {
+  OPEN_ANDRADE_ONE_MODALITY_FEE_CENTS,
+  OPEN_ANDRADE_TWO_MODALITIES_FEE_CENTS,
+} from "@/lib/open-andrade/pricing";
+
 const PIX_KEY = "+5517996195606";
 const MERCHANT_NAME = "Evandro José de Andrade";
 const MERCHANT_CITY = "CATANDUVA";
-const FEE_CENTS = 3000;
 
 function field(id: string, value: string) {
   const byteLength = new TextEncoder().encode(value).length;
@@ -23,10 +27,14 @@ function crc16(payload: string) {
   return crc.toString(16).toUpperCase().padStart(4, "0");
 }
 
-export function buildPixPayload() {
+export function buildPixPayload(amountCents: number) {
+  if (![OPEN_ANDRADE_ONE_MODALITY_FEE_CENTS, OPEN_ANDRADE_TWO_MODALITIES_FEE_CENTS].includes(amountCents)) {
+    throw new Error("Valor de inscrição inválido para o Pix do Open Andrade.");
+  }
+
   const merchantAccount = field("00", "br.gov.bcb.pix") + field("01", PIX_KEY);
   const additionalData = field("05", "***");
-  const amount = (FEE_CENTS / 100).toFixed(2);
+  const amount = (amountCents / 100).toFixed(2);
 
   const payload = [
     field("00", "01"),
@@ -44,5 +52,3 @@ export function buildPixPayload() {
 
   return `${payload}${crc16(payload)}`;
 }
-
-export const OPEN_ANDRADE_FEE_CENTS = FEE_CENTS;

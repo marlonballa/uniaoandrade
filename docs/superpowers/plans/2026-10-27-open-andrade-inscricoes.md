@@ -2,9 +2,9 @@
 
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
 
-**Goal:** Build a public Open Andrade registration form, show the R$ 30 Pix only after a saved registration, and let an authenticated organizer track registrations and payment status in the existing Neon database.
+**Goal:** Build a public Open Andrade registration form, show the R$ 30 or R$ 45 Pix amount based on selected modalities only after a saved registration, and let an authenticated organizer track registrations and payment status in the existing Neon database.
 
-**Architecture:** Keep the feature in the existing Next.js App Router app on Vercel. Public and admin screens use same-origin Route Handlers; those handlers use Neon’s serverless driver and the existing production database. Use a single event-specific table, signed HttpOnly admin session cookies, and a static BR Code generated server-side from the supplied Pix details.
+**Architecture:** Keep the feature in the existing Next.js App Router app on Vercel. Public and admin screens use same-origin Route Handlers; those handlers use Neon’s serverless driver and the existing production database. Use a single event-specific table, signed HttpOnly admin session cookies, and a BR Code generated server-side from the supplied Pix details and selected modalities.
 
 **Tech Stack:** Next.js 16.3.3, React 19, Tailwind CSS 4, TypeScript, `@neondatabase/serverless`, `qrcode.react`.
 
@@ -13,7 +13,7 @@
 ## Global Constraints
 
 - Collect only responsible name, student name, Kyorugui, and Poomsae; at least one modality is required.
-- Charge R$ 30,00 per student regardless of selecting one or both modalities.
+- Charge R$ 30,00 per student for one modality and R$ 45,00 for both modalities.
 - Do not collect age, birth date, weight, belt, or payment receipt.
 - Reveal Pix only after a successful Neon insert; payment starts as pending and is marked paid manually.
 - Use only the existing Neon `neondb` production branch; do not create a new database or modify unrelated tables.
@@ -42,7 +42,7 @@
 
 **Interfaces:**
 - Produces `/open-andrade` with a form that collects responsible/student names and Kyorugui/Poomsae choices. The client submits JSON `{ responsibleName, studentName, kyorugui, poomsae }` to `POST /api/open-andrade/registrations`.
-- The initial screen shows the R$ 30,00 fee and does not show Pix before a successful response.
+- The initial screen shows both fees and does not show Pix before a successful response.
 
 - [x] Build the responsive form and event callout using the existing brand tokens; include labels, focus states, required validation, loading, error, and confirmation states.
 - [x] Add the route metadata and a clear homepage path to the form, including only the supplied date, arrival/start times, and deadline.
@@ -53,6 +53,7 @@
 **Files:**
 - Create: `frontend/db/migrations/001_open_andrade_registrations.sql`
 - Create: `frontend/db/migrations/002_open_andrade_rate_limits.sql`
+- Create: `frontend/db/migrations/003_open_andrade_modality_pricing.sql`
 - Create: `frontend/lib/open-andrade/database.ts`
 - Create: `frontend/lib/open-andrade/rate-limit.ts`
 - Create: `frontend/lib/open-andrade/pix.ts`
@@ -64,13 +65,14 @@
 **Interfaces:**
 - `POST /api/open-andrade/registrations` accepts the Task 1 JSON, normalizes and validates it, inserts one pending row, and only then returns `{ registrationId, payment: { amountCents, copyPaste } }`.
 - `frontend/lib/open-andrade/database.ts` exports a server-only `getSql()` that reads `DATABASE_URL` and returns the Neon HTTP query client.
-- The table `open_andrade_registrations` stores UUID, responsible/student names, two modality booleans, fixed amount in cents, payment status, created timestamp, and nullable paid timestamp.
-- Pix fields are built from the approved phone key, payee, city, and fixed fee; no secret or payment detail is stored in the registration table.
+- The table `open_andrade_registrations` stores UUID, responsible/student names, two modality booleans, the corresponding amount in cents, payment status, created timestamp, and nullable paid timestamp.
+- Pix fields are built from the approved phone key, payee, city, and amount selected by modalities; no secret or payment detail is stored in the registration table.
 
 - [x] Add the Neon serverless driver and QR rendering dependency; document `DATABASE_URL` in `.env.example` without a value.
-- [x] Write idempotent event-specific migrations for registrations and rate limits.
+- [x] Write idempotent event-specific migrations for registrations, rate limits, and modality-based pricing.
 - [x] Implement request validation, insert, and static BR Code construction using the BCB Pix format and CRC16.
 - [x] Apply both migrations in the already-authorized production Neon SQL Editor and verify the tables with `to_regclass`.
+- [x] Confirm there are no existing registrations, apply migration `003_open_andrade_modality_pricing.sql` in Neon production, and verify its modality-based amount constraint.
 - [x] Connect the success state to the response so Pix copy-and-paste and QR are rendered only after the insert succeeds.
 - [x] Run `npm run lint` and `npm run build` from `frontend`; automated tests were not added or run.
 
@@ -109,8 +111,9 @@
 
 ## Handoff note
 
-Both event-specific tables were verified in Neon production, and no student
-registrations were added. The runtime still needs `DATABASE_URL`,
+Both event-specific tables and the modality-based amount constraint were
+verified in Neon production, and no student registrations were added. The
+runtime still needs `DATABASE_URL`,
 `OPEN_ANDRADE_ADMIN_PASSWORD`, and `OPEN_ANDRADE_SESSION_SECRET` configured
 outside Git before submissions or the admin list can connect to Neon. The
 dashboard's database-backed states remain unverified until then.

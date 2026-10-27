@@ -95,9 +95,15 @@ export default function OpenAndradePage() {
               <p className="max-w-[42ch] font-sans text-base leading-relaxed text-muted">
                 Preencha os dados do responsável e do aluno, depois escolha as modalidades de participação. Use um formulário para cada aluno.
               </p>
-              <div className="mt-2 flex items-baseline justify-between border-y border-line py-5 lg:max-w-[340px]">
-                <span className="font-sans text-sm font-medium text-muted">Taxa de inscrição</span>
-                <span className="font-display text-2xl text-ink">R$ 30,00</span>
+              <div className="mt-2 grid border-y border-line lg:max-w-[340px]">
+                <div className="flex items-baseline justify-between gap-4 py-4">
+                  <span className="font-sans text-sm font-medium text-muted">Uma modalidade</span>
+                  <span className="font-display text-xl text-ink">R$ 30,00</span>
+                </div>
+                <div className="flex items-baseline justify-between gap-4 border-t border-line py-4">
+                  <span className="font-sans text-sm font-medium text-muted">Duas modalidades</span>
+                  <span className="font-display text-xl text-ink">R$ 45,00</span>
+                </div>
               </div>
             </div>
 

@@ -16,9 +16,10 @@ Abra http://localhost:3000.
 
 As inscrições ficam em `/open-andrade`; o painel de acompanhamento fica em
 `/admin/open-andrade`. Cada aluno tem um envio individual, com responsável,
-aluno e modalidades Kyorugui/Poomsae. A taxa é R$ 30,00 por aluno. O Pix e o
-QR Code só aparecem depois que a inscrição é salva no Neon. A equipe confere
-o recebimento e marca cada pagamento como pago no painel.
+aluno e modalidades Kyorugui/Poomsae. A taxa é de R$ 30,00 para uma modalidade
+e R$ 45,00 para as duas. O Pix e o QR Code só aparecem depois que a inscrição
+é salva no Neon. A equipe confere o recebimento e marca cada pagamento como
+pago no painel.
 
 O Torneio Interno acontece em 15 de novembro de 2026. Os alunos devem chegar
 até às 8h; o início será às 9h. O prazo para inscrição termina em 11 de
@@ -31,12 +32,14 @@ inscrições após o prazo.
 As tabelas `public.open_andrade_registrations` e
 `public.open_andrade_rate_limits` ficam no banco `neondb` da branch de
 produção da União Andrade. As migrações idempotentes estão em
-`db/migrations/001_open_andrade_registrations.sql` e
-`db/migrations/002_open_andrade_rate_limits.sql`; ambas adicionam tabelas
-específicas do evento e não alteram tabelas existentes. A tabela de limite de
-tentativas armazena somente um hash da origem da requisição, nunca o IP em
-texto aberto. O formulário aceita até 60 envios por hora por origem e o login
-do painel até 10 tentativas a cada 15 minutos.
+`db/migrations/001_open_andrade_registrations.sql`,
+`db/migrations/002_open_andrade_rate_limits.sql` e
+`db/migrations/003_open_andrade_modality_pricing.sql`. A primeira migração
+cria a tabela de inscrições, a segunda cria a tabela de limite de tentativas,
+e a terceira ajusta a regra do valor conforme as modalidades. A tabela de
+limite de tentativas armazena somente um hash da origem da requisição, nunca
+o IP em texto aberto. O formulário aceita até 60 envios por hora por origem
+e o login do painel até 10 tentativas a cada 15 minutos.
 
 Para rodar as inscrições, copie `.env.example` para `.env.local` e preencha:
 

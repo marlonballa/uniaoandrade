@@ -45,6 +45,10 @@ function modalityNames(registration: Registration) {
     .join(" e ");
 }
 
+function formatCurrency(amountCents: number) {
+  return (amountCents / 100).toLocaleString("pt-BR", { style: "currency", currency: "BRL" });
+}
+
 export default function AdminDashboard() {
   const [checkingSession, setCheckingSession] = useState(true);
   const [authenticated, setAuthenticated] = useState(false);
@@ -376,7 +380,7 @@ export default function AdminDashboard() {
                   Responsável: {registration.responsibleName}
                 </p>
                 <p className="mt-1 font-sans text-sm text-muted">
-                  {modalityNames(registration)} · {formatDate(registration.createdAt)}
+                  {modalityNames(registration)} · {formatCurrency(registration.amountCents)} · {formatDate(registration.createdAt)}
                 </p>
               </div>
 

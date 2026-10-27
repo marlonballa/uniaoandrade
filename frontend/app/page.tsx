@@ -51,7 +51,7 @@ export default function Home() {
                 Open Andrade de Taekwondo
               </h2>
               <p className="mt-2 font-sans text-sm leading-relaxed text-white/80 sm:text-base">
-                Inscreva o aluno em Kyorugui, Poomsae ou nas duas modalidades. Taxa de R$ 30,00 por aluno.
+                Inscreva o aluno em Kyorugui, Poomsae ou nas duas modalidades. Uma modalidade custa R$ 30,00; as duas custam R$ 45,00.
               </p>
             </div>
             <Link

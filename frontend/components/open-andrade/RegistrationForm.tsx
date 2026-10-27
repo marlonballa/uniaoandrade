@@ -2,6 +2,11 @@
 
 import { useState, type FormEvent } from "react";
 import { QRCodeSVG } from "qrcode.react";
+import {
+  getOpenAndradeFeeCents,
+  OPEN_ANDRADE_ONE_MODALITY_FEE_CENTS,
+  OPEN_ANDRADE_TWO_MODALITIES_FEE_CENTS,
+} from "@/lib/open-andrade/pricing";
 
 type Payment = {
   amountCents: number;
@@ -20,6 +25,10 @@ const WHATSAPP_NUMBER = PIX_KEY.slice(1);
 const inputClassName =
   "mt-2 w-full rounded-xl border border-line bg-paper px-4 py-3.5 font-sans text-base text-ink shadow-sm transition placeholder:text-muted/80 hover:border-navy-light/50 focus:border-red focus:outline-none focus:ring-2 focus:ring-red/20";
 
+function formatCurrency(amountCents: number) {
+  return (amountCents / 100).toLocaleString("pt-BR", { style: "currency", currency: "BRL" });
+}
+
 export default function RegistrationForm() {
   const [kyorugui, setKyorugui] = useState(false);
   const [poomsae, setPoomsae] = useState(false);
@@ -28,6 +37,8 @@ export default function RegistrationForm() {
   const [payment, setPayment] = useState<Payment | null>(null);
   const [registeredStudentName, setRegisteredStudentName] = useState("");
   const [copied, setCopied] = useState(false);
+  const hasSelectedModality = kyorugui || poomsae;
+  const selectedFeeCents = getOpenAndradeFeeCents(kyorugui, poomsae);
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -103,12 +114,7 @@ export default function RegistrationForm() {
 
         <div className="flex items-center justify-between gap-4">
           <span className="font-sans text-sm text-muted">Taxa por aluno</span>
-          <span className="font-display text-2xl text-ink">
-            {(payment.amountCents / 100).toLocaleString("pt-BR", {
-              style: "currency",
-              currency: "BRL",
-            })}
-          </span>
+          <span className="font-display text-2xl text-ink">{formatCurrency(payment.amountCents)}</span>
         </div>
 
         <div className="mt-6 flex justify-center rounded-xl bg-white p-5">
@@ -243,8 +249,16 @@ export default function RegistrationForm() {
       </fieldset>
 
       <div className="flex flex-col gap-4 border-t border-line pt-5">
-        <p className="font-sans text-sm leading-relaxed text-muted">
-          Taxa de inscrição: <strong className="font-semibold text-ink">R$ 30,00 por aluno.</strong>
+        <p aria-live="polite" className="font-sans text-sm leading-relaxed text-muted">
+          {hasSelectedModality ? (
+            <>Taxa desta inscrição: <strong className="font-semibold text-ink">{formatCurrency(selectedFeeCents)} por aluno.</strong></>
+          ) : (
+            <>
+              Uma modalidade: <strong className="font-semibold text-ink">{formatCurrency(OPEN_ANDRADE_ONE_MODALITY_FEE_CENTS)}</strong>
+              {" · "}
+              Duas modalidades: <strong className="font-semibold text-ink">{formatCurrency(OPEN_ANDRADE_TWO_MODALITIES_FEE_CENTS)}</strong>
+            </>
+          )}
         </p>
         <p className="-mt-2 font-sans text-sm leading-relaxed text-muted">
           Após o pagamento, envie o comprovante pelo WhatsApp ao Sabonim Evandro.

@@ -53,7 +53,7 @@ export const ROUTES: SiteRoute[] = [
     label: "Open Andrade",
     title: "Inscrições para o Open Andrade de Taekwondo",
     description:
-      "Nosso Torneio Interno Open Andrade de Taekwondo será em 15 de novembro de 2026, às 9h. Inscrições até 11 de novembro, às 23h59. Taxa de R$ 30,00 por aluno.",
+      "Nosso Torneio Interno Open Andrade de Taekwondo será em 15 de novembro de 2026, às 9h. Inscrições até 11 de novembro, às 23h59. Taxa de R$ 30,00 para uma modalidade ou R$ 45,00 para as duas.",
   },
   {
     href: "/academia-de-lutas-catanduva",

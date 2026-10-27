@@ -1,6 +1,7 @@
 import { getSql } from "@/lib/open-andrade/database";
 import { isOpenAndradeRegistrationClosed } from "@/lib/open-andrade/event";
-import { buildPixPayload, OPEN_ANDRADE_FEE_CENTS } from "@/lib/open-andrade/pix";
+import { buildPixPayload } from "@/lib/open-andrade/pix";
+import { getOpenAndradeFeeCents } from "@/lib/open-andrade/pricing";
 import { consumeRateLimit } from "@/lib/open-andrade/rate-limit";
 
 export const runtime = "nodejs";
@@ -73,13 +74,15 @@ export async function POST(request: Request) {
     );
   }
 
+  const amountCents = getOpenAndradeFeeCents(kyorugui, poomsae);
+
   try {
     const sql = getSql();
     const rows = await sql`
       INSERT INTO public.open_andrade_registrations
         (responsible_name, student_name, kyorugui, poomsae, amount_cents)
       VALUES
-        (${responsibleName}, ${studentName}, ${kyorugui}, ${poomsae}, ${OPEN_ANDRADE_FEE_CENTS})
+        (${responsibleName}, ${studentName}, ${kyorugui}, ${poomsae}, ${amountCents})
       RETURNING id
     `;
 
@@ -87,8 +90,8 @@ export async function POST(request: Request) {
       {
         registrationId: rows[0].id,
         payment: {
-          amountCents: OPEN_ANDRADE_FEE_CENTS,
-          copyPaste: buildPixPayload(),
+          amountCents,
+          copyPaste: buildPixPayload(amountCents),
         },
       },
       { status: 201, headers: { "Cache-Control": "no-store" } },
