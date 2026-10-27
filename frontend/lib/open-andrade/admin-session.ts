@@ -9,7 +9,7 @@ function getConfiguration() {
   const password = process.env.OPEN_ANDRADE_ADMIN_PASSWORD;
   const secret = process.env.OPEN_ANDRADE_SESSION_SECRET;
 
-  if (!password || !secret || Buffer.byteLength(secret, "utf8") < 32) return null;
+  if (!password || password.length < 24 || !secret || Buffer.byteLength(secret, "utf8") < 32) return null;
   return { password, secret };
 }
 

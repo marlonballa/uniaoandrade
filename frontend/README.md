@@ -34,9 +34,10 @@ As tabelas `public.open_andrade_registrations` e
 produção da União Andrade. As migrações idempotentes estão em
 `db/migrations/001_open_andrade_registrations.sql`,
 `db/migrations/002_open_andrade_rate_limits.sql` e
-`db/migrations/003_open_andrade_modality_pricing.sql`. A primeira migração
-cria a tabela de inscrições, a segunda cria a tabela de limite de tentativas,
-e a terceira ajusta a regra do valor conforme as modalidades. A tabela de
+`db/migrations/003_open_andrade_modality_pricing.sql` e
+`db/migrations/004_open_andrade_idempotency.sql`. As migrações criam as tabelas
+de inscrições e limite de tentativas, ajustam o valor por modalidade e evitam
+duplicidade quando uma tentativa de envio é repetida. A tabela de
 limite de tentativas armazena somente um hash da origem da requisição, nunca
 o IP em texto aberto. O formulário aceita até 60 envios por hora por origem
 e o login do painel até 10 tentativas a cada 15 minutos.
@@ -44,7 +45,7 @@ e o login do painel até 10 tentativas a cada 15 minutos.
 Para rodar as inscrições, copie `.env.example` para `.env.local` e preencha:
 
 - `DATABASE_URL`: connection string do Neon para o banco `neondb`.
-- `OPEN_ANDRADE_ADMIN_PASSWORD`: senha longa e exclusiva do painel.
+- `OPEN_ANDRADE_ADMIN_PASSWORD`: senha longa e exclusiva do painel, com pelo menos 24 caracteres.
 - `OPEN_ANDRADE_SESSION_SECRET`: segredo aleatório com pelo menos 32 bytes.
 
 Não envie essas variáveis ao Git. Na Vercel, cadastre os mesmos três valores
@@ -157,7 +158,9 @@ rode Node.js:
   repositório `uniaoandrade` (monorepo). Ao importar o repositório na
   Vercel, configure **Root Directory = `frontend`** nas configurações
   do projeto — sem isso a Vercel tenta buildar a partir da raiz do
-  repositório e não encontra o `package.json`.
+  repositório e não encontra o `package.json`. O backend do Open Andrade usa
+  o cabeçalho de IP confiável da Vercel; ao trocar de provedor, configure um
+  proxy confiável antes de reabrir as inscrições.
 - **KingHost**: precisa do plano com Node.js/VPS Cloud, não do plano
   compartilhado tradicional (que só roda PHP).
 

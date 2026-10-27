@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, type FormEvent } from "react";
+import { useRef, useState, type FormEvent } from "react";
 import { QRCodeSVG } from "qrcode.react";
 import {
   getOpenAndradeFeeCents,
@@ -25,6 +25,7 @@ type RegistrationFormProps = {
 const PIX_KEY = "+5517996195606";
 const PIX_KEY_DISPLAY = "17 99619-5606";
 const WHATSAPP_NUMBER = PIX_KEY.slice(1);
+const SUBMISSION_KEY_STORAGE = "open-andrade-submission-key";
 
 const inputClassName =
   "mt-2 w-full rounded-xl border border-line bg-paper px-4 py-3.5 font-sans text-base text-ink shadow-sm transition placeholder:text-muted/80 hover:border-navy-light/50 focus:border-red focus:outline-none focus:ring-2 focus:ring-red/20";
@@ -33,7 +34,18 @@ function formatCurrency(amountCents: number) {
   return (amountCents / 100).toLocaleString("pt-BR", { style: "currency", currency: "BRL" });
 }
 
+function createSubmissionKey() {
+  if (typeof window.crypto.randomUUID === "function") return window.crypto.randomUUID();
+
+  const bytes = window.crypto.getRandomValues(new Uint8Array(16));
+  bytes[6] = (bytes[6] & 0x0f) | 0x40;
+  bytes[8] = (bytes[8] & 0x3f) | 0x80;
+  const hex = Array.from(bytes, (byte) => byte.toString(16).padStart(2, "0")).join("");
+  return `${hex.slice(0, 8)}-${hex.slice(8, 12)}-${hex.slice(12, 16)}-${hex.slice(16, 20)}-${hex.slice(20)}`;
+}
+
 export default function RegistrationForm({ confirmationPreview = false }: RegistrationFormProps) {
+  const submissionKeyRef = useRef<string | null>(null);
   const [kyorugui, setKyorugui] = useState(false);
   const [poomsae, setPoomsae] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -52,6 +64,31 @@ export default function RegistrationForm({ confirmationPreview = false }: Regist
   const [copied, setCopied] = useState(false);
   const hasSelectedModality = kyorugui || poomsae;
   const selectedFeeCents = getOpenAndradeFeeCents(kyorugui, poomsae);
+
+  function getSubmissionKey() {
+    if (submissionKeyRef.current) return submissionKeyRef.current;
+
+    try {
+      const storedKey = window.sessionStorage.getItem(SUBMISSION_KEY_STORAGE);
+      if (storedKey && /^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i.test(storedKey)) {
+        submissionKeyRef.current = storedKey;
+        return storedKey;
+      }
+    } catch {
+      // sessionStorage may be disabled; the in-memory key still protects retries.
+    }
+
+    const key = createSubmissionKey();
+    submissionKeyRef.current = key;
+
+    try {
+      window.sessionStorage.setItem(SUBMISSION_KEY_STORAGE, key);
+    } catch {
+      // Keep the key in memory when sessionStorage is unavailable.
+    }
+
+    return key;
+  }
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -74,6 +111,7 @@ export default function RegistrationForm({ confirmationPreview = false }: Regist
           studentName: formData.get("studentName"),
           kyorugui,
           poomsae,
+          idempotencyKey: getSubmissionKey(),
         }),
       });
 
@@ -86,6 +124,12 @@ export default function RegistrationForm({ confirmationPreview = false }: Regist
             : "Não foi possível enviar a inscrição. Tente novamente em instantes.",
         );
         return;
+      }
+
+      try {
+        window.sessionStorage.removeItem(SUBMISSION_KEY_STORAGE);
+      } catch {
+        // The confirmation view prevents another submission in this form instance.
       }
 
       setRegisteredStudentName(String(formData.get("studentName") ?? "").trim());

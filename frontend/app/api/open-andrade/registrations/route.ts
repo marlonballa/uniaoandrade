@@ -57,12 +57,17 @@ export async function POST(request: Request) {
   const input = body as Record<string, unknown>;
   const responsibleName = normalizeName(input.responsibleName);
   const studentName = normalizeName(input.studentName);
+  const idempotencyKey =
+    typeof input.idempotencyKey === "string"
+      && /^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i.test(input.idempotencyKey)
+      ? input.idempotencyKey
+      : null;
   const kyorugui = input.kyorugui === true;
   const poomsae = input.poomsae === true;
 
-  if (!responsibleName || !studentName) {
+  if (!responsibleName || !studentName || !idempotencyKey) {
     return Response.json(
-      { error: "Informe o nome completo do responsável e do aluno (até 120 caracteres cada)." },
+      { error: "Confira os dados da inscrição e tente enviar novamente." },
       { status: 400 },
     );
   }
@@ -78,20 +83,46 @@ export async function POST(request: Request) {
 
   try {
     const sql = getSql();
-    const rows = await sql`
+    const insertedRows = await sql`
       INSERT INTO public.open_andrade_registrations
-        (responsible_name, student_name, kyorugui, poomsae, amount_cents)
+        (idempotency_key, responsible_name, student_name, kyorugui, poomsae, amount_cents)
       VALUES
-        (${responsibleName}, ${studentName}, ${kyorugui}, ${poomsae}, ${amountCents})
-      RETURNING id
+        (${idempotencyKey}, ${responsibleName}, ${studentName}, ${kyorugui}, ${poomsae}, ${amountCents})
+      ON CONFLICT (idempotency_key) DO NOTHING
+      RETURNING id, responsible_name, student_name, kyorugui, poomsae, amount_cents
     `;
+    const existingRows = insertedRows.length > 0
+      ? insertedRows
+      : await sql`
+          SELECT id, responsible_name, student_name, kyorugui, poomsae, amount_cents
+          FROM public.open_andrade_registrations
+          WHERE idempotency_key = ${idempotencyKey}
+          LIMIT 1
+        `;
+    const registration = existingRows[0];
+
+    if (!registration) {
+      throw new Error("Não foi possível recuperar a inscrição após o envio.");
+    }
+
+    if (
+      registration.responsible_name !== responsibleName
+      || registration.student_name !== studentName
+      || registration.kyorugui !== kyorugui
+      || registration.poomsae !== poomsae
+    ) {
+      return Response.json(
+        { error: "Esta tentativa já está associada a outros dados. Para evitar duplicidade, não envie novamente; fale com o Sabonim Evandro para conferir a inscrição registrada." },
+        { status: 409, headers: { "Cache-Control": "no-store" } },
+      );
+    }
 
     return Response.json(
       {
-        registrationId: rows[0].id,
+        registrationId: registration.id,
         payment: {
-          amountCents,
-          copyPaste: buildPixPayload(amountCents),
+          amountCents: registration.amount_cents,
+          copyPaste: buildPixPayload(Number(registration.amount_cents)),
         },
       },
       { status: 201, headers: { "Cache-Control": "no-store" } },

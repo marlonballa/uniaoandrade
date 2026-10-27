@@ -19,9 +19,15 @@ export async function consumeRateLimit(
     throw new Error("OPEN_ANDRADE_SESSION_SECRET não configurado");
   }
 
-  const forwardedIp = request.headers.get("x-vercel-forwarded-for")
-    ?? request.headers.get("x-forwarded-for");
-  const clientIp = forwardedIp?.split(",", 1)[0]?.trim() || "unknown";
+  const trustedIpHeader = process.env.VERCEL === "1"
+    ? request.headers.get("x-vercel-forwarded-for")
+    : null;
+  const clientIp = trustedIpHeader?.split(",", 1)[0]?.trim()
+    || (process.env.NODE_ENV !== "production" ? "local-development" : "");
+
+  if (!clientIp) {
+    throw new Error("Cabeçalho de IP confiável não configurado para este provedor");
+  }
   const keyHash = createHmac("sha256", secret)
     .update(`open-andrade:${purpose}:v1:${clientIp}`)
     .digest("hex");
