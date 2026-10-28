@@ -12,6 +12,31 @@ export const CLUSTER_LABELS: Record<BlogCluster, string> = {
   tecnico: "Técnico",
 };
 
+export type BlogGalleryImage = {
+  src: string;
+  alt: string;
+  caption: string;
+};
+
+export type BlogMosaicImage = {
+  src: string;
+  alt: string;
+  zoom?: number;
+  focus?: string;
+};
+
+export type BlogVideoClip = {
+  video: string;
+  poster: string;
+  alt: string;
+};
+
+export type BlogVideoStory = {
+  title: string;
+  description: string;
+  clips: BlogVideoClip[];
+};
+
 export type BlogPost = {
   slug: string;
   title: string;
@@ -21,6 +46,12 @@ export type BlogPost = {
   relatedHref: string;
   relatedLabel: string;
   content: string;
+  coverImage?: string;
+  coverAlt?: string;
+  coverCaption?: string;
+  mosaic: BlogMosaicImage[];
+  gallery: BlogGalleryImage[];
+  videoStories: BlogVideoStory[];
 };
 
 export function getAllPosts(): BlogPost[] {
@@ -40,6 +71,12 @@ export function getAllPosts(): BlogPost[] {
       relatedHref: data.relatedHref as string,
       relatedLabel: data.relatedLabel as string,
       content,
+      coverImage: data.coverImage as string | undefined,
+      coverAlt: data.coverAlt as string | undefined,
+      coverCaption: data.coverCaption as string | undefined,
+      mosaic: (data.mosaic as BlogMosaicImage[] | undefined) ?? [],
+      gallery: (data.gallery as BlogGalleryImage[] | undefined) ?? [],
+      videoStories: (data.videoStories as BlogVideoStory[] | undefined) ?? [],
     };
   });
 
