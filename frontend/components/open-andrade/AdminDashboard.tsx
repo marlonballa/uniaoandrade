@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useMemo, useState, type FormEvent } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState, type FormEvent } from "react";
 
 type Registration = {
   id: string;
@@ -59,6 +59,11 @@ export default function AdminDashboard() {
   const [isLoadingRows, setIsLoadingRows] = useState(false);
   const [isRefreshing, setIsRefreshing] = useState(false);
   const [updatingId, setUpdatingId] = useState<string | null>(null);
+  const [deletingRegistration, setDeletingRegistration] = useState<Registration | null>(null);
+  const deleteDialogRef = useRef<HTMLDialogElement | null>(null);
+  const [deletePassword, setDeletePassword] = useState("");
+  const [deleteError, setDeleteError] = useState("");
+  const [isDeleting, setIsDeleting] = useState(false);
   const [filter, setFilter] = useState<Filter>("all");
   const [error, setError] = useState("");
 
@@ -119,6 +124,15 @@ export default function AdminDashboard() {
     };
   }, [loadRegistrations]);
 
+  useEffect(() => {
+    const dialog = deleteDialogRef.current;
+    if (deletingRegistration && dialog && !dialog.open) dialog.showModal();
+
+    return () => {
+      if (dialog?.open) dialog.close();
+    };
+  }, [deletingRegistration]);
+
   async function handleLogin(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     setError("");
@@ -170,6 +184,68 @@ export default function AdminDashboard() {
       setError("Não foi possível atualizar o pagamento. Tente novamente.");
     } finally {
       setUpdatingId(null);
+    }
+  }
+
+  function closeDeleteDialog() {
+    if (isDeleting) return;
+    setDeletingRegistration(null);
+    setDeletePassword("");
+    setDeleteError("");
+  }
+
+  async function deleteRegistration(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    if (!deletingRegistration) return;
+
+    setDeleteError("");
+    setIsDeleting(true);
+
+    try {
+      const response = await fetch(`/api/admin/open-andrade/registrations/${deletingRegistration.id}`, {
+        method: "DELETE",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ password: deletePassword }),
+      });
+      const data = await response.json();
+
+      if (!response.ok) {
+        setDeleteError(responseError(data, "Não foi possível excluir a inscrição."));
+        if (response.status === 401) {
+          setError("Sua sessão expirou. Acesse novamente para continuar.");
+          setAuthenticated(false);
+          setDeletingRegistration(null);
+          setDeletePassword("");
+        }
+        return;
+      }
+
+      const deletedRegistration = deletingRegistration;
+      setDeletingRegistration(null);
+      setDeletePassword("");
+      setSummary((current) => {
+        if (!current || !current.registrations.some((registration) => registration.id === deletedRegistration.id)) {
+          return current;
+        }
+
+        return {
+          ...current,
+          registrations: current.registrations.filter((registration) => registration.id !== deletedRegistration.id),
+          counts: {
+            total: Math.max(0, current.counts.total - 1),
+            pending: Math.max(
+              0,
+              current.counts.pending - (deletedRegistration.paymentStatus === "pending" ? 1 : 0),
+            ),
+            paid: Math.max(0, current.counts.paid - (deletedRegistration.paymentStatus === "paid" ? 1 : 0)),
+          },
+        };
+      });
+      await loadRegistrations(true);
+    } catch {
+      setDeleteError("Não foi possível excluir a inscrição. Confira sua conexão e tente novamente.");
+    } finally {
+      setIsDeleting(false);
     }
   }
 
@@ -404,11 +480,93 @@ export default function AdminDashboard() {
                     {updatingId === registration.id ? "Salvando…" : "Marcar como pago"}
                   </button>
                 ) : null}
+                <button
+                  type="button"
+                  onClick={() => {
+                    setDeleteError("");
+                    setDeletePassword("");
+                    setDeletingRegistration(registration);
+                  }}
+                  disabled={isDeleting || isRefreshing}
+                  className="min-h-10 rounded-xl border border-red/40 px-4 py-2 font-sans text-sm font-semibold text-red-deep transition-colors hover:bg-red/5 disabled:cursor-wait disabled:opacity-60"
+                >
+                  Excluir
+                </button>
               </div>
             </li>
           ))}
         </ul>
       )}
+
+      {deletingRegistration ? (
+        <dialog
+          ref={deleteDialogRef}
+          aria-labelledby="delete-registration-title"
+          aria-describedby="delete-registration-description"
+          onCancel={(event) => {
+            event.preventDefault();
+            closeDeleteDialog();
+          }}
+          onClick={(event) => {
+            if (event.target === event.currentTarget) closeDeleteDialog();
+          }}
+          className="m-auto max-h-[calc(100dvh-2rem)] w-[calc(100%-2rem)] max-w-md overflow-y-auto rounded-2xl border border-line bg-paper p-6 text-ink shadow-2xl backdrop:bg-navy-deep/70"
+        >
+          <form
+            onSubmit={deleteRegistration}
+            className="flex flex-col"
+          >
+            <p className="font-sans text-xs font-semibold uppercase tracking-[0.16em] text-red-deep">
+              Excluir inscrição
+            </p>
+            <h2 id="delete-registration-title" className="mt-2 font-display text-xl text-ink">
+              Confirmar exclusão?
+            </h2>
+            <p id="delete-registration-description" className="mt-3 font-sans text-sm leading-relaxed text-muted">
+              A inscrição de <strong className="text-ink">{deletingRegistration.studentName}</strong> será removida
+              permanentemente. Informe a senha do painel para confirmar.
+            </p>
+
+            <label htmlFor="delete-registration-password" className="mt-5 block font-sans text-sm font-semibold text-ink">
+              Senha do painel
+            </label>
+            <input
+              id="delete-registration-password"
+              type="password"
+              autoComplete="current-password"
+              value={deletePassword}
+              onChange={(event) => setDeletePassword(event.target.value)}
+              required
+              disabled={isDeleting}
+              className="mt-2 min-h-12 w-full rounded-xl border border-line bg-paper px-4 py-3 font-sans text-base text-ink shadow-sm focus:border-red focus:outline-none focus:ring-2 focus:ring-red/20 disabled:opacity-60"
+            />
+
+            {deleteError ? (
+              <p role="alert" className="mt-3 font-sans text-sm leading-relaxed text-red-deep">
+                {deleteError}
+              </p>
+            ) : null}
+
+            <div className="mt-6 flex flex-col-reverse gap-3 sm:flex-row sm:justify-end">
+              <button
+                type="button"
+                onClick={closeDeleteDialog}
+                disabled={isDeleting}
+                className="min-h-11 rounded-xl border border-line px-5 py-3 font-sans text-sm font-semibold text-ink transition-colors hover:border-navy-light disabled:cursor-wait disabled:opacity-60"
+              >
+                Cancelar
+              </button>
+              <button
+                type="submit"
+                disabled={isDeleting || !deletePassword}
+                className="min-h-11 rounded-xl bg-red-deep px-5 py-3 font-sans text-sm font-semibold text-paper transition-colors hover:bg-red disabled:cursor-wait disabled:opacity-60"
+              >
+                {isDeleting ? "Excluindo…" : "Confirmar exclusão"}
+              </button>
+            </div>
+          </form>
+        </dialog>
+      ) : null}
     </section>
   );
 }

@@ -10,7 +10,7 @@ export type RateLimitResult = {
 
 export async function consumeRateLimit(
   request: Request,
-  purpose: "registration" | "admin-login",
+  purpose: "registration" | "admin-login" | "admin-delete",
   limit: number,
   windowSeconds: number,
 ): Promise<RateLimitResult> {
