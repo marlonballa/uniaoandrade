@@ -79,6 +79,44 @@ body {
   margin: 0 0 1rem;
 }
 
+.prose-blog table {
+  width: 100%;
+  margin: 1.5rem 0 2rem;
+  table-layout: fixed;
+  border-collapse: collapse;
+  border-top: 1px solid var(--line);
+  font-variant-numeric: tabular-nums;
+}
+
+.prose-blog th,
+.prose-blog td {
+  padding: 0.75rem 0.65rem;
+  text-align: left;
+  vertical-align: top;
+  overflow-wrap: anywhere;
+}
+
+.prose-blog th {
+  color: var(--ink);
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+.prose-blog td {
+  border-top: 1px solid var(--line);
+}
+
+.prose-blog tbody tr:nth-child(even) {
+  background: var(--surface);
+}
+
+.prose-blog th:last-child,
+.prose-blog td:last-child {
+  width: 29%;
+  text-align: right;
+  white-space: nowrap;
+}
+
 .prose-blog strong {
   color: var(--ink);
   font-weight: 600;
