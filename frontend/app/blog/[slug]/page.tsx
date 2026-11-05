@@ -6,6 +6,7 @@ import { marked } from "marked";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Jornada from "@/components/Jornada";
+import DonjakGuide from "@/components/blog/DonjakGuide";
 import VideoStories from "@/components/blog/VideoStories";
 import { getAllPosts, getPostBySlug, CLUSTER_LABELS } from "@/lib/blog";
 
@@ -157,9 +158,16 @@ export default async function BlogPostPage({ params }: PageProps) {
 
         <article className="px-6 py-16 sm:px-10 lg:px-18">
           <div
-            className="prose-blog mx-auto max-w-[720px] font-sans text-base leading-relaxed text-muted"
-            dangerouslySetInnerHTML={{ __html: html }}
-          />
+            className={`mx-auto ${post.donjakLevels.length > 0 ? "max-w-[1120px]" : "max-w-[720px]"}`}
+          >
+            <div
+              className="prose-blog mx-auto max-w-[720px] font-sans text-base leading-relaxed text-muted"
+              dangerouslySetInnerHTML={{ __html: html }}
+            />
+            {post.donjakLevels.length > 0 && (
+              <DonjakGuide levels={post.donjakLevels} />
+            )}
+          </div>
           <div className="mx-auto mt-10 max-w-[720px]">
             <Link
               href={post.relatedHref}
