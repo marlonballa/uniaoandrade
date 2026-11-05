@@ -108,8 +108,10 @@ const P0_HREFS = [
   "/contato",
 ];
 
-// Nav principal (header): só as páginas P0, para não sobrecarregar o menu.
-export const NAV_LINKS = ROUTES.filter((r) => P0_HREFS.includes(r.href));
+// Nav principal: páginas P0 + acesso direto ao blog.
+export const NAV_LINKS = ROUTES.filter(
+  (r) => P0_HREFS.includes(r.href) || r.href === "/blog",
+);
 
 // Nav do rodapé: as páginas P0 + Artes Marciais (única página P1 com link no rodapé) + Blog.
 export const FOOTER_LINKS = ROUTES.filter(

@@ -293,6 +293,25 @@ export default function Home() {
         <SigaInstagram />
         <Galeria />
 
+        <section className="px-6 py-16 sm:px-10 lg:px-18">
+          <div className="mx-auto flex max-w-[1200px] flex-col gap-5 border-y border-line py-8 sm:flex-row sm:items-center sm:justify-between sm:gap-10">
+            <div className="max-w-[680px]">
+              <h2 className="font-display text-2xl leading-snug text-ink sm:text-3xl">
+                Leia o blog da União Andrade
+              </h2>
+              <p className="mt-3 font-sans text-base leading-relaxed text-muted">
+                Artigos sobre Taekwondo infantil, prática para adultos e a técnica da linha Kukkiwon Old School.
+              </p>
+            </div>
+            <Link
+              href="/blog"
+              className="inline-flex min-h-12 shrink-0 items-center font-sans text-sm font-semibold text-red transition-colors hover:text-red-deep focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-red"
+            >
+              Acessar o blog <span aria-hidden="true" className="ml-2">→</span>
+            </Link>
+          </div>
+        </section>
+
         <Faq
           items={FAQ_HOME}
           heading="Antes de agendar sua aula"
