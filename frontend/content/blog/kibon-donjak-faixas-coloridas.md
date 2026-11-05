@@ -22,6 +22,17 @@ donjakLevels:
       - "Ap Kubi Bande Arae Makki + Momtong Baro Jireugi"
       - "Ap Kubi Bande Olgul Makki"
       - "Ap Kubi Baro Olgul Makki"
+    tutorialVideos:
+      - title: "Arae Makki"
+        videoId: "BNCR5Y2kXFs"
+        movements:
+          - "Ap Kubi Bande Arae Makki"
+          - "Ap Kubi Baro Arae Makki"
+      - title: "Momtong Makki"
+        videoId: "K1hIonL1d5I"
+        movements:
+          - "Ap Kubi Bande Momtong Makki"
+          - "Ap Kubi Baro Momtong Makki"
   - slug: amarela
     name: Amarela
     grade: "8º gub"
@@ -42,6 +53,12 @@ donjakLevels:
       - "Momtong Ap Tchagui"
       - "Olgul Ap Tchagui"
       - "Olgul Ap Tchagui + Ap Seogui Momtong Bande Jireugi"
+    tutorialVideos:
+      - title: "Arae Makki"
+        videoId: "BNCR5Y2kXFs"
+        movements:
+          - "Ap Seogui Palmok Bande Arae Makki"
+          - "Ap Seogui Palmok Baro Arae Makki"
   - slug: amarela-ponta-verde
     name: Amarela ponta verde
     grade: "7º gub"
@@ -74,6 +91,17 @@ donjakLevels:
       - "Dwit Kubi Hansonnal Bande Momtong Makki + Ap Kubi Momtong Baro Jireugi"
       - "Olgul Ap Tchagui + Ap Kubi Momtong Dubeon Jireugi"
       - "Olgul Ap Tchagui + Ap Seogui Palmok Bande Arae Makki + Momtong Baro Jireugi"
+    tutorialVideos:
+      - title: "Hansonnal Arae Makki"
+        videoId: "6egDFDj45H4"
+        movements:
+          - "Dwit Kubi Hansonnal Bande Arae Makki"
+          - "Dwit Kubi Hansonnal Baro Arae Makki"
+      - title: "Hansonnal Momtong Makki"
+        videoId: "wm7fmDplTxk"
+        movements:
+          - "Dwit Kubi Hansonnal Bande Momtong Makki"
+          - "Dwit Kubi Hansonnal Baro Momtong Makki"
   - slug: verde-ponta-azul
     name: Verde ponta azul
     grade: "5º gub"
@@ -105,6 +133,22 @@ donjakLevels:
       - "Olgul Ap Tchagui + Ap Kubi Bande Dung Jumok Ap Tchigui"
       - "Olgul Ap Tchagui + Dwit Kubi Momtong Baro An Makki"
       - "Momtong Yop Tchagui + Momtong Yop Tchagui + Dwit Kubi Bande Sonnal Momtong Makki"
+    tutorialVideos:
+      - title: "Sonnal Arae Makki"
+        videoId: "LgQJsVtHRyc"
+        movements:
+          - "Dwit Kubi Sonnal Bande Arae Makki"
+          - "Dwit Kubi Sonnal Baro Arae Makki"
+      - title: "Sonnal Makki"
+        videoId: "hj6DToSwJng"
+        movements:
+          - "Dwit Kubi Sonnal Bande Momtong Makki"
+          - "Dwit Kubi Sonnal Baro Momtong Makki"
+      - title: "Bakkat Makki"
+        videoId: "3C2OM_Wqqa4"
+        movements:
+          - "Dwit Kubi Bande Palmok Bakkat Makki"
+          - "Dwit Kubi Baro Palmok Bakkat Makki"
   - slug: azul
     name: Azul
     grade: "4º gub"
@@ -124,6 +168,15 @@ donjakLevels:
       - "Olgul Ap Tchagui + Ap Kubi Bande Arae Makki + Baro Momtong Makki"
       - "Momtong Yop Tchagui + Ap Kubi Bande Palkup Pyojeok Tchigui"
       - "Olgul Ap Tchagui + Dwit Kkoa Seogui Bande Dung Jumok Olgul Ap Tchigui"
+    tutorialVideos:
+      - title: "Arae Makki"
+        videoId: "BNCR5Y2kXFs"
+        movements:
+          - "Bande Arae Makki (na combinação com Baro Momtong Makki)"
+      - title: "Momtong Makki"
+        videoId: "K1hIonL1d5I"
+        movements:
+          - "Baro Momtong Makki (na combinação com Bande Arae Makki)"
   - slug: azul-ponta-vermelha
     name: Azul ponta vermelha
     grade: "3º gub"
@@ -145,6 +198,13 @@ donjakLevels:
       - "Olgul Ap Tchagui + Dwit Kubi Baro Palmok Bakkat Makki"
       - "Dollyo Tchagui + Ap Kubi Baro Olgul Bakkat Makki + Bande Momtong Jireugi"
       - "Dollyo Tchagui + Ap Kubi Baro Arae Makki"
+    tutorialVideos:
+      - title: "Bakkat Makki"
+        videoId: "3C2OM_Wqqa4"
+        movements:
+          - "Ap Kubi Bande Olgul Bakkat Makki"
+          - "Ap Kubi Baro Olgul Bakkat Makki"
+          - "Olgul Ap Tchagui + Dwit Kubi Baro Palmok Bakkat Makki"
   - slug: vermelha
     name: Vermelha
     grade: "2º gub"
@@ -174,6 +234,23 @@ donjakLevels:
       - "Olgul Ap Tchagui + Beom Seogui Bande Momtong Makki"
       - "Murup Tchigui + Dwit Kkoa Seogui Jeocheo Jireugi"
       - "Pyojeok Tchagui + Juchum Seogui Bande Palkup Pyojeok Tchigui"
+    tutorialVideos:
+      - title: "Gawi Makki"
+        videoId: "KvuinI7l_Qs"
+        movements:
+          - "Ap Kubi Gawi Makki"
+      - title: "Hecheo (Hecho) Makki"
+        videoId: "MJtN40mRnmg"
+        movements:
+          - "Ap Kubi Momtong Hecheo Makki"
+      - title: "Otgoreo (Eotgeoreo) Makki"
+        videoId: "lQqjyzSNg-I"
+        movements:
+          - "Ap Kubi Eotgeoreo Arae Makki"
+      - title: "Sonnal Makki"
+        videoId: "hj6DToSwJng"
+        movements:
+          - "Beom Seogui Sonnal Momtong Makki"
   - slug: vermelha-ponta-preta
     name: Vermelha ponta preta
     grade: "1º gub"
@@ -195,6 +272,11 @@ donjakLevels:
       - "Dubaldangseong Ap Tchagui + Ap Kubi Bande Momtong Makki + Dubeon Jireugi"
       - "Olgul Ap Tchagui + Beom Seogui Bande Batangson Momtong An Makki"
       - "Olgul Ap Tchagui + Twimyeo Ap Tchagui + Ap Kubi Bande Momtong Makki + Dubeon Jireugi"
+    tutorialVideos:
+      - title: "Oesanteul (Wesanteul) Makki"
+        videoId: "tQkm8Oj38Pw"
+        movements:
+          - "Ap Kubi Oesanteul Makki"
 ---
 
 Este guia visual reúne as sequências do Kibon Donjak por graduação, da faixa branca à vermelha ponta preta. Cada etapa mostra a cor da faixa, o gub, a forma e todos os itens listados na referência.

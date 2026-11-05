@@ -48,6 +48,12 @@ export type BeltColor =
   | "red"
   | "red-black";
 
+export type BeltTutorialVideo = {
+  title: string;
+  videoId: string;
+  movements: string[];
+};
+
 export type BeltLevel = {
   slug: string;
   name: string;
@@ -58,6 +64,7 @@ export type BeltLevel = {
   form?: string;
   formNote?: string;
   sequences: string[];
+  tutorialVideos?: BeltTutorialVideo[];
 };
 
 export type BlogPost = {

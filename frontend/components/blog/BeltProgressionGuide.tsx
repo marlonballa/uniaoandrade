@@ -139,6 +139,53 @@ export default function BeltProgressionGuide({
                   <li key={`${level.slug}-${index}`}>{renderSequence(sequence)}</li>
                 ))}
               </ol>
+
+              {level.tutorialVideos && level.tutorialVideos.length > 0 && (
+                <section
+                  aria-labelledby={`${levelId}-videos-title`}
+                  className="belt-guide-videos"
+                >
+                  <div className="belt-guide-videos__heading">
+                    <h4 id={`${levelId}-videos-title`}>Vídeos das técnicas</h4>
+                    <span>
+                      {level.tutorialVideos.length}{" "}
+                      {level.tutorialVideos.length === 1 ? "vídeo" : "vídeos"}
+                    </span>
+                  </div>
+                  <div className="belt-guide-videos__grid">
+                    {level.tutorialVideos.map((video) => (
+                      <article className="belt-guide-video" key={video.videoId}>
+                        <div className="belt-guide-video__player">
+                          <iframe
+                            allow="encrypted-media; picture-in-picture; web-share"
+                            allowFullScreen
+                            loading="lazy"
+                            referrerPolicy="strict-origin-when-cross-origin"
+                            src={`https://www.youtube-nocookie.com/embed/${video.videoId}`}
+                            title={`Vídeo de ${video.title} — ${levelLabel(level)}`}
+                          />
+                        </div>
+                        <div className="belt-guide-video__content">
+                          <h5>{video.title}</h5>
+                          <p>Movimentos associados:</p>
+                          <ul>
+                            {video.movements.map((movement) => (
+                              <li key={movement}>{movement}</li>
+                            ))}
+                          </ul>
+                          <a
+                            href={`https://www.youtube.com/watch?v=${video.videoId}`}
+                            rel="noreferrer"
+                            target="_blank"
+                          >
+                            Assistir no YouTube
+                          </a>
+                        </div>
+                      </article>
+                    ))}
+                  </div>
+                </section>
+              )}
             </section>
           );
         })}
