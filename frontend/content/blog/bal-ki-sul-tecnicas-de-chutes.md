@@ -1,6 +1,6 @@
 ---
 title: "Bal Ki Sul (Técnicas de Chutes)"
-description: "Consulte as técnicas de chutes do Bal Ki Sul organizadas pelas faixas branca, amarela, amarela ponta verde e verde."
+description: "Conheça o Bal Ki Sul, as técnicas de pés e chutes do Taekwondo, com movimentos organizados por graduação."
 date: "2026-11-05"
 cluster: "tecnico"
 relatedHref: "/taekwondo-catanduva"
@@ -20,13 +20,8 @@ balKiSulLevels:
   - slug: amarela
     name: Amarela
     beltColor: yellow
-    sequences:
-      - "Neryo Tchagui"
-      - "Furyo Tchagui"
-      - "Mondollyo Tchagui"
-  - slug: amarela-ponta-verde
-    name: Amarela ponta verde
-    beltColor: yellow-green
+    pairedName: Amarela ponta verde
+    pairedBeltColor: yellow-green
     sequences:
       - "Neryo Tchagui"
       - "Furyo Tchagui"
@@ -34,9 +29,11 @@ balKiSulLevels:
   - slug: verde
     name: Verde
     beltColor: green
+    pairedName: Verde ponta azul
+    pairedBeltColor: green-blue
     sequences:
       - "Timeo Ap Tchagui"
       - "Torgue Tchagui"
 ---
 
-Esta publicação organiza as técnicas de chutes do Bal Ki Sul conforme as faixas indicadas. A mesma relação de movimentos é exibida para as graduações amarela e amarela ponta verde.
+Bal Ki Sul (발기술) é o nome dado às técnicas de pés e pernas do Taekwondo, com destaque para os chutes. Essa prática reúne movimentos executados em diferentes direções e trajetórias, como parte do repertório técnico da modalidade.

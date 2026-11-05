@@ -1,4 +1,4 @@
-import type { BeltLevel } from "@/lib/blog";
+import type { BeltColor, BeltLevel } from "@/lib/blog";
 
 type BeltProgressionGuideProps = {
   levels: BeltLevel[];
@@ -25,6 +25,38 @@ function itemCount(count: number, label: string) {
   return `${count} ${label}`;
 }
 
+function BeltMarker({ color }: { color: BeltColor }) {
+  return (
+    <span className={`belt-guide-belt belt-guide-belt--${color}`}>
+      <span className="belt-guide-belt__main" />
+      <span className="belt-guide-belt__tip" />
+    </span>
+  );
+}
+
+function BeltMarkers({ level }: { level: BeltLevel }) {
+  if (level.pairedBeltColor) {
+    return (
+      <span aria-hidden="true" className="belt-guide-belt-pair">
+        <BeltMarker color={level.beltColor} />
+        <BeltMarker color={level.pairedBeltColor} />
+      </span>
+    );
+  }
+
+  return (
+    <span aria-hidden="true">
+      <BeltMarker color={level.beltColor} />
+    </span>
+  );
+}
+
+function levelLabel(level: BeltLevel) {
+  return level.pairedName
+    ? `${level.name} e ${level.pairedName}`
+    : `Faixa ${level.name}`;
+}
+
 export default function BeltProgressionGuide({
   levels,
   idPrefix,
@@ -49,14 +81,8 @@ export default function BeltProgressionGuide({
             href={`#${idPrefix}-${level.slug}`}
             key={level.slug}
           >
-            <span
-              aria-hidden="true"
-              className={`belt-guide-belt belt-guide-belt--${level.beltColor}`}
-            >
-              <span className="belt-guide-belt__main" />
-              <span className="belt-guide-belt__tip" />
-            </span>
-            <span>{level.name}</span>
+            <BeltMarkers level={level} />
+            <span>{level.pairedName ? levelLabel(level) : level.name}</span>
           </a>
         ))}
       </nav>
@@ -82,19 +108,13 @@ export default function BeltProgressionGuide({
             >
               <header className="belt-guide-level__header">
                 <div className="belt-guide-level__identity">
-                  <span
-                    aria-hidden="true"
-                    className={`belt-guide-belt belt-guide-belt--${level.beltColor}`}
-                  >
-                    <span className="belt-guide-belt__main" />
-                    <span className="belt-guide-belt__tip" />
-                  </span>
+                  <BeltMarkers level={level} />
                   <div>
                     {level.grade && (
                       <p className="belt-guide-level__grade">{level.grade}</p>
                     )}
                     <h3 className="belt-guide-level__title" id={levelTitleId}>
-                      Faixa {level.name}
+                      {levelLabel(level)}
                     </h3>
                   </div>
                 </div>
@@ -113,7 +133,7 @@ export default function BeltProgressionGuide({
 
               <ol
                 className="belt-guide-sequences"
-                aria-label={`${itemLabel} da faixa ${level.name}`}
+                aria-label={`${itemLabel} para ${levelLabel(level)}`}
               >
                 {level.sequences.map((sequence, index) => (
                   <li key={`${level.slug}-${index}`}>{renderSequence(sequence)}</li>

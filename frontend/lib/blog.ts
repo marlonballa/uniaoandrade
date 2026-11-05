@@ -51,8 +51,10 @@ export type BeltColor =
 export type BeltLevel = {
   slug: string;
   name: string;
+  pairedName?: string;
   grade?: string;
   beltColor: BeltColor;
+  pairedBeltColor?: BeltColor;
   form?: string;
   formNote?: string;
   sequences: string[];
