@@ -6,7 +6,7 @@ import { marked } from "marked";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Jornada from "@/components/Jornada";
-import DonjakGuide from "@/components/blog/DonjakGuide";
+import BeltProgressionGuide from "@/components/blog/BeltProgressionGuide";
 import VideoStories from "@/components/blog/VideoStories";
 import { getAllPosts, getPostBySlug, CLUSTER_LABELS } from "@/lib/blog";
 
@@ -55,6 +55,7 @@ export default async function BlogPostPage({ params }: PageProps) {
   const heroVideoClip = post.videoStories
     .flatMap((story) => story.clips)
     .find((clip) => clip.video.toLowerCase().endsWith(".mp4"));
+  const hasBeltGuide = post.donjakLevels.length > 0 || post.balKiSulLevels.length > 0;
 
   return (
     <>
@@ -158,14 +159,33 @@ export default async function BlogPostPage({ params }: PageProps) {
 
         <article className="px-6 py-16 sm:px-10 lg:px-18">
           <div
-            className={`mx-auto ${post.donjakLevels.length > 0 ? "max-w-[1120px]" : "max-w-[720px]"}`}
+            className={`mx-auto ${hasBeltGuide ? "max-w-[1120px]" : "max-w-[720px]"}`}
           >
             <div
               className="prose-blog mx-auto max-w-[720px] font-sans text-base leading-relaxed text-muted"
               dangerouslySetInnerHTML={{ __html: html }}
             />
             {post.donjakLevels.length > 0 && (
-              <DonjakGuide levels={post.donjakLevels} />
+              <BeltProgressionGuide
+                description="Escolha uma faixa para ir direto à lista. Cada item mantém a ordem apresentada no material de estudo."
+                heading="Sequências por graduação"
+                idPrefix="donjak"
+                itemLabel="sequências"
+                levels={post.donjakLevels}
+                note={{
+                  title: "Observação técnica",
+                  text: "A referência marca para conferência do instrutor a distribuição da Base na faixa branca e os lados Bande/Baro das combinações a partir da faixa azul. Siga a orientação do Mestre e dos instrutores no treino.",
+                }}
+              />
+            )}
+            {post.balKiSulLevels.length > 0 && (
+              <BeltProgressionGuide
+                description="Selecione uma faixa para consultar as técnicas de chutes correspondentes."
+                heading="Técnicas de chutes por faixa"
+                idPrefix="bal-ki-sul"
+                itemLabel="técnicas"
+                levels={post.balKiSulLevels}
+              />
             )}
           </div>
           <div className="mx-auto mt-10 max-w-[720px]">

@@ -37,7 +37,7 @@ export type BlogVideoStory = {
   clips: BlogVideoClip[];
 };
 
-export type DonjakBeltColor =
+export type BeltColor =
   | "white"
   | "yellow"
   | "yellow-green"
@@ -48,12 +48,12 @@ export type DonjakBeltColor =
   | "red"
   | "red-black";
 
-export type DonjakLevel = {
+export type BeltLevel = {
   slug: string;
   name: string;
-  grade: string;
-  beltColor: DonjakBeltColor;
-  form: string;
+  grade?: string;
+  beltColor: BeltColor;
+  form?: string;
   formNote?: string;
   sequences: string[];
 };
@@ -73,7 +73,8 @@ export type BlogPost = {
   mosaic: BlogMosaicImage[];
   gallery: BlogGalleryImage[];
   videoStories: BlogVideoStory[];
-  donjakLevels: DonjakLevel[];
+  donjakLevels: BeltLevel[];
+  balKiSulLevels: BeltLevel[];
 };
 
 export function getAllPosts(): BlogPost[] {
@@ -99,7 +100,8 @@ export function getAllPosts(): BlogPost[] {
       mosaic: (data.mosaic as BlogMosaicImage[] | undefined) ?? [],
       gallery: (data.gallery as BlogGalleryImage[] | undefined) ?? [],
       videoStories: (data.videoStories as BlogVideoStory[] | undefined) ?? [],
-      donjakLevels: (data.donjakLevels as DonjakLevel[] | undefined) ?? [],
+      donjakLevels: (data.donjakLevels as BeltLevel[] | undefined) ?? [],
+      balKiSulLevels: (data.balKiSulLevels as BeltLevel[] | undefined) ?? [],
     };
   });
 
