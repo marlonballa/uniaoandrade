@@ -20,6 +20,8 @@ donjakLevels:
       - "Ap Kubi Momtong Bande Jireugi"
       - "Ap Kubi Momtong Baro Jireugi"
       - "Ap Kubi Bande Arae Makki + Momtong Baro Jireugi"
+      - "Ap Kubi Bande Olgul Makki"
+      - "Ap Kubi Baro Olgul Makki"
   - slug: amarela
     name: Amarela
     grade: "8º gub"
