@@ -35,7 +35,10 @@ produção da União Andrade. As migrações idempotentes estão em
 `db/migrations/001_open_andrade_registrations.sql`,
 `db/migrations/002_open_andrade_rate_limits.sql` e
 `db/migrations/003_open_andrade_modality_pricing.sql` e
-`db/migrations/004_open_andrade_idempotency.sql`. As migrações criam as tabelas
+`db/migrations/004_open_andrade_idempotency.sql`. A tabela
+`public.blog_donjak_editor_state` também pode ser criada pela migração
+`db/migrations/005_blog_donjak_editor.sql`; o editor a prepara na primeira
+abertura autenticada. As migrações criam as tabelas
 de inscrições e limite de tentativas, ajustam o valor por modalidade e evitam
 duplicidade quando uma tentativa de envio é repetida. A tabela de
 limite de tentativas armazena somente um hash da origem da requisição, nunca
@@ -51,6 +54,21 @@ Para rodar as inscrições, copie `.env.example` para `.env.local` e preencha:
 Não envie essas variáveis ao Git. Na Vercel, cadastre os mesmos três valores
 nas variáveis de ambiente do projeto e publique uma nova implantação. A chave
 Pix é fixa nesta funcionalidade e não fica armazenada em variáveis ou no banco.
+
+## Editor do Kibon Donjak
+
+O editor fica em `/admin/blog`; a página `/admin` lista as ferramentas
+administrativas. O rodapé do site contém o link **Área administrativa**.
+O acesso usa a mesma senha e sessão administrativa configuradas para o painel
+Open Andrade, com validade de oito horas. As rotas administrativas não são
+indexadas por buscadores e não aparecem no menu público principal.
+
+O editor altera os movimentos e vídeos correspondentes do post Kibon Donjak.
+Ao mover um movimento para o Arquivo, ele deixa de aparecer no artigo e fica
+disponível para restauração. A exclusão definitiva remove o item do Arquivo.
+As alterações salvas ficam no Neon e são usadas na página pública do artigo.
+Esta versão não cria publicações completas novas; ela gerencia o conteúdo
+técnico do post Kibon Donjak.
 
 ## WhatsApp
 

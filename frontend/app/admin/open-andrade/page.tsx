@@ -17,12 +17,14 @@ export default function OpenAndradeAdminPage() {
             <Logo className="h-9 w-9" />
             <span className="font-brand text-base tracking-wide text-paper">UNIÃO ANDRADE</span>
           </Link>
-          <Link
-            href="/open-andrade"
-            className="font-sans text-sm font-medium text-white/80 underline decoration-white/40 underline-offset-4 transition-colors hover:text-paper"
-          >
-            Ver inscrição
-          </Link>
+          <nav className="flex items-center gap-5 font-sans text-sm font-medium text-white/80">
+            <Link href="/admin" className="underline decoration-white/40 underline-offset-4 transition-colors hover:text-paper">
+              Área administrativa
+            </Link>
+            <Link href="/open-andrade" className="underline decoration-white/40 underline-offset-4 transition-colors hover:text-paper">
+              Ver inscrição
+            </Link>
+          </nav>
         </div>
       </header>
 

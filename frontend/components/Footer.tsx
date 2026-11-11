@@ -94,7 +94,10 @@ export default function Footer() {
 
       <div className="mx-auto mt-16 flex max-w-[1440px] flex-col gap-2 border-t border-white/10 pt-6 font-sans text-xs text-white/45 sm:flex-row sm:justify-between">
         <span>© {new Date().getFullYear()} União Andrade Taekwondo Marcial. Todos os direitos reservados.</span>
-        <span>Catanduva, SP</span>
+        <div className="flex flex-wrap items-center gap-x-5 gap-y-2">
+          <span>Catanduva, SP</span>
+          <Link href="/admin" className="transition-colors hover:text-paper">Área administrativa</Link>
+        </div>
       </div>
     </footer>
   );

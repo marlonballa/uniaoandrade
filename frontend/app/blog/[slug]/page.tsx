@@ -3,12 +3,14 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { marked } from "marked";
+import { connection } from "next/server";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Jornada from "@/components/Jornada";
 import BeltProgressionGuide from "@/components/blog/BeltProgressionGuide";
 import VideoStories from "@/components/blog/VideoStories";
 import { getAllPosts, getPostBySlug, CLUSTER_LABELS } from "@/lib/blog";
+import { BLOG_DONJAK_SLUG, getPublishedDonjakLevels } from "@/lib/blog-admin";
 
 type PageProps = {
   params: Promise<{ slug: string }>;
@@ -40,8 +42,14 @@ function formatDate(date: string) {
 
 export default async function BlogPostPage({ params }: PageProps) {
   const { slug } = await params;
-  const post = getPostBySlug(slug);
+  let post = getPostBySlug(slug);
   if (!post) notFound();
+
+  if (slug === BLOG_DONJAK_SLUG) {
+    await connection();
+    const publishedLevels = await getPublishedDonjakLevels();
+    if (publishedLevels) post = { ...post, donjakLevels: publishedLevels };
+  }
 
   const html = marked.parse(post.content, { async: false }) as string;
   const isKibonDonjak = post.slug === "kibon-donjak-faixas-coloridas";
