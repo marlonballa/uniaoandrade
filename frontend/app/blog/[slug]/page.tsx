@@ -44,13 +44,16 @@ export default async function BlogPostPage({ params }: PageProps) {
   if (!post) notFound();
 
   const html = marked.parse(post.content, { async: false }) as string;
+  const isKibonDonjak = post.slug === "kibon-donjak-faixas-coloridas";
   const hasMosaic = post.mosaic.length >= 6;
   const heroLayout = hasMosaic
     ? "mx-auto max-w-[1200px]"
     : `mx-auto ${
         post.coverImage
           ? "grid max-w-[1200px] items-center gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(300px,0.72fr)] lg:gap-16"
-          : "max-w-[760px]"
+          : isKibonDonjak
+            ? "max-w-[960px]"
+            : "max-w-[760px]"
       }`;
   const heroVideoClip = post.videoStories
     .flatMap((story) => story.clips)
@@ -87,7 +90,7 @@ export default async function BlogPostPage({ params }: PageProps) {
                   <span className="text-white/30">·</span>
                   <span className="text-white/60">{formatDate(post.date)}</span>
                 </div>
-                <h1 className="max-w-[720px] font-display text-3xl leading-[1.2] text-paper sm:text-[38px]">
+                <h1 className={`${isKibonDonjak ? "max-w-[920px]" : "max-w-[720px]"} font-display text-3xl leading-[1.2] text-paper sm:text-[38px]`}>
                   {post.title}
                 </h1>
                 {(post.coverImage || hasMosaic) && (
@@ -162,7 +165,7 @@ export default async function BlogPostPage({ params }: PageProps) {
             className={`mx-auto ${hasBeltGuide ? "max-w-[1120px]" : "max-w-[720px]"}`}
           >
             <div
-              className="prose-blog mx-auto max-w-[720px] font-sans text-base leading-relaxed text-muted"
+              className={`prose-blog mx-auto ${isKibonDonjak ? "max-w-[860px]" : "max-w-[720px]"} font-sans text-base leading-relaxed text-muted`}
               dangerouslySetInnerHTML={{ __html: html }}
             />
             {post.donjakLevels.length > 0 && (
