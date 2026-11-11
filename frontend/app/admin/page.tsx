@@ -9,16 +9,16 @@ export const metadata: Metadata = {
 
 const tools = [
   {
-    href: "/admin/blog",
-    eyebrow: "Publicações",
-    title: "Editor do blog",
-    description: "Edite os movimentos, vídeos e o Arquivo do Kibon Donjak.",
-  },
-  {
     href: "/admin/open-andrade",
     eyebrow: "Eventos",
-    title: "Inscrições Open Andrade",
-    description: "Acompanhe as inscrições e os pagamentos do torneio.",
+    title: "Eventos",
+    description: "Acompanhe as inscrições e os pagamentos do Open Andrade.",
+  },
+  {
+    href: "/admin/blog",
+    eyebrow: "Publicações",
+    title: "Publicações",
+    description: "Edite os movimentos, vídeos e o Arquivo do Kibon Donjak.",
   },
 ];
 
