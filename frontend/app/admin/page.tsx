@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { cookies } from "next/headers";
+import { redirect } from "next/navigation";
 import Logo from "@/components/Logo";
+import { hasValidAdminSession } from "@/lib/open-andrade/admin-session";
 
 export const metadata: Metadata = {
   title: "Área administrativa | União Andrade",
@@ -22,7 +25,13 @@ const tools = [
   },
 ];
 
-export default function AdminHomePage() {
+export default async function AdminHomePage() {
+  const cookieStore = await cookies();
+  const request = new Request("http://localhost/admin", {
+    headers: { cookie: cookieStore.toString() },
+  });
+  if (!hasValidAdminSession(request)) redirect("/admin/login");
+
   return (
     <main className="min-h-screen bg-[#f3f4f8] px-5 py-8 sm:px-8 sm:py-12">
       <div className="mx-auto max-w-[1000px]">
@@ -43,7 +52,7 @@ export default function AdminHomePage() {
           <p className="font-sans text-xs font-semibold uppercase tracking-[0.17em] text-red">Administração</p>
           <h1 className="mt-2 font-display text-3xl text-ink sm:text-4xl">O que você quer gerenciar?</h1>
           <p className="mt-3 max-w-[620px] font-sans text-base leading-relaxed text-muted">
-            Escolha uma ferramenta. Cada painel pede a senha administrativa antes de mostrar ou alterar informações.
+            Acesse os painéis de Eventos e Publicações da União Andrade.
           </p>
 
           <div className="mt-8 grid gap-4 md:grid-cols-2">

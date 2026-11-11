@@ -9,6 +9,7 @@ import { NAV_LINKS } from "@/lib/routes";
 export default function Header() {
   const [open, setOpen] = useState(false);
   const pathname = usePathname();
+  const isLandingPage = pathname === "/";
 
   return (
     <header className="fixed inset-x-0 top-0 z-50 border-b border-white/10 bg-navy-deep/45 backdrop-blur-xl backdrop-saturate-150">
@@ -36,6 +37,14 @@ export default function Header() {
               {link.label}
             </Link>
           ))}
+          {isLandingPage && (
+            <Link
+              href="/admin"
+              className="rounded-full border border-white/25 px-4 py-2 text-xs font-semibold text-paper transition-colors hover:border-white/50 hover:bg-white/10"
+            >
+              Área da equipe
+            </Link>
+          )}
         </nav>
 
         <button
@@ -70,13 +79,20 @@ export default function Header() {
         id="mobile-nav"
         aria-label="Navegação móvel"
         inert={!open}
-        className={`overflow-hidden border-t border-white/10 bg-navy-deep/95 backdrop-blur-xl transition-[max-height,opacity,transform] duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] lg:hidden ${
+        className={`border-t border-white/10 bg-navy-deep/95 backdrop-blur-xl transition-[max-height,opacity,transform] duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] lg:hidden ${
           open
-            ? "max-h-[360px] opacity-100 motion-safe:translate-y-0"
-            : "max-h-0 opacity-0 motion-safe:-translate-y-1"
+            ? "max-h-[calc(100dvh-64px)] overflow-y-auto overscroll-contain opacity-100 motion-safe:translate-y-0"
+            : "max-h-0 overflow-hidden opacity-0 motion-safe:-translate-y-1"
         }`}
       >
-        <ul className="flex flex-col gap-5 px-6 py-6 text-base font-medium text-white/90">
+        <ul className="flex flex-col gap-4 px-6 py-5 text-base font-medium text-white/90">
+          {isLandingPage && (
+            <li className="mb-1 border-b border-white/10 pb-4">
+              <Link href="/admin" onClick={() => setOpen(false)} className="block font-semibold text-paper">
+                Área da equipe →
+              </Link>
+            </li>
+          )}
           {NAV_LINKS.map((link) => (
             <li key={link.href}>
               <Link href={link.href} onClick={() => setOpen(false)} className="block py-1">
